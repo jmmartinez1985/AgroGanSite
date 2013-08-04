@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Ubicacion";
+}
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=es"></script>
+<style>
+    #map-canvas {
+        
+        height: 400px;
+
+    }
+</style>
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+            <div id="personalinfo">
+            </div>
+
+            <br />
+            <br />
+            <div style="width: 100px">
+                <div style="vertical-align: middle; margin-right: 20px">
+                    <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
+                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                </div>
+                <div style="vertical-align: bottom">
+                    <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
+                </div>
+            </div>
+        </div>
+        <div class="span9">
+            <h2>Nuestra ubicación</h2>
+
+            <div id="map-canvas"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var map = null;
+    var markersArray = [];
+    var marker;
+    //default load position
+
+    function initialize() {
+        var latlng = new google.maps.LatLng(8.43581, -82.43475);
+
+        var mapOptions = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        var image = 'logo_pestaña.png';
+        var urlHelper = new UrlHelper();
+        image = urlHelper.urlImage(image);
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: latlng,
+            
+            animation: google.maps.Animation.DROP,
+            map: map,
+            title: "Agroganadera Martínez S.A.",
+            icon: image
+        });
+
+
+     
+        
+        //showRoutePath_1();
+    }
+    // End initialize function
+    //remove all markers from map
+    function clearOverlays() {
+        if (markersArray) {
+            for (var i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+        }
+    }
+
+    //remove specific marker from map
+    function removeMarker(myMark) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (myMark == markersArray[i]['number']) {
+                    console.log(markersArray[i]['number']);
+                    markersArray[i].setMap(null);
+                    markersArray.splice(i, 1); //removes marker from array
+                    break;
+                }
+            }
+        }
+    }
+
+    //check if marker already exist on map
+    function checkMarker(number) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (markersArray[i]['number'] == number)
+                    return true;
+            }
+        } else
+            return false;
+    }
+
+    // Mapping variables
+    var global_strokeColor = "#ED00FF";
+    var global_strokeOpacity = 0.7;
+    var global_strokeWeight = 6;
+
+    //Route 1
+    function showRoutePath_1() {
+        //check if marker1 already on map if true do nothing
+        if (checkMarker(1))
+            return;
+        position = new google.maps.LatLng(8.43581, -82.43475);
+        var infowindow = new google.maps.InfoWindow({
+            content: "Agroganadera Mart&iacute;nez S.A."
+        });
+        marker = new google.maps.Marker({
+            animation: google.maps.Animation.DROP,
+            position: position,
+            map: map
+        });
+
+        marker['number'] = 1;
+        //google.maps.event.addListener(marker, 'click', toggleBounce);
+        google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+        });
+
+        markersArray.push(marker);
+
+        //open infowWindow with marker
+        infowindow.open(map, marker);
+        //setTimeout(function () { infowindow.close(); }, 5000);
+
+
+    }
+
+    function toggleBounce() {
+
+        if (marker.getAnimation() != null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    $(function () {
+
+        jQuery.ajax(
+           {
+               type: 'post',
+               url: '@Url.Content("~/Home/Contact/")',
+
+               success: function (data) {
+                   var result = JSON.parse(data);
+                   var htmlinfocompany = '';
+                   htmlinfocompany += '<address>';
+                   htmlinfocompany += "<strong>" + result.COM_Nombre + "</strong><br>";
+                   htmlinfocompany += "" + result.COM_Direccion + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_Telefono + "";
+                   htmlinfocompany += '</br><strong>Correo Electrónico</strong></br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_Correo + "</a>"
+                   htmlinfocompany += "</address>";
+                   htmlinfocompany += '<address></br>';
+                   htmlinfocompany += "<strong>Informacion de contacto</strong><br>";
+                   htmlinfocompany += "" + result.COM_ContactoNombre + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_ContactoCelular + "</br>";
+                   htmlinfocompany += '<strong>Correo Electrónico</strong><br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_ContactoEmail + "</a>"
+                   htmlinfocompany += "</address>";
+                   $('#personalinfo').append(htmlinfocompany);
+               },
+               error: function (a, b, c) {
+                   alert(a);
+               }
+           });
+    });
+
+
+</script>

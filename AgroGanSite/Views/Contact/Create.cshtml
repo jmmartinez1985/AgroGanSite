@@ -1,0 +1,127 @@
+﻿@model AgroGanSite.Models.CON_Contactenos
+
+@{
+    ViewBag.Title = "Contactenos";
+}
+
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+            <div id="personalinfo">
+            </div>
+
+            <br />
+            <br />
+            <div style="width: 100px">
+                <div style="vertical-align: middle; margin-right: 20px">
+                    <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
+                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                </div>
+                <div style="vertical-align: bottom">
+                    <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
+                </div>
+            </div>
+        </div>
+        <div class="span9">
+            <div class="successmessage">
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                  @Html.AntiForgeryToken()
+    
+                <h2>Contactenos para sugerencias, contribuciones y negocios</h2>
+                <br />
+                <h4>Por favor llene todos los campos que son requeridos en el formulario para una mejor atencion en caso de contactarlos</h4>
+                <br />
+
+                <label for='Nombre'>Nombre*: </label>
+                @Html.TextBoxFor(model => model.CON_Nombre, new { @placeholder = "Nombre", @class = "input-xlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.CON_Nombre)
+
+                <label for='Email'>Correo Electronico*:</label>
+                @Html.TextBoxFor(model => model.CON_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.CON_Email)
+
+                <label for='Teléfono'>Telefono*:</label>
+                @Html.TextBoxFor(model => model.CON_Telefono, new { @placeholder = "Teléfono", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.CON_Telefono)
+
+
+                <label for='Celular'>Celular*:</label>
+                @Html.TextBoxFor(model => model.CON_Celular, new { @placeholder = "Celular", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.CON_Celular)
+
+
+
+
+                <label for='message'>Mensaje:</label>
+
+                @Html.TextAreaFor(model => model.CON_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.CON_Mensaje)
+
+                <br />
+                <input type="submit" value="Contactar" class="btn btn-primary" id="submit-button" />
+                <br />
+                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+
+
+             
+          
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(function () {
+
+        jQuery.ajax(
+           {
+               type: 'post',
+               url: '@Url.Content("~/Home/Contact/")',
+
+               success: function (data) {
+                   var result = JSON.parse(data);
+                   var htmlinfocompany = '<h2>Información</h2>';
+                   htmlinfocompany += '<address>';
+                   htmlinfocompany += "<strong>" + result.COM_Nombre + "</strong><br>";
+                   htmlinfocompany += "" + result.COM_Direccion + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_Telefono + "";
+                   htmlinfocompany += '</br><strong>Correo Electrónico</strong></br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_Correo + "</a>"
+                   htmlinfocompany += "</address>";
+                   htmlinfocompany += '<address></br>';
+                   htmlinfocompany += "<strong>Informacion de contacto</strong><br>";
+                   htmlinfocompany += "" + result.COM_ContactoNombre + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_ContactoCelular + "</br>";
+                   htmlinfocompany += '<strong>Correo Electrónico</strong><br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_ContactoEmail + "</a>"
+                   htmlinfocompany += "</address>";
+                   $('#personalinfo').append(htmlinfocompany);
+               },
+               error: function (a, b, c) {
+                   alert(a);
+               }
+           });
+    });
+
+
+</script>

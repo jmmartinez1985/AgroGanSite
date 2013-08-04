@@ -1,0 +1,54 @@
+﻿@model AgroGanSite.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+
+
+<div class="span9">
+    <section id="loginForm">
+        <h2>Ingrese los credeciales</h2>
+         <br />
+        @using (Html.BeginForm("Login","Account",new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+         
+            <label>Usuario:</label>
+            @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Username", @class = "input-large" })
+            <br />
+            @Html.ValidationMessageFor(m => m.UserName)
+
+
+            <label>Contraseña:</label>
+            @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "input-large" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Password)
+    
+            <br />
+            @Html.CheckBoxFor(m => m.RememberMe)
+            <label class="checkbox">
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </label>
+           
+    
+            <button type="submit" class="btn btn-primary">Iniciar</button>
+        
+            <p>
+                @Html.ActionLink("Registrate", "Register") si no cuentas con una cuenta
+            </p>
+        }
+    </section>
+
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

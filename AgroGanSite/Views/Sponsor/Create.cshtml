@@ -1,0 +1,150 @@
+﻿@model AgroGanSite.Models.PTC_Patrocinadores
+
+@{
+    ViewBag.Title = "Patrocinadores";
+}
+
+@*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>*@
+
+
+<h2>Modo Creación de Catalogos</h2>
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Regresar a Patrocinadores", "Index")
+            </div>
+
+            <br />
+            <div>
+                @Html.ActionLink("Regresar a Inicio", "Index", "Home")
+            </div>
+
+        </div>
+
+
+        <div class="span9">
+            <h2>Creación de Nuevo Patrocinadores</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+            @using (Ajax.BeginForm("Create", "Sponsor", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+            {
+              
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+            
+                <h4>Para la creación por favor llenar todos los campos requeridos</h4>
+                <br />
+                
+             
+                <label for='PTC_Nombre'>Nombre*:</label>
+                @Html.TextBoxFor(model => model.PTC_Nombre, new { @placeholder = "Nombre", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PTC_Nombre)
+            
+              
+                <label for='PTC_Descripcion'>Descripción*:</label>
+                @Html.TextBoxFor(model => model.PTC_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PTC_Descripcion)
+
+
+                <label for='PTC_Imagen'>Imagen*:</label>
+                @Html.TextBoxFor(model => model.PTC_Imagen, new { @placeholder = "Imagen", @class = "input-xxlarge" })
+                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
+                @Html.ValidationMessageFor(model => model.PTC_Imagen)
+                <br />
+              
+                <label for='PTC_Url'>Dirección de Patrocinador*:</label>
+                @Html.TextBoxFor(model => model.PTC_Url, new { @placeholder = "Dirección", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PTC_Url)
+             
+                
+                <label for='STS_Id'>Estatus*:</label>
+                @Html.DropDownList("STS_Id", String.Empty)
+                <br />
+                @Html.ValidationMessageFor(model => model.STS_Id)
+                 <br /> 
+                
+                <input type="submit" value="Crear" class="btn btn-primary" id="submit-button" />
+                <br />
+                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+
+
+             
+          
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">AG Admin Images Chooser</h3>
+    </div>
+    <div class="modal-body">
+        <p>
+            @{
+                AgroGanSite.Models.Entities db = new AgroGanSite.Models.Entities();
+                var images = db.IMG_Images.ToList();
+                        
+            }
+
+            @Html.Partial("ImagesChooser", images)
+
+
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+    </div>
+</div>
+
+<script>
+    function onsuccess(data) {
+        //jAlert('El proceso de actualización ha sido exitoso');
+
+        jConfirm('Patrocinador creado satisfactoriamente, Desea volver a dashboard?', 'Creación de Patrocinadores', function (confirmed) {
+            if (!confirmed)
+                window.location = data.redirectToUrl;
+            else
+                window.location = '@Url.Action("Index", "Home")'
+        });
+    }
+
+    function failed(e) {
+        debugger;
+        jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
+    }
+
+    var $t = jQuery.noConflict();
+    $t("#ImagesSelect").change(function () {
+        debugger;
+        var imageValue = $t(this).val();
+        var urlHelper = new UrlHelper();
+        imageValue = urlHelper.urlImage(imageValue);
+        $t(".img-chooser").attr('src', imageValue);
+    });
+
+    $t(".updateimg").click(function () {
+        var imgvalue = $t("#ImagesSelect").val();
+        debugger;
+        $t("#PTC_Imagen").val(imgvalue);
+        jAlert('La imagen ha sido cambiada satisfactoriamente.');
+
+    });
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,189 @@
+﻿@model AgroGanSite.Models.PRO_Productos
+
+@{
+    ViewBag.Title = "Productos";
+}
+<h2>Modo Creación de Catalogos</h2>
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+@*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>*@
+<script src="@Url.Content("~/tiny_mce/tiny_mce.js")"></script>
+<script>
+
+    tinyMCE.init({
+        // General options
+        mode: "none",
+        theme: "advanced",
+        plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+        // Theme options
+        theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+        theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing: true,
+
+        // Skin options
+        skin: "o2k7",
+        skin_variant: "silver",
+
+        // Example content CSS (should be your site CSS)
+        content_css: "css/example.css",
+
+        // Drop lists for link/image/media/template dialogs
+        template_external_list_url: "js/template_list.js",
+        external_link_list_url: "js/link_list.js",
+        external_image_list_url: "js/image_list.js",
+        media_external_list_url: "js/media_list.js",
+
+        height: 400
+    });
+    tinyMCE.execCommand('mceAddControl', false, 'PRO_HTML');
+    setTimeout("tinyMCE.activeEditor.setContent(jQuery('PRO_HTML').val());", 2000);
+
+
+
+</script>
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Volver a Productos", "Index")
+            </div>
+
+            <br />
+
+
+        </div>
+
+
+        <div class="span9">
+            <h2>Creación de Nuevo Producto</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+            @using (Ajax.BeginForm("Create", "Product", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+            {
+              
+                
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <h4>Para la creación por favor llenar todos los campos requeridos</h4>
+                <br />@*
+
+                *@<label for='PRO_Nombre'>Producto*: </label>
+                @Html.EditorFor(model => model.PRO_Nombre, new { @placeholder = "Producto", @class = "input-xlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PRO_Nombre)
+
+
+                <label for='PRO_Descripcion'>Descripción*:</label>
+                @Html.TextBoxFor(model => model.PRO_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PRO_Descripcion)
+
+              
+              
+                <label for='STS_Id'>Categoria*:</label>
+                @Html.DropDownList("CAT_Id", String.Empty)
+                <br />
+                @Html.ValidationMessageFor(model => model.CAT_Id)
+
+                
+                <label for='STS_Id'>Estatus*:</label>
+                @Html.DropDownList("STS_Id", String.Empty)
+                <br />
+                @Html.ValidationMessageFor(model => model.STS_Id)
+              
+                <label for='PRO_IsBanner'>Es banner*:</label>
+                @Html.EditorFor(model => model.PRO_IsBanner)
+                <br />
+                @Html.ValidationMessageFor(model => model.PRO_IsBanner)
+
+                <label for='PRO_Image'>Imagen*:</label>
+                @Html.TextBoxFor(model => model.PRO_Image, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
+                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
+                <br />
+                @Html.ValidationMessageFor(model => model.PRO_Image)
+               
+
+                <label for='PRO_HTML'>Contenido*:</label>
+                @Html.EditorFor(model => model.PRO_HTML, new { @placeholder = "Teléfono", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.PRO_HTML)
+                <br />
+                <input type="submit" value="Crear" class="btn btn-primary" id="submit-button" />
+                <br />
+                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">AG Admin Images Chooser</h3>
+    </div>
+    <div class="modal-body">
+        <p>
+            @{
+                AgroGanSite.Models.Entities db = new AgroGanSite.Models.Entities();
+                var images = db.IMG_Images.ToList();
+                        
+            }
+
+            @Html.Partial("ImagesChooser", images)
+
+
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+    </div>
+</div>
+
+<script>
+    function onsuccess(data) {
+        //jAlert('El proceso de actualización ha sido exitoso');
+
+        jConfirm('Producto creado satisfactoriamente, Desea volver al dashboard?', 'Productos', function (confirmed) {
+            if (!confirmed)
+                window.location = data.redirectToUrl;
+            else
+                window.location = '@Url.Action("Index", "Home")'
+        });
+    }
+
+    function failed() {
+        jAlert('El proceso de creación ha fallado, intente de nuevo o contacte al administrador.');
+    }
+
+    var $t = jQuery.noConflict();
+    $t("#ImagesSelect").change(function () {
+        var imageValue = $t(this).val();
+        var urlHelper = new UrlHelper();
+        imageValue = urlHelper.urlImage(imageValue);
+        $t(".img-chooser").attr('src', imageValue);
+    });
+
+    $t(".updateimg").click(function () {
+        var imgvalue = $t("#ImagesSelect").val()
+        $t("#PRO_Image").val(imgvalue);
+        jAlert('La imagen ha sido cambiada satisfactoriamente.');
+
+    });
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

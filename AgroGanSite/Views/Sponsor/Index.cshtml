@@ -1,0 +1,172 @@
+﻿@model IEnumerable<AgroGanSite.Models.PTC_Patrocinadores>
+
+@{
+    ViewBag.Title = "Patrocinadores";
+}
+
+<h2>Modo Visualización de Catalogos</h2>
+
+<link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
+@*<link href="@Url.Content("~/Content/jpages/style.css")" rel="stylesheet" type="text/css" />*@
+<script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        $j("div.holder").jPages({
+            containerID: "spondiv",
+            //              previous: "←",
+            //              next: "→",
+            first: "first",
+            previous: "previous",
+            next: "next",
+            last: "last",
+            perPage: 5,
+            delay: 20
+        });
+    });
+
+
+    function deleteSponsor(id) {
+        jConfirm('Desea borrar este patrocinador?', 'Borrar patrocinador existente', function (confirmed) {
+            if (confirmed) {
+                jQuery.ajax(
+               {
+                   type: 'post',
+                   url: '@Url.Content("~/Sponsor/Delete/")',
+                   data: { id: id },
+                   success: function (data) {
+                       jAlert('Registro borrado satistafactoriamente.');
+                       window.location = data.redirectToUrl;
+                   },
+                   error: function (a, b, c) {
+                       alert(a);
+                   }
+               });
+           }
+        });
+
+   }
+  </script>
+
+
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Crear nuevo", "Create", "Sponsor")
+            </div>
+
+            <br />
+
+            <div>
+                @Html.ActionLink("Volver a Patrocinadores", "Index", "Sponsor")
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="span9">
+            <h2>Administración de Patrocinadores</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+
+
+            @*  <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+
+            <div style="overflow: scroll; width: 100%">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Administración</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PTC_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PTC_Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PTC_Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PTC_Url)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PTC_Imagen)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="productdiv">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+
+                                    <table>
+                                        <tr>
+                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PTC_Id }, new { @class = "btn btn-primary" })</td>
+                                            @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
+                                            <td>
+
+                                                <a class="btn btn-danger" onclick="deleteSponsor('@item.PTC_Id')" >Borrar</a>
+
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PTC_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PTC_Nombre)
+                                </td>
+                                <td>
+                                   @Html.DisplayFor(modelItem => item.PTC_Descripcion)
+                                </td>
+                                <td>
+                                     @Html.DisplayFor(modelItem => item.PTC_Url)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PTC_Imagen)
+                                </td>
+                                <th>
+                                     @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
+                                </th>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="8">
+                                <div class="holder" style="float: left">
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

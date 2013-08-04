@@ -1,0 +1,57 @@
+﻿@model AgroGanSite.Models.CON_Contactenos
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Modo Edición</h2>
+
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+
+
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Regresar", "Index")
+            </div>
+            <br />
+            <div>
+                @Html.ActionLink("Volver a Inicio", "Index", "Home")
+            </div>
+
+        </div>
+
+        <div class="span9">
+            <h2>Visualizacion del contacto</h2>
+            <br />
+
+
+            @Html.HiddenFor(model => model.CON_Id, new { @placeholder = "Id", @class = "input-large" })
+
+
+            <label for='CON_Nombre'>Nombre:</label>
+            @Html.TextBoxFor(model => model.CON_Nombre, new { @placeholder = "Nombre", @class = "input-xlarge", @readonly = "read-only" })
+
+            <label for='CON_Email'>Correo Electrónico:</label>
+            @Html.TextBoxFor(model => model.CON_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge", @readonly = "read-only" })
+
+            <label for='CON_Telefono'>Telefóno:</label>,
+                @Html.TextBoxFor(model => model.CON_Telefono, new { @placeholder = "Telefóno", @class = "input-large", @readonly = "read-only" })
+
+            <label for='CON_Celular'>Celular:</label>
+            @Html.TextBoxFor(model => model.CON_Celular, new { @placeholder = "Celular", @class = "input-xlarge", @readonly = "read-only" })
+
+            <label for='CON_Fecha'>Fecha:</label>
+            @Html.TextBoxFor(model => model.CON_Fecha, new { @placeholder = "Fecha Creación", @class = "input-large", @readonly = "read-only" })
+
+            <label for='CON_Mensaje'>Mensaje:</label>
+            @Html.TextAreaFor(model => model.CON_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge", @readonly = "read-only" })
+
+
+        </div>
+
+    </div>
+</div>
+

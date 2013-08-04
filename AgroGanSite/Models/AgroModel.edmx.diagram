@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="67a7750024ad4f4faeaf2064dfd03198" Name="Diagram1">
+        <EntityTypeShape EntityType="AgroDBModel.BAN_Banner" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.CAT_Categorias" Width="1.5" PointX="3.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.CLI_Clientes" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.COD_CotizacionDetalle" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.COM_Compañia" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.CON_Contactenos" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.COT_Cotizaciones" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.DOC_Documentos" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.IMG_Images" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.Img_Tipos" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.NEW_Noticias" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.PRC_PantallaInicial" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.PRD_ProductosDetalles" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.PRO_Productos" Width="1.5" PointX="6" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.PTC_Patrocinadores" Width="1.5" PointX="3" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.SER_Servicios" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.STS_Status" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.TSV_TipoServicio" Width="1.5" PointX="3.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.UserProfile" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.webpages_Membership" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.webpages_OAuthMembership" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="AgroDBModel.FK_BAN_Banner_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_PRO_Productos_CAT_Categorias" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_COD_CotizacionDetalle_COT_Cotizaciones1" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_COD_CotizacionDetalle_PRO_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_COT_Cotizaciones_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_DOC_Documentos_Img_Tipos" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_NEW_Noticias_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_PRC_PantallaInicial_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_PRO_Productos_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_PTC_Patrocinadores_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_SER_Servicios_STS_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="AgroDBModel.webpages_UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

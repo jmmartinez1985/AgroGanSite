@@ -1,0 +1,644 @@
+/* 
+	Resets defualt browser settings
+	reset.css
+*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td 
+{ margin:0; 
+  padding:0;
+   border:0; 
+   /*outline:0; 
+   font-weight:inherit;
+    font-style:inherit; 
+    font-size:100%; 
+    font-family:inherit;*/ 
+    vertical-align:baseline;
+
+}
+:focus { outline:0; }
+a:active { outline:none; }
+body { line-height:1; color:black; background:white; }
+ol,ul { list-style:none; }
+table { border-collapse:separate; border-spacing:0; }
+caption,th,td { text-align:left; font-weight:normal; }
+blockquote:before,blockquote:after,q:before,q:after { content:""; }
+blockquote,q { quotes:"" ""; }
+
+/*
+	Page style
+*/
+body { 
+	/*font:normal 62.5%/1.5 Helvetica, Arial, sans-serif;*/
+	letter-spacing:0;
+	color:#434343;
+	/*background:#efefef url(../images/background.png) repeat top center;*/
+	/*padding:20px 0;*/
+	position:relative;
+	text-shadow:0 1px 0 rgba(255,255,255,.8);
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+#container {
+	width:580px;
+	padding:10px;
+	margin:0 auto;
+	position:relative;
+	z-index:0;
+    right:180px;
+}
+
+#containerInit {
+	width:940px;
+	padding:10px;
+	margin:0 auto;
+	position:relative;
+	z-index:0;
+}
+
+#example {
+	width:600px;
+	height:350px;
+	position:relative;
+}
+
+#ribbon {
+	position:absolute;
+	top:-3px;
+	left:-15px;
+	z-index:500;
+}
+
+#frame {
+	position:absolute;
+	z-index:0;
+	width:739px;
+	height:341px;
+	top:-3px;
+	left:-80px;
+}
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:15px;
+	left:4px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:570px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container div.slide {
+	width:570px;
+	height:270px;
+	display:block;
+}
+
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:107px;
+	left:-39px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:585px;
+}
+
+#slidesInit .prev {
+margin-right: 5px;
+float: left;
+}
+
+#slidesInit .next {
+margin-right: 5px;
+float: left;
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	margin:26px auto 0;
+	width:100px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../images/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+
+
+
+/*
+	Caption
+*/
+
+.caption {
+	z-index:500;
+	position:absolute;
+	bottom:-35px;
+	left:0;
+	height:30px;
+	padding:5px 20px 0 20px;
+	background:#000;
+	background:rgba(0,0,0,.5);
+	width:540px;
+	font-size:1.3em;
+	line-height:1.33;
+	color:#fff;
+	border-top:1px solid #000;
+	text-shadow:none;
+}
+
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 15px;
+}
+.alert .container {
+    margin: 0 auto;
+    width: 940px;
+    position: relative;
+}
+.alert-fixed-top {
+  position: fixed;
+  top:41px;
+  left:0;
+  z-index:1030;
+  width:100%;
+}
+.alert a {
+  color:#c09853;
+}
+.alert,
+.alert h4 {
+  color: #c09853;
+}
+.alert h4 {
+  margin: 0;
+}
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 20px;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.alert-success h4 {
+  color: #468847;
+}
+.alert-danger,
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+.alert-danger h4,
+.alert-error h4 {
+  color: #b94a48;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #3a87ad;
+}
+.alert-info h4 {
+  color: #3a87ad;
+}
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
+
+
+
+.dropDownList select {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+
+/*
+	Footer
+*/
+
+#footer {
+	text-align:center;
+	width:580px;
+	margin-top:9px;
+	padding:4.5px 0 18px;
+	border-top:1px solid #dfdfdf;
+}
+
+#footer p {
+	margin:4.5px 0;
+	font-size:1.0em;
+}
+
+ #tabbed_box_1 {
+	margin: 0px auto 0px auto;
+	width:950px;
+}
+.tabbed_box h4 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:23px;
+	color:#ffffff;
+	letter-spacing:-1px;
+	margin-bottom:10px;
+}
+.tabbed_box h4 small {
+	color:#e3e9ec;
+	font-weight:normal;
+	font-size:9px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	position:relative;
+	top:-4px;
+	left:6px;
+	letter-spacing:0px;
+}
+.tabbed_area {
+	border:1px solid #4452A1;
+	background-color:#4452A1;
+	padding:8px;	
+}
+
+ul.tabs {
+	margin:0px; padding:0px;
+	margin-top:5px;
+	margin-bottom:6px;
+}
+ul.tabs li {
+	list-style:none;
+	display:inline;
+}
+ul.tabs li a {
+	background-color:#464c54;
+	color:#ffebb5;
+	padding:8px 14px 8px 14px;
+	text-decoration:none;
+	font-size:9px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-transform:uppercase;
+	border:1px solid #464c54;
+	background-image:url(images/tab_off.jpg);
+	background-repeat:repeat-x;	 
+	background-position:bottom;
+}
+ul.tabs li a:hover {
+	background-color:#2f343a;
+	border-color:#2f343a;
+}
+ul.tabs li a.active {
+	background-color:#ffffff;
+	color:#282e32;
+	border:1px solid #464c54; 
+	border-bottom: 1px solid #ffffff;
+	background-image:url(images/tab_on.jpg);
+	background-repeat:repeat-x;
+	background-position:top;	
+}
+.content {
+	background-color:#ffffff;
+	padding:10px;
+	border:1px solid #464c54; 	
+	font-family:Arial, Helvetica, sans-serif;
+	background-image:url(images/content_bottom.jpg);
+	background-repeat:repeat-x;	 
+	background-position:bottom;	
+}
+#content_2, #content_3 { display:none; }
+
+.content ul {
+	margin:0px;
+	padding:0px 20px 0px 20px;
+}
+.content ul li {
+	list-style:none;
+	border-bottom:1px solid #d6dde0;
+	padding-top:15px;
+	padding-bottom:15px;
+	font-size:13px;
+}
+.content ul li:last-child {
+	border-bottom:none;
+}
+.content ul li a {
+	text-decoration:none;
+	color:#3e4346;
+}
+.content ul li a small {
+	color:#8b959c;
+	font-size:9px;
+	text-transform:uppercase;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	position:relative;
+	left:4px;
+	top:0px;
+}
+.content ul li a:hover {
+	color:#a59c83;
+}
+.content ul li a:hover small {
+	color:#baae8e;
+}
+
+ .navi {
+        padding: 0px;
+        margin: 0px auto 0px auto;
+        top: 50px;
+    }
+        /* Some stylesheet reset */
+        .navi, .navi ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            line-height: 1;
+        }
+
+    /* The main container */
+    .navi {
+        /* Layout and positioning */
+        display: block;
+        /*position: absolute;*/
+        height: 34px;
+        width: 960px; /* CHANGE this if you want another width or remove it if you want the width of the container */
+        border-radius: 3px;
+        border: 1px solid #c1c1c1;
+        /* Background and effects */
+        background: #eaeaea; /* Background for IE9 and older browsers */
+        background: -webkit-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Chrome & Safari */
+        background: -moz-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Firefox */
+        background: -o-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Opera */
+        background: -ms-linear-gradient(bottom, #e1e1e1, #f4f4f4); /* Background for Internet Explorer 10 */
+        box-shadow: inset 0 1px 0 #fff;
+        z-index: 1000;
+    }
+
+        .navi > li {
+            display: block;
+            position: relative;
+            float: left;
+            margin: 0;
+            padding: 0 1px 0 0;
+        }
+
+            /* The main navigation links */
+            .navi > li > a {
+                /* Layout */
+                display: block;
+                padding: 11px 20px;
+                /* Typography */
+                font-family: Helvetica, Arial, sans-serif;
+                font-size: 12px;
+                font-weight: normal;
+                text-decoration: none;
+                color: #9a9a9a;
+                text-shadow: 0 1px 0 #fff;
+                /* Effects */
+                -webkit-transition: all .3s;
+                -moz-transition: all .3s;
+                -ms-transition: all .3s;
+                -o-transition: all .3s;
+                transition: all .3s;
+            }
+
+                /* The hover state of the navigation links */
+                .navi > li > a:hover, .navi > li:hover > a {
+                    background: #fff;
+                    background: rgba(255, 255, 255, .6);
+                    color: #999;
+                }
+
+            .navi > li:first-child > a {
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+
+        .navi > .dropdown > a {
+            padding-right: 26px;
+        }
+
+            /* The arrow indicating a dropdown menu */
+            .navi > .dropdown > a::after {
+                content: "";
+                position: absolute;
+                top: 14px;
+                right: 11px;
+                width: 4px;
+                height: 4px;
+                border-bottom: 1px solid #9a9a9a;
+                border-right: 1px solid #9a9a9a;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+            }
+
+            /* Changing the color of the arrow on hover */
+            .navi > .dropdown > a:hover::after, .navi > .dropdown:hover > a::after {
+                border-color: #999;
+            }
+
+        .navi ul {
+            position: relative;
+            position: absolute;
+            left: -9999px;
+            display: block;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+        }
+
+        /* Level 1 submenus */
+        .navi > li > ul {
+            padding-top: 0px;
+            z-index: 99;
+            border-top: 1px solid #c9c9c9;
+            top: 34px;
+        }
+
+        /* Making the level 1 submenu to appear on hover */
+        .navi > li:hover > ul {
+            left: -1px;
+        }
+
+        /* Level 2+ submenus */
+        .navi ul ul {
+            left: -9999px;
+            top: 0px;
+            z-index: 999;
+        }
+
+        /* Making the level 2+ submenu to appear on hover */
+        .navi ul > li:hover > ul {
+            left: 120px;
+            top: -1px;
+        }
+
+        /* The submenu link containers */
+        .navi ul li {
+            position: relative;
+            display: block;
+            border-left: 1px solid #c1c1c1;
+            border-right: 1px solid #c1c1c1;
+            /* Creating the slide effect. The list elements which contain the links have 0 height. On hover, they will expand */
+            height: 0px;
+            -webkit-transition: height .3s;
+            -moz-transition: height .3s;
+            -o-transition: height .3s;
+            -ms-transition: height .3s;
+        }
+
+        /* Expanding the list elements which contain the links */
+        .navi li:hover > ul > li {
+            height: 25px;
+        }
+
+        .navi ul li:hover > ul > li:first-child {
+            height: 26px;
+        }
+
+        /* The links of the submenus */
+        .navi ul li a {
+            /* Layout */
+            display: block;
+            width: 100px;
+            padding: 6px 10px 6px 20px;
+            border-bottom: 1px solid #e1e1e1;
+            /* Typography */
+            font-size: 12px;
+            color: #a6a6a6;
+            font-family: Helvetica, Arial, sans-serif;
+            text-decoration: none;
+            /* Background & effects */
+            background: #fff;
+            -webkit-transition: background .3s;
+            -moz-transition: background .3s;
+            -ms-transition: background .3s;
+            -o-transition: background .3s;
+            transition: background .3s;
+        }
+
+        /* The hover state of the links */
+        .navi ul li > a:hover, .navi ul li:hover > a {
+            background: #e9e9e9;
+            color: #a1a1a1;
+        }
+
+        .navi ul ul > li:first-child > a {
+            border-top: 1px solid #c1c1c1;
+        }
+
+    .nav ul > li:last-child > a {
+        border-bottom: 1px solid #c1c1c1;
+    }
+
+
+    /* The arrow indicating a level 2+ submenu */
+    .navi ul > .dropdown > a::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        width: 4px;
+        height: 4px;
+        border-bottom: 1px solid #a6a6a6;
+        border-right: 1px solid #a6a6a6;
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+    }
+
+    .navi ul > .dropdown:hover > a::after, .navi ul > .dropdown > a:hover::after {
+        border-color: #a1a1a1;
+    }
+
+/*
+	Anchors
+*/
+
+a:link,a:visited {
+	/*color:#599100;
+	text-decoration:none;*/
+}
+
+a:hover,a:active {
+	/*color:#599100;
+	text-decoration:underline;*/
+}

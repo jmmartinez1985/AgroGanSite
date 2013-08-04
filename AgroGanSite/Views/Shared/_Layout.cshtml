@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - AgroGanadera Martínez S.A.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="~/logo_pestaña.png">
+    <link href="@Url.Content("~/Content/Bootstrap/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Bootstrap/bootstrap-responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Bootstrap/docs.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/jquery.alerts.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-dropdown.js")"></script>
+    <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-modal.js")"></script>
+    <script src="@Url.Content("~/Scripts/Facebook.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.alerts.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.8.21.full.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
+        });
+        function UrlHelper() {
+            this.urlImage = function (img) {
+                var ROOT = '@Url.Content("~/")';
+                return ROOT + img;
+            }
+            }
+    </script>
+
+
+
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+        @if (Request.IsAuthenticated)
+        {
+            
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "formlogin" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a class="brand" style="font-size: small" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                    }
+
+
+
+                    @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "brand", title = "Manage", style = "font-size:small" })
+
+
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active" role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Home")">Inicio</a></li>
+                            <li class="dropdown ">
+                                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Administracion de Pantallas<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Product")">Productos</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Cotiza")">Cotizaciones</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "News")">Noticias</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Contact")">Contactos</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "PrincipalInfo")">Pantalla Inicial</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Sponsor")">Patrocinadores</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a id="drop3" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Administración de Cuentas<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Manage", "Account")">Administrar Cuenta </a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Register", "Account")">Crear Cuentas</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("EditCompanyInfo", "Home")">Editar Compañia </a></li>
+                                </ul>
+                            </li>
+
+
+
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("ViewUploader", "Home")">Imagenes</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Home")">Home</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a id="drop4" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Catálogo <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("ProductsDisplay", "ProductView")">Productos</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("UnderConstruction", "Home")">Servicios</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li class="">
+                                <a href="@Url.Action("Create", "Contact")">Contactenos</a>
+                            </li>
+                            <li class="">
+                                <a href="@Url.Action("Create", "Cotiza")">Cotiza</a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a id="drop5" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Nosotros<b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("About", "Home")">Acerca de</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Ubicacion", "Home")">Ubicación</a></li>
+
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown" id="fat-menu">
+                                <a data-toggle="dropdown" class="dropdown-toggle" role="button" id="drop6" href="#">Admin<b class="caret"></b></a>
+                                <ul aria-labelledby="drop6" role="menu" class="dropdown-menu">
+                                    <li>
+                                        @Html.ActionLink("Iniciar Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @tabindex = "-1", @role = "menuitem" })
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         
+        }
+
+    </div>
+
+
+    @*   <header class="jumbotron subhead">
+
+
+
+        <div class="container-fluid">
+         
+
+            <div class="span3">
+                <img alt="" src='@Url.Content("~/Images/Logo.png")' width="110" height="80" />
+
+            </div>
+            <div class="span9">
+                <h1>Agroganadera Martínez S.A.</h1>
+            </div>
+
+
+        </div>
+        <div class="container">
+
+            <div class="span12">
+                <p style="font-family: 'Comic Sans MS'; padding-right: 150px;">
+                    MUY SIMPLE!... SIN AGRICULTORES NO HAY COMIDA!
+                </p>
+            </div>
+
+        </div>
+    </header>*@
+
+    <header class="jumbotron subhead" id="overview">
+        <div class="container-fluid">
+
+            <div class="span2">
+                <img alt="" src='@Url.Content("~/Images/Logo.png")' width="110" height="80" />
+            </div>
+            <div class="span10">
+                <h1>Agroganadera Martínez S.A.</h1>
+                <p style="font-family: 'Comic Sans MS'" class="lead">MUY SIMPLE!... SIN AGRICULTORES NO HAY COMIDA!</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Docs nav
+    ================================================== -->
+        <div class="row">
+            @RenderSection("featured", required: false)
+            @RenderBody()
+            <div class="span9">
+                <footer>
+
+                    <div id="footer-wrapper">
+
+                        <div class="menu-footer-container">
+                            <ul id="menu-footer-menu" class="page-menu-wrapper-footer">
+                                <li id="menu-item-89205" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89205"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                                <li id="menu-item-89206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89206"><a href="@Url.Action("ProductsDisplay", "ProductView")">Catálogo</a></li>
+                                <li id="menu-item-89204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89204"><a href="@Url.Action("Create", "Contact")">Contactenos</a></li>
+                                <li id="menu-item-89605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89605"><a href="@Url.Action("Create", "Cotiza")">Cotiza</a></li>
+                                <li id="menu-item-89207" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89207"><a href="@Url.Action("About", "Home")">Nosotros</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-footer-container">
+                            @DateTime.Now.Year - Agroganadera Martínez S.A. All Rights Reserved.
+                        </div>
+                        <ul id="footer-container-right">
+                        </ul>
+                    </div>
+                    <div class="follow-buttons">
+                        <div style="vertical-align: middle; margin-right: 20px">
+                            <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
+                            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                        </div>
+                        <div style="vertical-align: bottom">
+                            <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+
+
+
+
+</html>
+

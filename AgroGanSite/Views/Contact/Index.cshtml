@@ -1,0 +1,159 @@
+﻿@model IEnumerable<AgroGanSite.Models.CON_Contactenos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
+
+
+<h2>Modo Visualización de Catalogos</h2>
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Volver a Dashboard", "Index","Home")
+            </div>
+
+        </div>
+
+        <div class="span9">
+            <h2>Administración de Contactos</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+
+
+
+      
+            <div style="overflow: scroll; width: 100%">
+                <table class="table table-bordered table-hover">
+                    <thead>
+
+                        <tr>
+                            <th style="text-align: center">Administración</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Id)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Celular)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Email)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.CON_Mensaje)
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="contactdiv">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+
+                                    <table>
+                                        <tr>
+                                            <td>@Html.ActionLink("Ver", "Edit", new { id = item.CON_Id }, new { @class = "btn btn-primary" })</td>
+
+                                            <td>
+                                                <a class="btn btn-danger" onclick="deletecontact('@item.CON_Id')" >Borrar</a>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Celular)
+                                </td>
+
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Email)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CON_Mensaje)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="8">
+                                <div class="holder" style="float: left">
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        $j("div.holder").jPages({
+            containerID: "contactdiv",
+            //              previous: "←",
+            //              next: "→",
+            first: "first",
+            previous: "previous",
+            next: "next",
+            last: "last",
+            perPage: 5,
+            delay: 20
+        });
+    });
+
+    function deletecontact(id) {
+        jConfirm('Desea borrar esta contacto?', 'Borrar contacto existente', function (confirmed) {
+            if (confirmed) {
+                jQuery.ajax(
+               {
+                   type: 'post',
+                   url: '@Url.Content("~/Contact/Delete/")',
+                   data: { id: id },
+                   success: function (data) {
+                       jAlert('Registro borrado satistafactoriamente.');
+                       window.location = data.redirectToUrl;
+
+                   },
+                   error: function (a, b, c) {
+                       alert(a);
+                   }
+               });
+            }
+        });
+
+   }
+</script>

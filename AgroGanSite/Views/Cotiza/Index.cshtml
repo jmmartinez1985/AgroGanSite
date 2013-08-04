@@ -1,0 +1,177 @@
+﻿@model IEnumerable<AgroGanSite.Models.COT_Cotizaciones>
+
+@{
+    ViewBag.Title = "Cotizaciones";
+}
+<link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
+@*<link href="@Url.Content("~/Content/jpages/style.css")" rel="stylesheet" type="text/css" />*@
+<script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
+<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        $j("div.holder").jPages({
+            containerID: "productdiv",
+            //              previous: "←",
+            //              next: "→",
+            first: "first",
+            previous: "previous",
+            next: "next",
+            last: "last",
+            perPage: 5,
+            delay: 20
+        });
+    });
+
+    function deletecotiz(id)
+    {
+        jConfirm('Desea borrar esta cotización?', 'Borrar cotización existente', function (confirmed) {
+            if (confirmed) {
+                jQuery.ajax(
+               {
+                   type: 'post',
+                   url: '@Url.Content("~/Cotiza/Delete/")',
+                   data: { id: id },
+                   success: function (data) {
+                       jAlert('Registro borrado satistafactoriamente.');
+                       window.location = '@Url.Action("Index", "Product")'
+                   },
+                   error: function (a, b, c) {
+                       alert(a);
+                   }
+               });
+            }
+        });
+
+    }
+  </script>
+
+<h2>Modo Visualización de Catalogos</h2>
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+            <div>
+                @Html.ActionLink("Volver a Dashboard", "Index","Home")
+            </div>
+        </div>
+
+        <div class="span9">
+            <h2>Administración de Cotizaciones</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+
+
+            <div style="overflow: scroll; width: 100%">
+                <table class="table table-bordered table-hover">
+                    <thead>
+
+                        <tr>
+                            <th style="text-align: center">Administración</th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Id)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Fecha)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Telefono)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Celular)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.COT_Mensaje)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="productdiv">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+
+                                    <table>
+                                        <tr>
+                                            <td>@Html.ActionLink("Edit", "Edit", new { id = item.COT_Id }, new { @class = "btn btn-primary" })</td>
+
+                                            <td>
+                                                <a class="btn btn-danger" onclick="deletecot('@item.COT_Id')" >Borrar</a>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Id)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Fecha)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Telefono)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Celular)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.COT_Mensaje)
+                                </td>
+                                <td>
+
+                                    @{ AgroGanSite.Models.Entities db = new AgroGanSite.Models.Entities();
+
+                                       var statusdesc = db.STS_Status.Where(c => c.STS_Id == item.STS_Id).FirstOrDefault().STS_Descripcion;
+                                       
+                                    }
+          
+                                    @Html.Label(statusdesc)
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="8">
+                                <div class="holder" style="float: left">
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿@model AgroGanSite.Models.PTC_Patrocinadores
+
+@{
+    ViewBag.Title = "Sponsors";
+}
+
+
+<link href="~/Content/smoothDivScroll.css" rel="stylesheet" />
+<script src="~/Scripts/jsMouseDiv/jquery-ui-1.8.23.custom.min.js"></script>
+<script src="~/Scripts/jsMouseDiv/jquery.kinetic.js"></script>
+<script src="~/Scripts/jsMouseDiv/jquery.mousewheel.min.js"></script>
+<script src="~/Scripts/jsMouseDiv/jquery.smoothdivscroll-1.3-min.js"></script>
+<style type="text/css">
+    #makeMeScrollable {
+        width: 100%;
+        height: 150px;
+        position: relative;
+    }
+
+        /* Replace the last selector for the type of element you have in
+		   your scroller. If you have div's use #makeMeScrollable div.scrollableArea div,
+		   if you have links use #makeMeScrollable div.scrollableArea a and so on. */
+        #makeMeScrollable div.scrollableArea img {
+            position: relative;
+            float: left;
+            margin: 0;
+            padding: 0;
+            /* If you don't want the images in the scroller to be selectable, try the following
+			   block of code. It's just a nice feature that prevent the images from
+			   accidentally becoming selected/inverted when the user interacts with the scroller. */
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+</style>
+
+<div id ="datadiv"></div>
+@*<div id="makeMeScrollable">
+    <img src="http://localhost/AgroGanSite/FilesUploaded/pencils.jpg" alt="Demo image" id="pencils" />
+    <img src="http://localhost/AgroGanSite/FilesUploaded/golf.jpg" alt="Demo image" id="golf" />
+    <img src="http://localhost/AgroGanSite/FilesUploaded/field.jpg" alt="Demo image" id="field" />
+
+    <img src="http://localhost/AgroGanSite/FilesUploaded/leaf.jpg" alt="Demo image" id="leaf" />
+    <img src="http://localhost/AgroGanSite/FilesUploaded/gnome.jpg" alt="Demo image" id="gnome" />
+
+</div>*@
+
+<script type="text/javascript">
+    var $k = jQuery.noConflict();
+    // Initialize the plugin with no custom options
+
+    // None of the options are set
+    $k(document).ready(function () {
+        // None of the options are set
+        return moveDiv();
+    });
+
+    $k(function () {
+
+        jQuery.ajax(
+         {
+             type: 'post',
+             url: '@Url.Action("GetSponsor", "Sponsor")',
+             success: function (data) {
+                 var result = JSON.parse(data);
+                 var htmlsponsor = '<div id="makeMeScrollable">';
+                 $k.each(result.$values, function (val, sponsor) {
+                     var urlHelper = new UrlHelper();
+                     var urlimg = urlHelper.urlImage(sponsor.PTC_Imagen);
+                     htmlsponsor += '<a href="' + sponsor.PTC_Url + '"  target="_blank"> <img src="' + urlimg + '" alt="' + sponsor.PTC_Nombre + '" id="' + sponsor.PTC_Id + '"/></a>'
+
+                 });
+                 htmlsponsor += '</div>';
+                 $k('#datadiv').html(htmlsponsor);
+                 moveDiv();
+             },
+             error: function (a, b, c) {
+
+             }
+         });
+    });
+
+    function moveDiv()
+    {
+        $k("#makeMeScrollable").smoothDivScroll({
+            autoScrollingMode: "onStart"
+        });
+    }
+
+</script>

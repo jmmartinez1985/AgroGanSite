@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Carga de Documentos";
+}
+@*<script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>*@
+<h2>Carga de Documentos e Imagenes</h2>
+
+
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+
+           <div>
+                @Html.ActionLink("Volver a Dashboard", "Index","Home")
+            </div>
+
+            <br />
+
+
+        </div>
+
+<h2>Carga de Imagenes o Archivos para el Sitio</h2>
+        <div class="span9">
+            
+            <br />
+            <div class="successmessage">
+            </div>
+
+            @Html.Partial("FileUploader")
+
+        </div>
+    </div>
+
+</div>

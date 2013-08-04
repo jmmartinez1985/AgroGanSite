@@ -1,0 +1,168 @@
+﻿@model IEnumerable<AgroGanSite.Models.PRD_ProductosDetalles>
+
+@{
+    ViewBag.Title = "Producto Detalles";
+}
+
+<h2>Modo Visualización de Catalogos</h2>
+
+<link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
+@*<link href="@Url.Content("~/Content/jpages/style.css")" rel="stylesheet" type="text/css" />*@
+<script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
+
+<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        $j("div.holder").jPages({
+            containerID: "productdiv",
+            //              previous: "←",
+            //              next: "→",
+            first: "first",
+            previous: "previous",
+            next: "next",
+            last: "last",
+            perPage: 5,
+            delay: 20
+        });
+    });
+
+
+    function deleteproddetail(id) {
+        jConfirm('Desea borrar este detalle de producto?', 'Borrar detalle existente', function (confirmed) {
+            if (confirmed) {
+                jQuery.ajax(
+               {
+                   type: 'post',
+                   url: '@Url.Content("~/ProductDetails/Delete/")',
+                   data: { id: id },
+                   success: function (data) {
+                       jAlert('Registro borrado satistafactoriamente.');
+                       window.location = data.redirectToUrl;
+                   },
+                   error: function (a, b, c) {
+                       alert(a);
+                   }
+               });
+            }
+        });
+
+       }
+  </script>
+
+
+
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+
+        <div class="span3">
+
+            <div>
+                @Html.ActionLink("Crear nuevo", "Create", "ProductDetails", new { prod= ViewBag.ProdId } ,null)
+            </div>
+
+            <br />
+
+            <div>
+                @Html.ActionLink("Volver a Productos", "Index", "Product")
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="span9">
+            <h2>Administración de Productos</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+
+
+
+          @*  <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>*@
+
+            <div style="overflow: scroll; width: 100%">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Administración</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PRD_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PRO_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PRD_Descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PRD_Html)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PRD_Images)
+                            </th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody id="productdiv">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+
+                                    <table>
+                                        <tr>
+                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRD_Id }, new { @class = "btn btn-primary" })</td>
+                                          @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
+                                            <td>
+                                                
+                                               <a class="btn btn-danger" onclick="deleteproddetail('@item.PRD_Id')" >Borrar</a>
+
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PRD_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PRO_Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PRD_Descripcion)
+                                </td>
+                                <td>
+                                    @Html.Label("No Disponible debido a su tamaño en página")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PRD_Images)
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="8">
+                                <div class="holder" style="float: left">
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

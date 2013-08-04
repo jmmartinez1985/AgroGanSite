@@ -1,0 +1,237 @@
+﻿
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=es"></script>
+
+<style>
+    #map-canvas {
+        width: 800px;
+        height: 500px;
+    }
+</style>
+<script>
+    var map = null;
+    var markersArray = [];
+    var marker;
+    //default load position
+
+    function initialize() {
+        var latlng = new google.maps.LatLng(8.43581, -82.43475);
+
+        var settings = {
+            zoom: 15,
+            center: latlng,
+            mapTypeControl: true,
+            scaleControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            },
+            navigationControl: true,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.DEFAULT
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            backgroundColor: 'white'
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), settings);
+        showRoutePath_1();
+    }
+    // End initialize function
+    //remove all markers from map
+    function clearOverlays() {
+        if (markersArray) {
+            for (var i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+        }
+    }
+
+    //remove specific marker from map
+    function removeMarker(myMark) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (myMark == markersArray[i]['number']) {
+                    console.log(markersArray[i]['number']);
+                    markersArray[i].setMap(null);
+                    markersArray.splice(i, 1); //removes marker from array
+                    break;
+                }
+            }
+        }
+    }
+
+    //check if marker already exist on map
+    function checkMarker(number) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (markersArray[i]['number'] == number)
+                    return true;
+            }
+        } else
+            return false;
+    }
+
+    // Mapping variables
+    var global_strokeColor = "#ED00FF";
+    var global_strokeOpacity = 0.7;
+    var global_strokeWeight = 6;
+
+    //Route 1
+    function showRoutePath_1() {
+        //check if marker1 already on map if true do nothing
+        if (checkMarker(1))
+            return;
+        position = new google.maps.LatLng(8.43581, -82.43475);
+        var infowindow = new google.maps.InfoWindow({
+            content: "Agroganadera Mart&iacute;nez S.A."
+        });
+        marker = new google.maps.Marker({
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: position,
+            map: map
+        });
+
+        marker['number'] = 1;
+        //google.maps.event.addListener(marker, 'click', toggleBounce);
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+
+        markersArray.push(marker);
+
+        //open infowWindow with marker
+        infowindow.open(map, marker);
+        //setTimeout(function () { infowindow.close(); }, 5000);
+
+
+    }
+
+    function toggleBounce() {
+
+        if (marker.getAnimation() != null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+<div id="map-canvas"></div>
+
+
+
+@*<script>
+    var map = null;
+    var markersArray = [];
+    var marker;
+    //default load position
+
+    function initialize() {
+        var latlng = new google.maps.LatLng(8.43581, -82.43475);
+
+        var settings = {
+            zoom: 15,
+            center: latlng,
+            mapTypeControl: true,
+            scaleControl: true,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            },
+            navigationControl: true,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.DEFAULT
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            backgroundColor: 'white'
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), settings);
+        showRoutePath_1();
+    }
+    // End initialize function
+    //remove all markers from map
+    function clearOverlays() {
+        if (markersArray) {
+            for (var i in markersArray) {
+                markersArray[i].setMap(null);
+            }
+        }
+    }
+
+    //remove specific marker from map
+    function removeMarker(myMark) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (myMark == markersArray[i]['number']) {
+                    console.log(markersArray[i]['number']);
+                    markersArray[i].setMap(null);
+                    markersArray.splice(i, 1); //removes marker from array
+                    break;
+                }
+            }
+        }
+    }
+
+    //check if marker already exist on map
+    function checkMarker(number) {
+        if (markersArray) {
+            for (var i in markersArray) {
+                if (markersArray[i]['number'] == number)
+                    return true;
+            }
+        } else
+            return false;
+    }
+
+    // Mapping variables
+    var global_strokeColor = "#ED00FF";
+    var global_strokeOpacity = 0.7;
+    var global_strokeWeight = 6;
+
+    //Route 1
+    function showRoutePath_1() {
+        //check if marker1 already on map if true do nothing
+        if (checkMarker(1))
+            return;
+        position = new google.maps.LatLng(8.43581, -82.43475);
+        var infowindow = new google.maps.InfoWindow({
+            content: "Agroganadera Mart&iacute;nez S.A."
+        });
+        marker = new google.maps.Marker({
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: position,
+            map: map
+        });
+
+        marker['number'] = 1;
+        //google.maps.event.addListener(marker, 'click', toggleBounce);
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+
+        markersArray.push(marker);
+
+        //open infowWindow with marker
+        infowindow.open(map, marker);
+        //setTimeout(function () { infowindow.close(); }, 5000);
+
+
+    }
+
+    function toggleBounce() {
+
+        if (marker.getAnimation() != null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>*@

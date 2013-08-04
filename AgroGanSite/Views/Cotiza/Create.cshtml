@@ -1,0 +1,345 @@
+﻿@model AgroGanSite.Models.COT_Cotizaciones
+
+@{
+    ViewBag.Title = "Cotizaciones";
+}
+<script src="~/Scripts/jquery.blockUI.js"></script>
+
+<style>
+    .cotiza {
+        padding: 0px 0px 0px 30px;
+    }
+</style>
+<script src="~/Scripts/Bootstrap/bootstrap-alert.js"></script>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+
+<div class="container-fluid pageProducts">
+    <div class="row-fluid public-share ">
+        <div class="span3">
+            <h2>Categorias</h2>
+            <div class="dropDownList">
+                @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>)
+            </div>
+            <h2>Productos</h2>
+            <div class="dropDownList">
+                @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>)
+
+            </div>
+
+            <br />
+            <div class="cotiza">
+            </div>
+
+            <br />
+            <br />
+            <div class="span3">
+                <div style="vertical-align: middle; margin-right: 20px">
+                    <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
+                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                </div>
+                <div style="vertical-align: bottom">
+                    <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="span9">
+            <h2>Conoce mas sobre nuestros productos y cotiza ya.</h2>
+            <br />
+            <div class="successmessage">
+            </div>
+            <div id="cotizaprod">
+
+                <h4>Detalle de Productos a Cotizar</h4>
+                <hr class="bs-docs-separator">
+
+                <div class="errorMessage">
+                </div>
+                <table id="table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 25px;">Producto</th>
+                            <th style="width: 25px;">Imagen</th>
+                            <th style="width: 20px;">Cantidad</th>
+                            <th style="width: 20px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <hr />
+            </div>
+
+
+            @using (Ajax.BeginForm("Create", null, new AjaxOptions { HttpMethod = "POST" }, null))
+            {
+               
+                @Html.ValidationSummary(true)
+            
+                <h4>Por favor llene todos los campos que son requeridos en el formulario para una mejor atencion en caso de contactarlos</h4>
+                <br />
+
+                <label for='COT_Nombre'>Nombre*: </label>
+                @Html.TextBoxFor(model => model.COT_Nombre, new { @placeholder = "Nombre", @class = "input-xlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Nombre)
+
+                <label for='COT_Email'>Correo Electronico*:</label>
+                @Html.TextBoxFor(model => model.COT_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Email)
+
+                <label for='COT_Telefono'>Telefono*:</label>
+                @Html.TextBoxFor(model => model.COT_Telefono, new { @placeholder = "Teléfono", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Telefono)
+
+
+                <label for='COT_Celular'>Celular*:</label>
+                @Html.TextBoxFor(model => model.COT_Celular, new { @placeholder = "Celular", @class = "input-large" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Celular)
+
+                <label for='COT_Descripcion'>Su necesidad*:</label>
+
+                @Html.TextAreaFor(model => model.COT_Descripcion, new { @placeholder = "Descripción", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Descripcion)
+
+
+                <label for='COT_Mensaje'>Descripción de su cotización*:</label>
+
+                @Html.TextAreaFor(model => model.COT_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge" })
+                <br />
+                @Html.ValidationMessageFor(model => model.COT_Mensaje)
+
+                <br />
+                <input type="submit" value="Cotizar" onclick="SendCotizaInfo()" class="btn btn-primary" id="submit-button" />
+                <br />
+                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+
+
+             
+          
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script>
+    var $t = jQuery.noConflict();
+
+
+    var category;
+    var product;
+
+    GetProducts($t("#cbxCategorias").val());
+    jQuery("#cotizaprod").hide();
+
+    $t("#cbxCategorias").change(function () {
+        category = $t(this).val();
+        GetProducts(category);
+    });
+
+    $t("#cbxProductos").change(function () {
+        product = $t(this).val();
+        ProductInfo(product)
+    });
+
+
+    var jsondata;
+    function GetProducts(category) {
+        jQuery.ajax(
+         {
+             type: 'post',
+             url: '@Url.Content("~/ProductView/GetProductsByCategory/")',
+             data:
+             {
+                 catid: category
+             },
+             success: function (data) {
+                 var select = $t('#cbxProductos');
+                 if (select.prop) {
+                     var options = select.prop('options');
+                 }
+                 else {
+                     var options = select.attr('options');
+                 }
+                 $t('option', select).remove();
+                 var result = JSON.parse(data)
+                 jsondata = result;
+
+                 $t.each(result.$values, function (val, text) {
+                     options[options.length] = new Option(text.PRO_Descripcion, text.PRO_Id);
+                 });
+
+                 var currentproduct = $t("#cbxProductos").val();
+                 ProductInfo(currentproduct)
+
+             },
+             error: function (a, b, c) {
+
+             }
+         });
+     }
+     var objectproduct;
+     function ProductInfo(prod) {
+         $t.each(jsondata.$values, function (val, text) {
+             if (text.PRO_Id == prod) {
+                 var htmlprodcotiza = '';
+                 var urlHelper = new UrlHelper();
+                 var url = urlHelper.urlImage(text.PRO_Image);
+                 htmlprodcotiza += '<img src="' + url + '" class="img-circle" width="120" height="95"><br />';
+                 htmlprodcotiza += '<small>' + text.PRO_Nombre + '</small>';
+                 htmlprodcotiza += '<br />';
+                 htmlprodcotiza += '<br />';
+                 htmlprodcotiza += '<input type="submit" onclick="AddProductLine()" value="Agregar" class="btn btn-primary" id="submit-button" />';
+                 htmlprodcotiza += '<br />';
+                 htmlprodcotiza += '<br />';
+                 htmlprodcotiza += '<br />';
+                 jQuery('.cotiza').html(htmlprodcotiza);
+                 objectproduct = text;
+                 return false;
+             }
+         });
+     }
+
+     var rowIndex = 0;
+
+
+
+     function AddProductLine() {
+         var success = true;
+         $t('#table > tbody  > tr').each(function () {
+             var prodvalue = $t(this).find('.product').attr('id');
+             if (objectproduct.PRO_Id == prodvalue) {
+                 var htmlerror = '<div class=" alert-block alert-error fade in">';
+                 htmlerror += '<button type="button" class="close" data-dismiss="alert">×</button>';
+                 htmlerror += '<h4 class="alert-heading">No se puede agregar... Trata de nuevo </h4>';
+                 htmlerror += '<p>El producto que esta intentando agregar a la cotizacion ya existe, por favor intente agregar uno no existente.</p>';
+                 //htmlerror += ' <p> <a class="btn btn-danger" href="#">Take this action</a></p>';
+                 htmlerror += '</div>'
+                 jQuery('.errorMessage').html(htmlerror).fadeOut(9000, function () { });
+                 success = false;
+             }
+         });
+         if (success) {
+             jQuery('.errorMessage').html('');
+             $t("#cotizaprod").show();
+             rowIndex++;
+             var urlHelper = new UrlHelper();
+             var url = urlHelper.urlImage(objectproduct.PRO_Image);
+             var row = "<tr id='row_" + rowIndex + "'>";
+             row += "<td class='product' id='" + objectproduct.PRO_Id + "'   >'" + objectproduct.PRO_Nombre + "'</td>";
+             row += "<td><img src='" + url + "' class='img-circle' width='48' height='48'></td>"
+             row += "<td><input class='prodQty' style='width: 60px;' placeholder='Cantidad'  type=text /></td>";
+             row += "<td><button id='button_" + rowIndex + "' class='btn btn-danger' onclick='removeRow(" + rowIndex + ")' >Borrar</button></td>";
+             row += "</tr>";
+             $t("#table").append(row);
+         }
+     }
+
+     function removeRow(index) {
+         $('#row_' + index).remove();
+         var rowlength = $t('#table > tbody  > tr').length;
+         if (rowlength == "0")
+             $t("#cotizaprod").hide();
+     }
+
+     var infodata;
+     function SendCotizaInfo() {
+         //showProgress();
+
+         var Cotizacion = {
+             nombre: $t('#COT_Nombre').val(),
+             correo: $t('#COT_Email').val(),
+             telefono: $t('#COT_Telefono').val(),
+             celular: $t('#COT_Celular').val(),
+             descripcion: $t('#COT_Descripcion').val(),
+             mensaje: $t('#COT_Mensaje').val(),
+             cotiza: []
+
+         };
+         $t('#table > tbody  > tr').each(function () {
+             var prodvalue = $t(this).find('.product').attr('id');
+             var prodqty = $t(this).find('.prodQty').attr('value')
+             Cotizacion.cotiza.push({
+                 "prodid": prodvalue,
+                 "prodqty": prodqty
+             });
+         });
+
+         infodata = JSON.stringify(Cotizacion);
+
+         jQuery.ajax(
+         {
+             type: 'post',
+             url: '@Url.Content("~/Cotiza/Create/")',
+             data: {
+                 datainfo: infodata, nombre: $t('#COT_Nombre').val()
+             },
+             success: function (data) {
+
+                 if (data.success == true) {
+                     $t('#COT_Nombre').val('');
+                     $t('#COT_Email').val('');
+                     $t('#COT_Telefono').val('');
+                     $t('#COT_Celular').val('');
+                     $t('#COT_Descripcion').val('');
+                     $t('#COT_Mensaje').val('');
+                     $t('#table > tbody  > tr').each(function () {
+                         $t(this).remove();
+                     });
+
+                     $t('#cotizaprod').hide();
+                     var html = '<div class="alert-success fade in">';
+                     html += '<button type="button" class="close" data-dismiss="alert">×</button>';
+                     html += '<strong>Su cotización se ha enviado de manera satisfactoria.</strong>';
+                     html += '</div>';
+                     jQuery('.successmessage').html(html).fadeOut(8000, function () { });
+                     alert('Su cotización ha sido enviada');
+                 }
+                 else if (data.success == 'validation')
+                 { }
+                 else
+                     alert('Ha fallado al enviar cotización, intente más tarde...');
+                 //hideProgress();
+             },
+             error: function (a) {
+                 var htmlerror = '<div class=" alert-block alert-error fade in">';
+                 htmlerror += '<button type="button" class="close" data-dismiss="alert">×</button>';
+                 htmlerror += '<h4 class="alert-heading">No se ha procesado la cotización</h4>';
+                 htmlerror += '<p>Por favor verifique los datos introducidos, si el error persiste contactenos.</p>';
+                 htmlerror += ' <p> <a class="btn btn-danger" href="#">Take this action</a></p>';
+                 htmlerror += '</div>'
+                 jQuery('.errorMessage').html(htmlerror).fadeOut(20000, function () { });
+             }
+         });
+     }
+
+
+     function showProgress() {
+         $t.blockUI({
+             message: '<p>We are processing your request.  Please be patient.</p><img src="../Images/loading_dark.gif" /> <br>',
+             css: {
+                 width: '20%',
+                 border: '1px solid #000000',
+                 left: '40%'
+             }
+         });
+     }
+
+     function hideProgress() {
+         $t.unblockUI();
+     }
+
+	</script>

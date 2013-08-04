@@ -1,0 +1,66 @@
+﻿@model AgroGanSite.Models.LoginModel
+
+@{
+    ViewBag.Title = "Sesión";
+}
+<script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
+<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />
+
+
+<div class="row-fluid">
+    <div class="block span12">
+        <a data-toggle="collapse" class="block-heading" href="#tablelogin">Ingreso a Sitio Administrativo de AG Martínez S.A.</a>
+        <div class="block-body collapse in" id="tablelogin">
+            <section id="loginForm">
+                <h3>Ingrese los credeciales proporcionados.</h3>
+                <br />
+                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+         
+                    <label>Usuario:</label>
+                    @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Username", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(m => m.UserName)
+
+
+                    <label>Contraseña:</label>
+                    @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(m => m.Password)
+    
+                    <br />
+     
+                    <table>
+                        <tr>
+                            <td>@Html.CheckBoxFor(m => m.RememberMe)
+                                <label class="checkbox">@Html.LabelFor(m => m.RememberMe)</label>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Olvidaste tu contraseña <a href="@Url.Action("ForgotPassword", "Account")">Recuperar</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-primary">Iniciar</button></td>
+                        </tr>
+                  
+                    </table>
+    
+                }
+            </section>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

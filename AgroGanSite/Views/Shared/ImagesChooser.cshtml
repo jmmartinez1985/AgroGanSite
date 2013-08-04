@@ -1,0 +1,23 @@
+﻿@model IEnumerable<AgroGanSite.Models.IMG_Images>
+
+
+<table>
+    <tr>
+        <td>
+            <label for="Imagenes">Imagenes Disponibles:</label></td>
+        <td>
+            <select id="ImagesSelect" name="ImagesSelect">
+                <option value="">Seleccione una Imagen</option>
+                @foreach (var item in Model)
+                {
+                    <option value="@item.IMG_Path">@item.IMG_Name</option>  
+                }
+
+            </select>
+        </td>
+        <td>
+             <img class="img-rounded img-chooser" width="150" height="150" src="">
+        </td>
+    </tr>
+
+</table>

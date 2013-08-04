@@ -1,0 +1,1321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AgroDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="AgroDBModelStoreContainer">
+          <EntitySet Name="BAN_Banner" EntityType="AgroDBModel.Store.BAN_Banner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CAT_Categorias" EntityType="AgroDBModel.Store.CAT_Categorias" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLI_Clientes" EntityType="AgroDBModel.Store.CLI_Clientes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COD_CotizacionDetalle" EntityType="AgroDBModel.Store.COD_CotizacionDetalle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COM_Compañia" EntityType="AgroDBModel.Store.COM_Compañia" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CON_Contactenos" EntityType="AgroDBModel.Store.CON_Contactenos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COT_Cotizaciones" EntityType="AgroDBModel.Store.COT_Cotizaciones" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DOC_Documentos" EntityType="AgroDBModel.Store.DOC_Documentos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IMG_Images" EntityType="AgroDBModel.Store.IMG_Images" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Img_Tipos" EntityType="AgroDBModel.Store.Img_Tipos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NEW_Noticias" EntityType="AgroDBModel.Store.NEW_Noticias" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRC_PantallaInicial" EntityType="AgroDBModel.Store.PRC_PantallaInicial" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRD_ProductosDetalles" EntityType="AgroDBModel.Store.PRD_ProductosDetalles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PRO_Productos" EntityType="AgroDBModel.Store.PRO_Productos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PTC_Patrocinadores" EntityType="AgroDBModel.Store.PTC_Patrocinadores" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SER_Servicios" EntityType="AgroDBModel.Store.SER_Servicios" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="STS_Status" EntityType="AgroDBModel.Store.STS_Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="AgroDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TSV_TipoServicio" EntityType="AgroDBModel.Store.TSV_TipoServicio" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="AgroDBModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="AgroDBModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="AgroDBModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="AgroDBModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="AgroDBModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BAN_Banner_STS_Status" Association="AgroDBModel.Store.FK_BAN_Banner_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="BAN_Banner" EntitySet="BAN_Banner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COD_CotizacionDetalle_COT_Cotizaciones1" Association="AgroDBModel.Store.FK_COD_CotizacionDetalle_COT_Cotizaciones1">
+            <End Role="COT_Cotizaciones" EntitySet="COT_Cotizaciones" />
+            <End Role="COD_CotizacionDetalle" EntitySet="COD_CotizacionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COD_CotizacionDetalle_PRO_Productos" Association="AgroDBModel.Store.FK_COD_CotizacionDetalle_PRO_Productos">
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+            <End Role="COD_CotizacionDetalle" EntitySet="COD_CotizacionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COT_Cotizaciones_STS_Status" Association="AgroDBModel.Store.FK_COT_Cotizaciones_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="COT_Cotizaciones" EntitySet="COT_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOC_Documentos_Img_Tipos" Association="AgroDBModel.Store.FK_DOC_Documentos_Img_Tipos">
+            <End Role="Img_Tipos" EntitySet="Img_Tipos" />
+            <End Role="DOC_Documentos" EntitySet="DOC_Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEW_Noticias_STS_Status" Association="AgroDBModel.Store.FK_NEW_Noticias_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="NEW_Noticias" EntitySet="NEW_Noticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRC_PantallaInicial_STS_Status" Association="AgroDBModel.Store.FK_PRC_PantallaInicial_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PRC_PantallaInicial" EntitySet="PRC_PantallaInicial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRO_Productos_CAT_Categorias" Association="AgroDBModel.Store.FK_PRO_Productos_CAT_Categorias">
+            <End Role="CAT_Categorias" EntitySet="CAT_Categorias" />
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRO_Productos_STS_Status" Association="AgroDBModel.Store.FK_PRO_Productos_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PTC_Patrocinadores_STS_Status" Association="AgroDBModel.Store.FK_PTC_Patrocinadores_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PTC_Patrocinadores" EntitySet="PTC_Patrocinadores" />
+          </AssociationSet>
+          <AssociationSet Name="fk_RoleId" Association="AgroDBModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SER_Servicios_STS_Status" Association="AgroDBModel.Store.FK_SER_Servicios_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SER_Servicios_TSV_TipoServicio" Association="AgroDBModel.Store.FK_SER_Servicios_TSV_TipoServicio">
+            <End Role="TSV_TipoServicio" EntitySet="TSV_TipoServicio" />
+            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="AgroDBModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BAN_Banner">
+          <Key>
+            <PropertyRef Name="BAN_Id" />
+          </Key>
+          <Property Name="BAN_Id" Type="int" Nullable="false" />
+          <Property Name="BAN_Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="BAN_HTML" Type="text" />
+          <Property Name="BAN_Activa" Type="bit" />
+          <Property Name="STS_Id" Type="int" />
+          <Property Name="BAN_Imagen" Type="varchar" MaxLength="150" />
+          <Property Name="BAN_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CAT_Categorias">
+          <Key>
+            <PropertyRef Name="CAT_Id" />
+          </Key>
+          <Property Name="CAT_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CAT_Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CLI_Clientes">
+          <Key>
+            <PropertyRef Name="CLI_Id" />
+          </Key>
+          <Property Name="CLI_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+          <Property Name="CLI_Nombre" Type="varchar" Nullable="false" MaxLength="60" />
+          <Property Name="CLI_Contacto" Type="varchar" MaxLength="60" />
+          <Property Name="CLI_Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="CLI_Telefono1" Type="varchar" MaxLength="12" />
+          <Property Name="CLI_Telefono2" Type="varchar" MaxLength="12" />
+          <Property Name="CLI_Email" Type="varchar" MaxLength="50" />
+          <Property Name="CLI_Nacimiento" Type="date" />
+          <Property Name="CLI_Cedula" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="COD_CotizacionDetalle">
+          <Key>
+            <PropertyRef Name="CED_Id" />
+          </Key>
+          <Property Name="CED_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COD_Id" Type="int" Nullable="false" />
+          <Property Name="PRO_Id" Type="int" Nullable="false" />
+          <Property Name="COD_Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COM_Compañia">
+          <Key>
+            <PropertyRef Name="COM_Id" />
+          </Key>
+          <Property Name="COM_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COM_Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="COM_Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="COM_Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="COM_Correo" Type="varchar" MaxLength="150" />
+          <Property Name="COM_Web" Type="varchar" MaxLength="150" />
+          <Property Name="COM_ContactoNombre" Type="varchar" MaxLength="150" />
+          <Property Name="COM_ContactoCelular" Type="varchar" MaxLength="150" />
+          <Property Name="COM_ContactoEmail" Type="varchar" MaxLength="150" />
+          <Property Name="COM_Logo" Type="image" />
+        </EntityType>
+        <EntityType Name="CON_Contactenos">
+          <Key>
+            <PropertyRef Name="CON_Id" />
+          </Key>
+          <Property Name="CON_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CON_Nombre" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CON_Telefono" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CON_Celular" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CON_Email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CON_Mensaje" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="CON_Fecha" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COT_Cotizaciones">
+          <Key>
+            <PropertyRef Name="COT_Id" />
+          </Key>
+          <Property Name="COT_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COT_Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="COT_Fecha" Type="date" />
+          <Property Name="COT_Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="COT_Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="COT_Email" Type="varchar" MaxLength="100" />
+          <Property Name="COT_Celular" Type="varchar" MaxLength="20" />
+          <Property Name="COT_Mensaje" Type="varchar" MaxLength="200" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DOC_Documentos">
+          <Key>
+            <PropertyRef Name="Doc_Id" />
+          </Key>
+          <Property Name="Doc_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Img_Type" Type="int" />
+          <Property Name="Doc_Fecha" Type="date" />
+          <Property Name="Doc_Url" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="IMG_Images">
+          <Key>
+            <PropertyRef Name="IMG_Id" />
+          </Key>
+          <Property Name="IMG_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IMG_Path" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="IMG_Name" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="IMG_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Img_Tipos">
+          <Key>
+            <PropertyRef Name="Img_Type" />
+          </Key>
+          <Property Name="Img_Type" Type="int" Nullable="false" />
+          <Property Name="Img_Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NEW_Noticias">
+          <Key>
+            <PropertyRef Name="NEW_Id" />
+          </Key>
+          <Property Name="NEW_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NEW_Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="NEW_Titulo" Type="varchar" MaxLength="150" />
+          <Property Name="NEW_HTML" Type="text" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+          <Property Name="NEW_Imagen" Type="varchar" MaxLength="250" />
+          <Property Name="NEW_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRC_PantallaInicial">
+          <Key>
+            <PropertyRef Name="PRC_Id" />
+          </Key>
+          <Property Name="PRC_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PRC_Text" Type="varchar" MaxLength="150" />
+          <Property Name="PRC_Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="PRC_Html" Type="text" />
+          <Property Name="PRC_Imagen" Type="varchar" MaxLength="250" />
+          <Property Name="STS_Id" Type="int" />
+          <Property Name="PRC_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRD_ProductosDetalles">
+          <Key>
+            <PropertyRef Name="PRD_Id" />
+          </Key>
+          <Property Name="PRD_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_Id" Type="int" Nullable="false" />
+          <Property Name="PRD_Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="PRD_Html" Type="text" />
+          <Property Name="PRD_Images" Type="varchar" MaxLength="250" />
+          <Property Name="PRD_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PRO_Productos">
+          <Key>
+            <PropertyRef Name="PRO_Id" />
+          </Key>
+          <Property Name="PRO_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+          <Property Name="CAT_Id" Type="int" Nullable="false" />
+          <Property Name="PRO_Nombre" Type="varchar" MaxLength="150" />
+          <Property Name="PRO_Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="PRO_HTML" Type="text" />
+          <Property Name="PRO_IsBanner" Type="bit" />
+          <Property Name="PRO_Image" Type="varchar" MaxLength="250" />
+          <Property Name="PRO_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PTC_Patrocinadores">
+          <Key>
+            <PropertyRef Name="PTC_Id" />
+          </Key>
+          <Property Name="PTC_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PTC_Nombre" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="PTC_Descripcion" Type="varchar" MaxLength="500" />
+          <Property Name="PTC_Url" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="PTC_Imagen" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SER_Servicios">
+          <Key>
+            <PropertyRef Name="SER_Id" />
+          </Key>
+          <Property Name="SER_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TSV_Id" Type="int" Nullable="false" />
+          <Property Name="SER_Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="SER_HTML" Type="text" />
+          <Property Name="SER_Activa" Type="bit" />
+          <Property Name="STS_Id" Type="int" Nullable="false" />
+          <Property Name="SER_Imagen" Type="varchar" MaxLength="250" />
+          <Property Name="SER_Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="STS_Status">
+          <Key>
+            <PropertyRef Name="STS_Id" />
+          </Key>
+          <Property Name="STS_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TSV_TipoServicio">
+          <Key>
+            <PropertyRef Name="TSV_Id" />
+          </Key>
+          <Property Name="TSV_Id" Type="int" Nullable="false" />
+          <Property Name="TSV_Descripcion" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+          <Property Name="EmailId" Type="nvarchar(max)" />
+          <Property Name="Details" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BAN_Banner_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="0..1" />
+          <End Role="BAN_Banner" Type="AgroDBModel.Store.BAN_Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="BAN_Banner">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COD_CotizacionDetalle_COT_Cotizaciones1">
+          <End Role="COT_Cotizaciones" Type="AgroDBModel.Store.COT_Cotizaciones" Multiplicity="1" />
+          <End Role="COD_CotizacionDetalle" Type="AgroDBModel.Store.COD_CotizacionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COT_Cotizaciones">
+              <PropertyRef Name="COT_Id" />
+            </Principal>
+            <Dependent Role="COD_CotizacionDetalle">
+              <PropertyRef Name="COD_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COD_CotizacionDetalle_PRO_Productos">
+          <End Role="PRO_Productos" Type="AgroDBModel.Store.PRO_Productos" Multiplicity="1" />
+          <End Role="COD_CotizacionDetalle" Type="AgroDBModel.Store.COD_CotizacionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRO_Productos">
+              <PropertyRef Name="PRO_Id" />
+            </Principal>
+            <Dependent Role="COD_CotizacionDetalle">
+              <PropertyRef Name="PRO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COT_Cotizaciones_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="1" />
+          <End Role="COT_Cotizaciones" Type="AgroDBModel.Store.COT_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="COT_Cotizaciones">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOC_Documentos_Img_Tipos">
+          <End Role="Img_Tipos" Type="AgroDBModel.Store.Img_Tipos" Multiplicity="0..1" />
+          <End Role="DOC_Documentos" Type="AgroDBModel.Store.DOC_Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Img_Tipos">
+              <PropertyRef Name="Img_Type" />
+            </Principal>
+            <Dependent Role="DOC_Documentos">
+              <PropertyRef Name="Img_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEW_Noticias_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="1" />
+          <End Role="NEW_Noticias" Type="AgroDBModel.Store.NEW_Noticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="NEW_Noticias">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRC_PantallaInicial_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="0..1" />
+          <End Role="PRC_PantallaInicial" Type="AgroDBModel.Store.PRC_PantallaInicial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PRC_PantallaInicial">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRO_Productos_CAT_Categorias">
+          <End Role="CAT_Categorias" Type="AgroDBModel.Store.CAT_Categorias" Multiplicity="1" />
+          <End Role="PRO_Productos" Type="AgroDBModel.Store.PRO_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_Categorias">
+              <PropertyRef Name="CAT_Id" />
+            </Principal>
+            <Dependent Role="PRO_Productos">
+              <PropertyRef Name="CAT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRO_Productos_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="1" />
+          <End Role="PRO_Productos" Type="AgroDBModel.Store.PRO_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PRO_Productos">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PTC_Patrocinadores_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="1" />
+          <End Role="PTC_Patrocinadores" Type="AgroDBModel.Store.PTC_Patrocinadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PTC_Patrocinadores">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="AgroDBModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="AgroDBModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SER_Servicios_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.Store.STS_Status" Multiplicity="1" />
+          <End Role="SER_Servicios" Type="AgroDBModel.Store.SER_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="SER_Servicios">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SER_Servicios_TSV_TipoServicio">
+          <End Role="TSV_TipoServicio" Type="AgroDBModel.Store.TSV_TipoServicio" Multiplicity="1" />
+          <End Role="SER_Servicios" Type="AgroDBModel.Store.SER_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TSV_TipoServicio">
+              <PropertyRef Name="TSV_Id" />
+            </Principal>
+            <Dependent Role="SER_Servicios">
+              <PropertyRef Name="TSV_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="AgroDBModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="AgroDBModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgroDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BAN_Banner" EntityType="AgroDBModel.BAN_Banner" />
+          <EntitySet Name="CAT_Categorias" EntityType="AgroDBModel.CAT_Categorias" />
+          <EntitySet Name="CLI_Clientes" EntityType="AgroDBModel.CLI_Clientes" />
+          <EntitySet Name="COD_CotizacionDetalle" EntityType="AgroDBModel.COD_CotizacionDetalle" />
+          <EntitySet Name="COM_Compañia" EntityType="AgroDBModel.COM_Compañia" />
+          <EntitySet Name="CON_Contactenos" EntityType="AgroDBModel.CON_Contactenos" />
+          <EntitySet Name="COT_Cotizaciones" EntityType="AgroDBModel.COT_Cotizaciones" />
+          <EntitySet Name="DOC_Documentos" EntityType="AgroDBModel.DOC_Documentos" />
+          <EntitySet Name="IMG_Images" EntityType="AgroDBModel.IMG_Images" />
+          <EntitySet Name="Img_Tipos" EntityType="AgroDBModel.Img_Tipos" />
+          <EntitySet Name="NEW_Noticias" EntityType="AgroDBModel.NEW_Noticias" />
+          <EntitySet Name="PRC_PantallaInicial" EntityType="AgroDBModel.PRC_PantallaInicial" />
+          <EntitySet Name="PRD_ProductosDetalles" EntityType="AgroDBModel.PRD_ProductosDetalles" />
+          <EntitySet Name="PRO_Productos" EntityType="AgroDBModel.PRO_Productos" />
+          <EntitySet Name="PTC_Patrocinadores" EntityType="AgroDBModel.PTC_Patrocinadores" />
+          <EntitySet Name="SER_Servicios" EntityType="AgroDBModel.SER_Servicios" />
+          <EntitySet Name="STS_Status" EntityType="AgroDBModel.STS_Status" />
+          <EntitySet Name="sysdiagrams" EntityType="AgroDBModel.sysdiagrams" />
+          <EntitySet Name="TSV_TipoServicio" EntityType="AgroDBModel.TSV_TipoServicio" />
+          <EntitySet Name="UserProfile" EntityType="AgroDBModel.UserProfile" />
+          <EntitySet Name="webpages_Membership" EntityType="AgroDBModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="AgroDBModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="AgroDBModel.webpages_Roles" />
+          <AssociationSet Name="FK_BAN_Banner_STS_Status" Association="AgroDBModel.FK_BAN_Banner_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="BAN_Banner" EntitySet="BAN_Banner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRO_Productos_CAT_Categorias" Association="AgroDBModel.FK_PRO_Productos_CAT_Categorias">
+            <End Role="CAT_Categorias" EntitySet="CAT_Categorias" />
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COD_CotizacionDetalle_COT_Cotizaciones1" Association="AgroDBModel.FK_COD_CotizacionDetalle_COT_Cotizaciones1">
+            <End Role="COT_Cotizaciones" EntitySet="COT_Cotizaciones" />
+            <End Role="COD_CotizacionDetalle" EntitySet="COD_CotizacionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COD_CotizacionDetalle_PRO_Productos" Association="AgroDBModel.FK_COD_CotizacionDetalle_PRO_Productos">
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+            <End Role="COD_CotizacionDetalle" EntitySet="COD_CotizacionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COT_Cotizaciones_STS_Status" Association="AgroDBModel.FK_COT_Cotizaciones_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="COT_Cotizaciones" EntitySet="COT_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DOC_Documentos_Img_Tipos" Association="AgroDBModel.FK_DOC_Documentos_Img_Tipos">
+            <End Role="Img_Tipos" EntitySet="Img_Tipos" />
+            <End Role="DOC_Documentos" EntitySet="DOC_Documentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEW_Noticias_STS_Status" Association="AgroDBModel.FK_NEW_Noticias_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="NEW_Noticias" EntitySet="NEW_Noticias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRC_PantallaInicial_STS_Status" Association="AgroDBModel.FK_PRC_PantallaInicial_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PRC_PantallaInicial" EntitySet="PRC_PantallaInicial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRO_Productos_STS_Status" Association="AgroDBModel.FK_PRO_Productos_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PRO_Productos" EntitySet="PRO_Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PTC_Patrocinadores_STS_Status" Association="AgroDBModel.FK_PTC_Patrocinadores_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="PTC_Patrocinadores" EntitySet="PTC_Patrocinadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SER_Servicios_STS_Status" Association="AgroDBModel.FK_SER_Servicios_STS_Status">
+            <End Role="STS_Status" EntitySet="STS_Status" />
+            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SER_Servicios_TSV_TipoServicio" Association="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio">
+            <End Role="TSV_TipoServicio" EntitySet="TSV_TipoServicio" />
+            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="AgroDBModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BAN_Banner">
+          <Key>
+            <PropertyRef Name="BAN_Id" />
+          </Key>
+          <Property Name="BAN_Id" Type="Int32" Nullable="false" />
+          <Property Name="BAN_Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BAN_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="BAN_Activa" Type="Boolean" />
+          <Property Name="STS_Id" Type="Int32" />
+          <Property Name="BAN_Imagen" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="BAN_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_BAN_Banner_STS_Status" FromRole="BAN_Banner" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="CAT_Categorias">
+          <Key>
+            <PropertyRef Name="CAT_Id" />
+          </Key>
+          <Property Name="CAT_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CAT_Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PRO_Productos" Relationship="AgroDBModel.FK_PRO_Productos_CAT_Categorias" FromRole="CAT_Categorias" ToRole="PRO_Productos" />
+        </EntityType>
+        <EntityType Name="CLI_Clientes">
+          <Key>
+            <PropertyRef Name="CLI_Id" />
+          </Key>
+          <Property Name="CLI_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <Property Name="CLI_Nombre" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Contacto" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Direccion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Telefono1" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Telefono2" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CLI_Nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="CLI_Cedula" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="COD_CotizacionDetalle">
+          <Key>
+            <PropertyRef Name="CED_Id" />
+          </Key>
+          <Property Name="CED_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="COD_Id" Type="Int32" Nullable="false" />
+          <Property Name="PRO_Id" Type="Int32" Nullable="false" />
+          <Property Name="COD_Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COT_Cotizaciones" Relationship="AgroDBModel.FK_COD_CotizacionDetalle_COT_Cotizaciones1" FromRole="COD_CotizacionDetalle" ToRole="COT_Cotizaciones" />
+          <NavigationProperty Name="PRO_Productos" Relationship="AgroDBModel.FK_COD_CotizacionDetalle_PRO_Productos" FromRole="COD_CotizacionDetalle" ToRole="PRO_Productos" />
+        </EntityType>
+        <EntityType Name="COM_Compañia">
+          <Key>
+            <PropertyRef Name="COM_Id" />
+          </Key>
+          <Property Name="COM_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="COM_Nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_Direccion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_Telefono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="COM_Correo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_Web" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ContactoNombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ContactoCelular" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_ContactoEmail" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="COM_Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="CON_Contactenos">
+          <Key>
+            <PropertyRef Name="CON_Id" />
+          </Key>
+          <Property Name="CON_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CON_Nombre" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CON_Telefono" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CON_Celular" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="CON_Email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CON_Mensaje" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CON_Fecha" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="COT_Cotizaciones">
+          <Key>
+            <PropertyRef Name="COT_Id" />
+          </Key>
+          <Property Name="COT_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="COT_Descripcion" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="COT_Fecha" Type="DateTime" Precision="0" />
+          <Property Name="COT_Nombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="COT_Telefono" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="COT_Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="COT_Celular" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="COT_Mensaje" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COD_CotizacionDetalle" Relationship="AgroDBModel.FK_COD_CotizacionDetalle_COT_Cotizaciones1" FromRole="COT_Cotizaciones" ToRole="COD_CotizacionDetalle" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_COT_Cotizaciones_STS_Status" FromRole="COT_Cotizaciones" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="DOC_Documentos">
+          <Key>
+            <PropertyRef Name="Doc_Id" />
+          </Key>
+          <Property Name="Doc_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Img_Type" Type="Int32" />
+          <Property Name="Doc_Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Doc_Url" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Img_Tipos" Relationship="AgroDBModel.FK_DOC_Documentos_Img_Tipos" FromRole="DOC_Documentos" ToRole="Img_Tipos" />
+        </EntityType>
+        <EntityType Name="IMG_Images">
+          <Key>
+            <PropertyRef Name="IMG_Id" />
+          </Key>
+          <Property Name="IMG_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IMG_Path" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="IMG_Name" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="IMG_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Img_Tipos">
+          <Key>
+            <PropertyRef Name="Img_Type" />
+          </Key>
+          <Property Name="Img_Type" Type="Int32" Nullable="false" />
+          <Property Name="Img_Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DOC_Documentos" Relationship="AgroDBModel.FK_DOC_Documentos_Img_Tipos" FromRole="Img_Tipos" ToRole="DOC_Documentos" />
+        </EntityType>
+        <EntityType Name="NEW_Noticias">
+          <Key>
+            <PropertyRef Name="NEW_Id" />
+          </Key>
+          <Property Name="NEW_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NEW_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="NEW_Titulo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="NEW_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <Property Name="NEW_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="NEW_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_NEW_Noticias_STS_Status" FromRole="NEW_Noticias" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="PRC_PantallaInicial">
+          <Key>
+            <PropertyRef Name="PRC_Id" />
+          </Key>
+          <Property Name="PRC_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PRC_Text" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PRC_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="PRC_Html" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PRC_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="STS_Id" Type="Int32" />
+          <Property Name="PRC_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_PRC_PantallaInicial_STS_Status" FromRole="PRC_PantallaInicial" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="PRD_ProductosDetalles">
+          <Key>
+            <PropertyRef Name="PRD_Id" />
+          </Key>
+          <Property Name="PRD_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_Id" Type="Int32" Nullable="false" />
+          <Property Name="PRD_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PRD_Html" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PRD_Images" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="PRD_Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PRO_Productos">
+          <Key>
+            <PropertyRef Name="PRO_Id" />
+          </Key>
+          <Property Name="PRO_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <Property Name="CAT_Id" Type="Int32" Nullable="false" />
+          <Property Name="PRO_Nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PRO_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PRO_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PRO_IsBanner" Type="Boolean" />
+          <Property Name="PRO_Image" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="PRO_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CAT_Categorias" Relationship="AgroDBModel.FK_PRO_Productos_CAT_Categorias" FromRole="PRO_Productos" ToRole="CAT_Categorias" />
+          <NavigationProperty Name="COD_CotizacionDetalle" Relationship="AgroDBModel.FK_COD_CotizacionDetalle_PRO_Productos" FromRole="PRO_Productos" ToRole="COD_CotizacionDetalle" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_PRO_Productos_STS_Status" FromRole="PRO_Productos" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="PTC_Patrocinadores">
+          <Key>
+            <PropertyRef Name="PTC_Id" />
+          </Key>
+          <Property Name="PTC_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PTC_Nombre" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="PTC_Descripcion" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="PTC_Url" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="PTC_Imagen" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_PTC_Patrocinadores_STS_Status" FromRole="PTC_Patrocinadores" ToRole="STS_Status" />
+        </EntityType>
+        <EntityType Name="SER_Servicios">
+          <Key>
+            <PropertyRef Name="SER_Id" />
+          </Key>
+          <Property Name="SER_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TSV_Id" Type="Int32" Nullable="false" />
+          <Property Name="SER_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="SER_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="SER_Activa" Type="Boolean" />
+          <Property Name="STS_Id" Type="Int32" Nullable="false" />
+          <Property Name="SER_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="SER_Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_SER_Servicios_STS_Status" FromRole="SER_Servicios" ToRole="STS_Status" />
+          <NavigationProperty Name="TSV_TipoServicio" Relationship="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio" FromRole="SER_Servicios" ToRole="TSV_TipoServicio" />
+        </EntityType>
+        <EntityType Name="STS_Status">
+          <Key>
+            <PropertyRef Name="STS_Id" />
+          </Key>
+          <Property Name="STS_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="STS_Descripcion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BAN_Banner" Relationship="AgroDBModel.FK_BAN_Banner_STS_Status" FromRole="STS_Status" ToRole="BAN_Banner" />
+          <NavigationProperty Name="COT_Cotizaciones" Relationship="AgroDBModel.FK_COT_Cotizaciones_STS_Status" FromRole="STS_Status" ToRole="COT_Cotizaciones" />
+          <NavigationProperty Name="NEW_Noticias" Relationship="AgroDBModel.FK_NEW_Noticias_STS_Status" FromRole="STS_Status" ToRole="NEW_Noticias" />
+          <NavigationProperty Name="PRC_PantallaInicial" Relationship="AgroDBModel.FK_PRC_PantallaInicial_STS_Status" FromRole="STS_Status" ToRole="PRC_PantallaInicial" />
+          <NavigationProperty Name="PRO_Productos" Relationship="AgroDBModel.FK_PRO_Productos_STS_Status" FromRole="STS_Status" ToRole="PRO_Productos" />
+          <NavigationProperty Name="PTC_Patrocinadores" Relationship="AgroDBModel.FK_PTC_Patrocinadores_STS_Status" FromRole="STS_Status" ToRole="PTC_Patrocinadores" />
+          <NavigationProperty Name="SER_Servicios" Relationship="AgroDBModel.FK_SER_Servicios_STS_Status" FromRole="STS_Status" ToRole="SER_Servicios" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TSV_TipoServicio">
+          <Key>
+            <PropertyRef Name="TSV_Id" />
+          </Key>
+          <Property Name="TSV_Id" Type="Int32" Nullable="false" />
+          <Property Name="TSV_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SER_Servicios" Relationship="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio" FromRole="TSV_TipoServicio" ToRole="SER_Servicios" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" Unicode="true" FixedLength="false" />
+          <Property Name="EmailId" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="webpages_Roles" Relationship="AgroDBModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfile" Relationship="AgroDBModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_BAN_Banner_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="0..1" />
+          <End Role="BAN_Banner" Type="AgroDBModel.BAN_Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="BAN_Banner">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRO_Productos_CAT_Categorias">
+          <End Role="CAT_Categorias" Type="AgroDBModel.CAT_Categorias" Multiplicity="1" />
+          <End Role="PRO_Productos" Type="AgroDBModel.PRO_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAT_Categorias">
+              <PropertyRef Name="CAT_Id" />
+            </Principal>
+            <Dependent Role="PRO_Productos">
+              <PropertyRef Name="CAT_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COD_CotizacionDetalle_COT_Cotizaciones1">
+          <End Role="COT_Cotizaciones" Type="AgroDBModel.COT_Cotizaciones" Multiplicity="1" />
+          <End Role="COD_CotizacionDetalle" Type="AgroDBModel.COD_CotizacionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COT_Cotizaciones">
+              <PropertyRef Name="COT_Id" />
+            </Principal>
+            <Dependent Role="COD_CotizacionDetalle">
+              <PropertyRef Name="COD_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COD_CotizacionDetalle_PRO_Productos">
+          <End Role="PRO_Productos" Type="AgroDBModel.PRO_Productos" Multiplicity="1" />
+          <End Role="COD_CotizacionDetalle" Type="AgroDBModel.COD_CotizacionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRO_Productos">
+              <PropertyRef Name="PRO_Id" />
+            </Principal>
+            <Dependent Role="COD_CotizacionDetalle">
+              <PropertyRef Name="PRO_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COT_Cotizaciones_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="1" />
+          <End Role="COT_Cotizaciones" Type="AgroDBModel.COT_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="COT_Cotizaciones">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DOC_Documentos_Img_Tipos">
+          <End Role="Img_Tipos" Type="AgroDBModel.Img_Tipos" Multiplicity="0..1" />
+          <End Role="DOC_Documentos" Type="AgroDBModel.DOC_Documentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Img_Tipos">
+              <PropertyRef Name="Img_Type" />
+            </Principal>
+            <Dependent Role="DOC_Documentos">
+              <PropertyRef Name="Img_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NEW_Noticias_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="1" />
+          <End Role="NEW_Noticias" Type="AgroDBModel.NEW_Noticias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="NEW_Noticias">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRC_PantallaInicial_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="0..1" />
+          <End Role="PRC_PantallaInicial" Type="AgroDBModel.PRC_PantallaInicial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PRC_PantallaInicial">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRO_Productos_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="1" />
+          <End Role="PRO_Productos" Type="AgroDBModel.PRO_Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PRO_Productos">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PTC_Patrocinadores_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="1" />
+          <End Role="PTC_Patrocinadores" Type="AgroDBModel.PTC_Patrocinadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="PTC_Patrocinadores">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SER_Servicios_STS_Status">
+          <End Role="STS_Status" Type="AgroDBModel.STS_Status" Multiplicity="1" />
+          <End Role="SER_Servicios" Type="AgroDBModel.SER_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STS_Status">
+              <PropertyRef Name="STS_Id" />
+            </Principal>
+            <Dependent Role="SER_Servicios">
+              <PropertyRef Name="STS_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SER_Servicios_TSV_TipoServicio">
+          <End Role="TSV_TipoServicio" Type="AgroDBModel.TSV_TipoServicio" Multiplicity="1" />
+          <End Role="SER_Servicios" Type="AgroDBModel.SER_Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TSV_TipoServicio">
+              <PropertyRef Name="TSV_Id" />
+            </Principal>
+            <Dependent Role="SER_Servicios">
+              <PropertyRef Name="TSV_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="AgroDBModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="AgroDBModel.UserProfile" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AgroDBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BAN_Banner">
+            <EntityTypeMapping TypeName="AgroDBModel.BAN_Banner">
+              <MappingFragment StoreEntitySet="BAN_Banner">
+                <ScalarProperty Name="BAN_Id" ColumnName="BAN_Id" />
+                <ScalarProperty Name="BAN_Descripcion" ColumnName="BAN_Descripcion" />
+                <ScalarProperty Name="BAN_HTML" ColumnName="BAN_HTML" />
+                <ScalarProperty Name="BAN_Activa" ColumnName="BAN_Activa" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="BAN_Imagen" ColumnName="BAN_Imagen" />
+                <ScalarProperty Name="BAN_Date" ColumnName="BAN_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAT_Categorias">
+            <EntityTypeMapping TypeName="AgroDBModel.CAT_Categorias">
+              <MappingFragment StoreEntitySet="CAT_Categorias">
+                <ScalarProperty Name="CAT_Id" ColumnName="CAT_Id" />
+                <ScalarProperty Name="CAT_Descripcion" ColumnName="CAT_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLI_Clientes">
+            <EntityTypeMapping TypeName="AgroDBModel.CLI_Clientes">
+              <MappingFragment StoreEntitySet="CLI_Clientes">
+                <ScalarProperty Name="CLI_Id" ColumnName="CLI_Id" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="CLI_Nombre" ColumnName="CLI_Nombre" />
+                <ScalarProperty Name="CLI_Contacto" ColumnName="CLI_Contacto" />
+                <ScalarProperty Name="CLI_Direccion" ColumnName="CLI_Direccion" />
+                <ScalarProperty Name="CLI_Telefono1" ColumnName="CLI_Telefono1" />
+                <ScalarProperty Name="CLI_Telefono2" ColumnName="CLI_Telefono2" />
+                <ScalarProperty Name="CLI_Email" ColumnName="CLI_Email" />
+                <ScalarProperty Name="CLI_Nacimiento" ColumnName="CLI_Nacimiento" />
+                <ScalarProperty Name="CLI_Cedula" ColumnName="CLI_Cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COD_CotizacionDetalle">
+            <EntityTypeMapping TypeName="AgroDBModel.COD_CotizacionDetalle">
+              <MappingFragment StoreEntitySet="COD_CotizacionDetalle">
+                <ScalarProperty Name="CED_Id" ColumnName="CED_Id" />
+                <ScalarProperty Name="COD_Id" ColumnName="COD_Id" />
+                <ScalarProperty Name="PRO_Id" ColumnName="PRO_Id" />
+                <ScalarProperty Name="COD_Cantidad" ColumnName="COD_Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COM_Compañia">
+            <EntityTypeMapping TypeName="AgroDBModel.COM_Compañia">
+              <MappingFragment StoreEntitySet="COM_Compañia">
+                <ScalarProperty Name="COM_Id" ColumnName="COM_Id" />
+                <ScalarProperty Name="COM_Nombre" ColumnName="COM_Nombre" />
+                <ScalarProperty Name="COM_Direccion" ColumnName="COM_Direccion" />
+                <ScalarProperty Name="COM_Telefono" ColumnName="COM_Telefono" />
+                <ScalarProperty Name="COM_Correo" ColumnName="COM_Correo" />
+                <ScalarProperty Name="COM_Web" ColumnName="COM_Web" />
+                <ScalarProperty Name="COM_ContactoNombre" ColumnName="COM_ContactoNombre" />
+                <ScalarProperty Name="COM_ContactoCelular" ColumnName="COM_ContactoCelular" />
+                <ScalarProperty Name="COM_ContactoEmail" ColumnName="COM_ContactoEmail" />
+                <ScalarProperty Name="COM_Logo" ColumnName="COM_Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CON_Contactenos">
+            <EntityTypeMapping TypeName="AgroDBModel.CON_Contactenos">
+              <MappingFragment StoreEntitySet="CON_Contactenos">
+                <ScalarProperty Name="CON_Id" ColumnName="CON_Id" />
+                <ScalarProperty Name="CON_Nombre" ColumnName="CON_Nombre" />
+                <ScalarProperty Name="CON_Telefono" ColumnName="CON_Telefono" />
+                <ScalarProperty Name="CON_Celular" ColumnName="CON_Celular" />
+                <ScalarProperty Name="CON_Email" ColumnName="CON_Email" />
+                <ScalarProperty Name="CON_Mensaje" ColumnName="CON_Mensaje" />
+                <ScalarProperty Name="CON_Fecha" ColumnName="CON_Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COT_Cotizaciones">
+            <EntityTypeMapping TypeName="AgroDBModel.COT_Cotizaciones">
+              <MappingFragment StoreEntitySet="COT_Cotizaciones">
+                <ScalarProperty Name="COT_Id" ColumnName="COT_Id" />
+                <ScalarProperty Name="COT_Descripcion" ColumnName="COT_Descripcion" />
+                <ScalarProperty Name="COT_Fecha" ColumnName="COT_Fecha" />
+                <ScalarProperty Name="COT_Nombre" ColumnName="COT_Nombre" />
+                <ScalarProperty Name="COT_Telefono" ColumnName="COT_Telefono" />
+                <ScalarProperty Name="COT_Email" ColumnName="COT_Email" />
+                <ScalarProperty Name="COT_Celular" ColumnName="COT_Celular" />
+                <ScalarProperty Name="COT_Mensaje" ColumnName="COT_Mensaje" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DOC_Documentos">
+            <EntityTypeMapping TypeName="AgroDBModel.DOC_Documentos">
+              <MappingFragment StoreEntitySet="DOC_Documentos">
+                <ScalarProperty Name="Doc_Id" ColumnName="Doc_Id" />
+                <ScalarProperty Name="Img_Type" ColumnName="Img_Type" />
+                <ScalarProperty Name="Doc_Fecha" ColumnName="Doc_Fecha" />
+                <ScalarProperty Name="Doc_Url" ColumnName="Doc_Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMG_Images">
+            <EntityTypeMapping TypeName="AgroDBModel.IMG_Images">
+              <MappingFragment StoreEntitySet="IMG_Images">
+                <ScalarProperty Name="IMG_Id" ColumnName="IMG_Id" />
+                <ScalarProperty Name="IMG_Path" ColumnName="IMG_Path" />
+                <ScalarProperty Name="IMG_Name" ColumnName="IMG_Name" />
+                <ScalarProperty Name="IMG_Date" ColumnName="IMG_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Img_Tipos">
+            <EntityTypeMapping TypeName="AgroDBModel.Img_Tipos">
+              <MappingFragment StoreEntitySet="Img_Tipos">
+                <ScalarProperty Name="Img_Type" ColumnName="Img_Type" />
+                <ScalarProperty Name="Img_Descripcion" ColumnName="Img_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEW_Noticias">
+            <EntityTypeMapping TypeName="AgroDBModel.NEW_Noticias">
+              <MappingFragment StoreEntitySet="NEW_Noticias">
+                <ScalarProperty Name="NEW_Id" ColumnName="NEW_Id" />
+                <ScalarProperty Name="NEW_Descripcion" ColumnName="NEW_Descripcion" />
+                <ScalarProperty Name="NEW_Titulo" ColumnName="NEW_Titulo" />
+                <ScalarProperty Name="NEW_HTML" ColumnName="NEW_HTML" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="NEW_Imagen" ColumnName="NEW_Imagen" />
+                <ScalarProperty Name="NEW_Date" ColumnName="NEW_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRC_PantallaInicial">
+            <EntityTypeMapping TypeName="AgroDBModel.PRC_PantallaInicial">
+              <MappingFragment StoreEntitySet="PRC_PantallaInicial">
+                <ScalarProperty Name="PRC_Id" ColumnName="PRC_Id" />
+                <ScalarProperty Name="PRC_Text" ColumnName="PRC_Text" />
+                <ScalarProperty Name="PRC_Descripcion" ColumnName="PRC_Descripcion" />
+                <ScalarProperty Name="PRC_Html" ColumnName="PRC_Html" />
+                <ScalarProperty Name="PRC_Imagen" ColumnName="PRC_Imagen" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="PRC_Date" ColumnName="PRC_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRD_ProductosDetalles">
+            <EntityTypeMapping TypeName="AgroDBModel.PRD_ProductosDetalles">
+              <MappingFragment StoreEntitySet="PRD_ProductosDetalles">
+                <ScalarProperty Name="PRD_Id" ColumnName="PRD_Id" />
+                <ScalarProperty Name="PRO_Id" ColumnName="PRO_Id" />
+                <ScalarProperty Name="PRD_Descripcion" ColumnName="PRD_Descripcion" />
+                <ScalarProperty Name="PRD_Html" ColumnName="PRD_Html" />
+                <ScalarProperty Name="PRD_Images" ColumnName="PRD_Images" />
+                <ScalarProperty Name="PRD_Date" ColumnName="PRD_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRO_Productos">
+            <EntityTypeMapping TypeName="AgroDBModel.PRO_Productos">
+              <MappingFragment StoreEntitySet="PRO_Productos">
+                <ScalarProperty Name="PRO_Id" ColumnName="PRO_Id" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="CAT_Id" ColumnName="CAT_Id" />
+                <ScalarProperty Name="PRO_Nombre" ColumnName="PRO_Nombre" />
+                <ScalarProperty Name="PRO_Descripcion" ColumnName="PRO_Descripcion" />
+                <ScalarProperty Name="PRO_HTML" ColumnName="PRO_HTML" />
+                <ScalarProperty Name="PRO_IsBanner" ColumnName="PRO_IsBanner" />
+                <ScalarProperty Name="PRO_Image" ColumnName="PRO_Image" />
+                <ScalarProperty Name="PRO_Date" ColumnName="PRO_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PTC_Patrocinadores">
+            <EntityTypeMapping TypeName="AgroDBModel.PTC_Patrocinadores">
+              <MappingFragment StoreEntitySet="PTC_Patrocinadores">
+                <ScalarProperty Name="PTC_Id" ColumnName="PTC_Id" />
+                <ScalarProperty Name="PTC_Nombre" ColumnName="PTC_Nombre" />
+                <ScalarProperty Name="PTC_Descripcion" ColumnName="PTC_Descripcion" />
+                <ScalarProperty Name="PTC_Url" ColumnName="PTC_Url" />
+                <ScalarProperty Name="PTC_Imagen" ColumnName="PTC_Imagen" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SER_Servicios">
+            <EntityTypeMapping TypeName="AgroDBModel.SER_Servicios">
+              <MappingFragment StoreEntitySet="SER_Servicios">
+                <ScalarProperty Name="SER_Id" ColumnName="SER_Id" />
+                <ScalarProperty Name="TSV_Id" ColumnName="TSV_Id" />
+                <ScalarProperty Name="SER_Descripcion" ColumnName="SER_Descripcion" />
+                <ScalarProperty Name="SER_HTML" ColumnName="SER_HTML" />
+                <ScalarProperty Name="SER_Activa" ColumnName="SER_Activa" />
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="SER_Imagen" ColumnName="SER_Imagen" />
+                <ScalarProperty Name="SER_Date" ColumnName="SER_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STS_Status">
+            <EntityTypeMapping TypeName="AgroDBModel.STS_Status">
+              <MappingFragment StoreEntitySet="STS_Status">
+                <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
+                <ScalarProperty Name="STS_Descripcion" ColumnName="STS_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AgroDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TSV_TipoServicio">
+            <EntityTypeMapping TypeName="AgroDBModel.TSV_TipoServicio">
+              <MappingFragment StoreEntitySet="TSV_TipoServicio">
+                <ScalarProperty Name="TSV_Id" ColumnName="TSV_Id" />
+                <ScalarProperty Name="TSV_Descripcion" ColumnName="TSV_Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfile">
+            <EntityTypeMapping TypeName="AgroDBModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="AgroDBModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="AgroDBModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="AgroDBModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="AgroDBModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

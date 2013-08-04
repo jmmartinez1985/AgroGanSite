@@ -1,0 +1,173 @@
+
+
+.formlogin {
+    margin: 0px;
+}
+
+#footer-wrapper {
+    text-align: center;
+    padding: 30px 0;
+    max-width: 1108px;
+    margin: 0 auto;
+}
+
+.page {
+    background: none repeat scroll 0 0 white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+    /*margin: 70px 0 0;*/
+    padding: 30px 12% 80px;
+}
+
+
+#page-menu-wrapper-footer {
+}
+
+    #page-menu-wrapper-footer li, .page-menu-wrapper-footer li {
+        display: inline;
+        margin: 0 9px;
+    }
+
+        #page-menu-wrapper-footer ul li a, .page-menu-wrapper-footer li a {
+            color: #446DB2 !important;
+            font-size: 15px;
+            font-weight: normal !important;
+            text-decoration: none;
+            font-family: 'Open Sans',sans-serif !important;
+            font-style: normal !important;
+            padding: 0 !important;
+        }
+
+            #page-menu-wrapper-footer ul li a:hover, .page-menu-wrapper-footer li a:hover {
+                color: #5BC4BE !important;
+            }
+
+ul#footer-container-right {
+    font-size: 12px;
+}
+
+    ul#footer-container-right a {
+        text-decoration: none;
+        color: #656565;
+    }
+
+        ul#footer-container-right a:hover {
+            color: #446DB2;
+        }
+
+li.copyright {
+}
+
+.follow-buttons {
+    clear: both;
+    height: 40px;
+    /*margin-top: 30px;*/
+    text-align: center;
+}
+
+.dropDownList select {
+    background: transparent;
+    width: 190px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    height: 34px;
+    -webkit-appearance: none;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.pageProducts {
+    background: none repeat scroll 0 0 white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+    /*margin: 70px 0 0;
+        padding: 30px 12% 80px;*/
+}
+
+
+.public-share {
+    background: url("../../img/bg-column.png") repeat-y scroll 0 0 white;
+    border-radius: 2px 2px 2px 2px;
+    display: block;
+    overflow: hidden;
+    padding: 3px 0 50px;
+    position: relative;
+    z-index: 0;
+    padding-top: 20px;
+}
+
+    .public-share h2 {
+        color: #DD390D;
+        font-size: 24px;
+        font-weight: normal;
+        line-height: 1.1;
+        margin: 0 0 10px;
+    }
+
+        .public-share h2 a {
+            color: #DD390D;
+            font-weight: normal;
+        }
+
+            .public-share h2 a:hover {
+                color: #DD390D;
+                text-decoration: underline;
+            }
+
+    .public-share .side {
+        background: url("../../img/bg-side.png") no-repeat scroll right -4px transparent;
+        float: left;
+        min-height: 400px;
+        padding: 40px 30px 0 0;
+        width: 180px;
+        box-shadow: 9px 1px 10px rgba(0, 0, 0, 0.25);
+    }
+
+        .public-share .side .share-list > * {
+            display: block;
+            height: 40px;
+        }
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#logoimg {
+    padding: 10px 10px 10px 10px;
+}
+
+.txtNoButton {
+    margin-bottom: 0px !important;
+}
+
+.DisplayNew {
+    display: block;
+}
+
+.NoDisplayNew {
+    display: none;
+}

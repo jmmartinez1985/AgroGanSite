@@ -1,0 +1,54 @@
+﻿@model AgroGanSite.Models.RegisterModel
+@{
+    ViewBag.Title = "Registro";
+}
+
+<script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
+<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />
+
+
+<div class="row-fluid">
+    <div class="block span12">
+        <a data-toggle="collapse" class="block-heading" href="#tablelogin">Registro de Cuenta.</a>
+        <div class="block-body collapse in" id="tablelogin">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                <fieldset>
+                    <ol>
+                        <li>
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.EmailId)
+                            @Html.TextBoxFor(m => m.EmailId)
+                        </li>
+                        <li>
+                            @Html.LabelFor(m => m.Details)
+                            @Html.TextBoxFor(m => m.Details)
+                        </li>
+                    </ol>
+                    <input type="submit" value="Register" />
+                </fieldset>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
