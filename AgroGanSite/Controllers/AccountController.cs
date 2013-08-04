@@ -22,7 +22,7 @@ namespace AgroGanSite.Controllers
         // GET: /Account/Login
 
 
-
+        //this method is just to authenticate the incoming user
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
