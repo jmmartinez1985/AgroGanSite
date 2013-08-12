@@ -1,6 +1,6 @@
 ﻿@model AgroGanSite.Models.LocalPasswordModel
 @{
-    ViewBag.Title = "Cuentas";
+    ViewBag.Title = "Administración de Cuentas";
 }
 
 <script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
@@ -14,7 +14,7 @@
 
             <p class="message-success">@ViewBag.StatusMessage</p>
 
-            <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+            <p>Ha entrado como <strong>@User.Identity.Name</strong>.</p>
 
             @if (ViewBag.HasLocalPassword)
             {

@@ -597,7 +597,7 @@ blockquote:hover {
 
 .breadcrumb { 
 	top:9px;
-	padding-right:0;
+	padding-right:30px;
 	background:none;
 	position:relative;
 }

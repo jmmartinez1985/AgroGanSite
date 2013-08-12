@@ -1,7 +1,7 @@
 ﻿@model AgroGanSite.Models.LoginModel
 
 @{
-    ViewBag.Title = "Sesión";
+    ViewBag.Title = "Incio de Sesión";
 }
 <script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
 @*<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />*@
@@ -28,7 +28,7 @@
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
-                    <h3>Login to your account</h3>
+                    <h3>Inicie a su cuenta</h3>
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-user"></i></span>
                         @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Email", @class = "span12" })
@@ -44,15 +44,15 @@
                     <div class="controls form-inline">
                         <label class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
-                            Stay Signed in</label>
+                            Mantenerse contectado</label>
                         @* <button class="btn-u pull-right" type="submit">Login</button>*@
                         <input class="btn-u pull-right" type="submit" value="Log in" />
                     </div>
                     <hr />
-                    <h4>Forget your Password ?</h4>
-                    <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+                    <h4>Olvidó su contraseña ?</h4>
+                    <p>No te preocupes, <a class="color-green" href="@Url.Action("ForgotPassword", "Account")">Haz click aquí</a> para recuperar tu contraseña.</p>
                     <p>
-                        @Html.ActionLink("Register", "Register") if you don't have an account.
+                        @Html.ActionLink("Registrate", "Register") Sí aún no tienes una cuenta.
                     </p> }
             </div>
 
