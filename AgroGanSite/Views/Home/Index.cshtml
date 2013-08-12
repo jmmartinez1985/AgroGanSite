@@ -10,6 +10,14 @@
 <link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
 <script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
+<link href="~/Content/Unify/jquery.bxslider.css" rel="stylesheet" />
+<link href="~/Content/Unify/flexslider.css" rel="stylesheet" />
+
+
+
+<script src="~/Scripts/CustomScript/jquery.bxslider.js"></script>
+<script src="~/Scripts/CustomScript/app.js"></script>
+
 
 <style>
     .DisplayNew {
@@ -21,227 +29,292 @@
     }
 </style>
 
-@section featured {
-    <section class="featured">
-        <section class="content-wrapper">
 
-            @if (!Request.IsAuthenticated)
-            {
-                <div class="page-header">
-                    <h1>Servicios y productos de <small>alta y excelente calidad es nuestro inventario.</small></h1>
-                </div>
+<section class="content-wrapper">
+
+    @if (!Request.IsAuthenticated)
+    {
+        <div class="page-header">
+            <h2>Servicios y productos de alta y excelente calidad es nuestro inventario.</h2>
+        </div>
               
-                <div class="row-fluid">
+        <div class="row-fluid">
 
-                    <div class="span8">
-                        <section id="carousel">
+            <div class="span8">
+                <section id="carousel">
 
 
-                            <div class="bs-docs-example">
-                                <div id="myCarousel" class="carousel slide">
-                                </div>
-                            </div>
-
-                        </section>
-
-                    </div>
-
-                    <div class="span4">
-                        <div id="ContentDiv" style="text-align: justify">
-                            <h3>Empresa</h3>
-                            <p><a href="empresa.php">Abonos Superior</a> es una empresa dedicada a la producci&oacute;n y comercializaci&oacute;n de <a href="categorias.php?fam=protectores-cultivos&amp;cat=agroquimicos">agroqu&iacute;micos</a>, <a href="categorias.php?fam=protectores-cultivos&amp;cat=fertilizantes">fertilizantes</a>, <a href="carpi.php">equipos de aspersi&oacute;n</a> y <a href="semillas.php">semillas</a>. </p>
-                            <p>Abonos Superior posee gran tradici&oacute;n en el mercado nacional e internacional, concentr&aacute;ndose en la b&uacute;squeda de soluciones integrales para resolver problemas de los productores en los mercados que atiende. </p>
-                            <p>Abonos Superior est&aacute;comprometida con el manejo adecuado de sus aspectos ambientales sellando este compromiso mediante la obtenci&oacute;n del <a href="compromiso-ambiental.php">certificado ISO 14001-2004</a>. </p>
-                        </div>
-                    </div>
-                </div>  
-                
-                
-                <div class="row-fluid">
-                    <div class="span12">
-
-                        <div class="header">
-                            <h1 style="text-align: left" class="page-title">Boletín del Agro</h1>
-                        </div>
-                    </div>
-                </div>   
-                
-                <div class="row-fluid">
-                    <div class="block span12">
-                        <a data-toggle="collapse" class="block-heading" href="#tablanew">Noticias Activas<span id="spannewCounter" class="label label-warning"></span></a>
-                        <div class="block-body collapse in" id="tablanew">
-                            <br />
-                            <div id="accordion2" class="accordion">
-                            </div>
-                            <p><a class="activeAllNews" href="#">Más Noticias Disponibles</a></p>
+                    <div class="bs-docs-example">
+                        <div id="myCarousel" class="carousel slide">
                         </div>
                     </div>
 
-                </div> 
-                
-                <div class="row-fluid">
-                    <div class="span12">
+                </section>
 
-                        <div class="header">
-                            <h1 style="text-align: left" class="page-title">Nuestros Proveedores</h1>
-                        </div>
-                    </div>
-                </div>  
-                <br /> 
-                <div class="row-fluid">
-                    <div class="span12">
-                        @Html.Partial("SponsorView")
-                    </div>
-                </div> 
-            }
-            else
-            {
-                    
-                <div class="row-fluid">
-                    <div class="span12">
+            </div>
 
-                        <div class="header">
-                            <h1 class="page-title" style="text-align: left">Tablero de Administración</h1>
-                        </div>
-
-                        <ul class="breadcrumb">
-                            <li><a href="@Url.Action("Index", "Home")">Home</a> <span class="divider">/</span></li>
-                            <li class="active">Dashboard</li>
-                        </ul>
-                    </div>
+            <div class="span4">
+                <div id="ContentDiv" style="text-align: justify">
+                    <h3>Empresa</h3>
+                    <p><a href="empresa.php">Abonos Superior</a> es una empresa dedicada a la producci&oacute;n y comercializaci&oacute;n de <a href="categorias.php?fam=protectores-cultivos&amp;cat=agroquimicos">agroqu&iacute;micos</a>, <a href="categorias.php?fam=protectores-cultivos&amp;cat=fertilizantes">fertilizantes</a>, <a href="carpi.php">equipos de aspersi&oacute;n</a> y <a href="semillas.php">semillas</a>. </p>
+                    <p>Abonos Superior posee gran tradici&oacute;n en el mercado nacional e internacional, concentr&aacute;ndose en la b&uacute;squeda de soluciones integrales para resolver problemas de los productores en los mercados que atiende. </p>
+                    <p>Abonos Superior est&aacute;comprometida con el manejo adecuado de sus aspectos ambientales sellando este compromiso mediante la obtenci&oacute;n del <a href="compromiso-ambiental.php">certificado ISO 14001-2004</a>. </p>
                 </div>
+            </div>
+        </div>  
                 
-                <div class="container-fluid">
+        
+        <!-- Boletin del Agro -->
+        <div class="headline">
+            <h3>Boletin del Agro</h3>
+        </div>
+        <div class="row-fluid margin-bottom-40">
+            <ul id="list" class="bxslider recent-work">
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/2.jpg" alt="" /></em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/4.jpg" alt="" /></em>
+                        <span>
+                            <strong>Award Winning Agency</strong>
+                            <i>Responsive Bootstrap Template</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/5.jpg" alt="" /></em>
+                        <span>
+                            <strong>Wolf Moon Officia</strong>
+                            <i>Pariatur prehe cliche reprehrit</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/6.jpg" alt="" /></em>
+                        <span>
+                            <strong>Food Truck Quinoa Nesciunt</strong>
+                            <i>Craft labore wes anderson cred</i>
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!--/row-->
+        <!-- //End Recent Works -->
+                
+        
+        
+        <div class="row-fluid">
+            <div class="span4">
+                <div class="headline">
+                    <h3>Nuestra Oferta</h3>
+                </div>
+                <p><strong>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id.</strong> Donec eget orci metus, vivamus imperdiet condimentum.</p>
+                <ul class="unstyled">
+                    <li><i class="icon-ok color-green"></i>Donec id elit non mi porta gravida</li>
+                    <li><i class="icon-ok color-green"></i>Responsive Bootstrap Template</li>
+                    <li><i class="icon-ok color-green"></i>Corporate and Creative</li>
+                    <li><i class="icon-ok color-green"></i>Responsive Bootstrap Template</li>
+                    <li><i class="icon-ok color-green"></i>Corporate and Creative</li>
+                </ul>
+                <br>
+            </div>
+            <div class="span4">
+                <div class="headline">
+                    <h3>Nuestro Éxito</h3>
+                </div>
+                <p>
+                    <img class="pull-left lft-img-margin img-width-200" src="~/FilesUploaded/2.jpg" alt="" />
+                    Vivamus cond imentum diam, eget placerat felis consectetur id. Donec eget orci metus, Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing  ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum. <a class="read-more" href="#">Read more..</a>
+                </p>
+            </div>
+
+            <div class="span4">
+                <!-- Photo Stream -->
+                <div class="margin-bottom-30">
+                    <div class="headline">
+                        <h3>Últimos Productos</h3>
+                    </div>
+                    <ul class="unstyled blog-ads">
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/2.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/4.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/5.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/6.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/9.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/5.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/6.jpg"></a></li>
+                        <li><a href="#">
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/9.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class="headline">
+                <h3>Proveedores</h3>
+            </div>
+            <div class="span12">
+                @Html.Partial("SponsorView")
+            </div>
+        </div> 
+    }
+    else
+    {
+                    
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span4">
+
+                    <div class="sidebar-nav">
+                        <a data-toggle="collapse" class="nav-header" href="#dashboard-menu"><i class="icon-dashboard"></i>Dashboard</a>
+                        <ul class="nav nav-list collapse in" id="dashboard-menu">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("Index", "Product")">Productos</a></li>
+                            <li><a href="@Url.Action("Index", "PrincipalInfo")">Pagina Inicial</a></li>
+                            <li><a href="@Url.Action("Index", "Cotiza")">Cotizaciones</a></li>
+                            <li><a href="@Url.Action("Index", "News")">Noticias</a></li>
+                            <li><a href="@Url.Action("Index", "Sponsor")">Patrocinadores</a></li>
+
+                        </ul>
+
+                        <a data-toggle="collapse" class="nav-header" href="#accounts-menu"><i class="icon-briefcase"></i>Cuentas<span class="label label-info"></span></a>
+                        <ul class="nav nav-list collapse" id="accounts-menu">
+                            <li>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "formlogin" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a class="brand" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                }
+
+                            </li>
+                            <li>@Html.ActionLink("Registrarse", "Register", "Account")</li>
+                            <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account")</li>
+                        </ul>
+
+                        <a data-toggle="collapse" class="nav-header" href="#carga-menu"><i class="icon-legal"></i>Carga Archivos</a>
+                        <ul class="nav nav-list collapse" id="carga-menu">
+                            <li><a href="@Url.Action("ViewUploader", "Home")">Carga</a></li>
+
+                        </ul>
+
+                        <a class="nav-header" href="#"><i class="icon-question-sign"></i>Ayuda</a>
+                        <a class="nav-header" href="#"><i class="icon-comment"></i>Preguntas Freq.</a>
+                    </div>
+
+                </div>
+
+
+                <div class="span8">
+
                     <div class="row-fluid">
-                        <div class="span4">
+                        <div class="block">
+                            <a data-toggle="collapse" class="block-heading" href="#page-stats">Estadisticas de Páginas</a>
+                            <div class="block-body in collapse in" id="page-stats" style="height: auto;">
 
-                            <div class="sidebar-nav">
-                                <a data-toggle="collapse" class="nav-header" href="#dashboard-menu"><i class="icon-dashboard"></i>Dashboard</a>
-                                <ul class="nav nav-list collapse in" id="dashboard-menu">
-                                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                                    <li><a href="@Url.Action("Index", "Product")">Productos</a></li>
-                                    <li><a href="@Url.Action("Index", "PrincipalInfo")">Pagina Inicial</a></li>
-                                    <li><a href="@Url.Action("Index", "Cotiza")">Cotizaciones</a></li>
-                                    <li><a href="@Url.Action("Index", "News")">Noticias</a></li>
-                                    <li><a href="@Url.Action("Index", "Sponsor")">Patrocinadores</a></li>
-
-                                </ul>
-
-                                <a data-toggle="collapse" class="nav-header" href="#accounts-menu"><i class="icon-briefcase"></i>Cuentas<span class="label label-info"></span></a>
-                                <ul class="nav nav-list collapse" id="accounts-menu">
-                                    <li>
-                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "formlogin" }))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                            <a class="brand" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                                        }
-
-                                    </li>
-                                    <li>@Html.ActionLink("Registrarse", "Register", "Account")</li>
-                                    <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account")</li>
-                                </ul>
-
-                                <a data-toggle="collapse" class="nav-header" href="#carga-menu"><i class="icon-legal"></i>Carga Archivos</a>
-                                <ul class="nav nav-list collapse" id="carga-menu">
-                                    <li><a href="@Url.Action("ViewUploader", "Home")">Carga</a></li>
-
-                                </ul>
-
-                                <a class="nav-header" href="#"><i class="icon-question-sign"></i>Ayuda</a>
-                                <a class="nav-header" href="#"><i class="icon-comment"></i>Preguntas Freq.</a>
-                            </div>
-
-                        </div>
-
-
-                        <div class="span8">
-
-                            <div class="row-fluid">
-                                <div class="block">
-                                    <a data-toggle="collapse" class="block-heading" href="#page-stats">Estadisticas de Páginas</a>
-                                    <div class="block-body in collapse in" id="page-stats" style="height: auto;">
-
-                                        <div class="stat-widget-container">
-                                            <div class="stat-widget">
-                                                <div class="stat-button">
-                                                    <p class="title cotcounter"></p>
-                                                    <p class="detail">Cotizaciones</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="stat-widget">
-                                                <div class="stat-button">
-                                                    <p class="title contcounter"></p>
-                                                    <p class="detail">Contactos</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="stat-widget">
-                                                <div class="stat-button">
-                                                    <p class="title prodcounter"></p>
-                                                    <p class="detail">Productos Activos</p>
-                                                </div>
-                                            </div>
-
-                                            <div class="stat-widget">
-                                                <div class="stat-button">
-                                                    <p class="title newscounter"></p>
-                                                    <p class="detail">Noticias Activas</p>
-                                                </div>
-                                            </div>
-
+                                <div class="stat-widget-container">
+                                    <div class="stat-widget">
+                                        <div class="stat-button">
+                                            <p class="title cotcounter"></p>
+                                            <p class="detail">Cotizaciones</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-                            <div class="row-fluid">
-                                <div class="block span12">
-                                    <a data-toggle="collapse" class="block-heading" href="#tablewidget">Productos Activos<span class="label label-warning" id="spanProductos">0</span></a>
-                                    <div class="block-body collapse" id="tablewidget">
-
-                                        <p><a href="#">More...</a></p>
+                                    <div class="stat-widget">
+                                        <div class="stat-button">
+                                            <p class="title contcounter"></p>
+                                            <p class="detail">Contactos</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
-
-                            <div class="row-fluid">
-                                <div class="block span12">
-                                    <a data-toggle="collapse" class="block-heading" href="#tablecotiza">Cotizaciones Activas<span class="label label-warning" id="spanCotiza">0</span></a>
-                                    <div class="block-body collapse" id="tablecotiza">
-                                        <p><a href="#">More...</a></p>
+                                    <div class="stat-widget">
+                                        <div class="stat-button">
+                                            <p class="title prodcounter"></p>
+                                            <p class="detail">Productos Activos</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
-
-                            <div class="row-fluid">
-                                <div class="block span12">
-                                    <a data-toggle="collapse" class="block-heading" href="#tablecontacts">Últimos Contactos<span class="label label-warning" id="spanContactos">0</span></a>
-                                    <div class="block-body collapse" id="tablecontacts">
-                                        <p><a href="#">More...</a></p>
+                                    <div class="stat-widget">
+                                        <div class="stat-button">
+                                            <p class="title newscounter"></p>
+                                            <p class="detail">Noticias Activas</p>
+                                        </div>
                                     </div>
+
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
 
+                    <div class="row-fluid">
+                        <div class="block span12">
+                            <a data-toggle="collapse" class="block-heading" href="#tablewidget">Productos Activos<span class="label label-warning" id="spanProductos">0</span></a>
+                            <div class="block-body collapse" id="tablewidget">
+
+                                <p><a href="#">More...</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="block span12">
+                            <a data-toggle="collapse" class="block-heading" href="#tablecotiza">Cotizaciones Activas<span class="label label-warning" id="spanCotiza">0</span></a>
+                            <div class="block-body collapse" id="tablecotiza">
+                                <p><a href="#">More...</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row-fluid">
+                        <div class="block span12">
+                            <a data-toggle="collapse" class="block-heading" href="#tablecontacts">Últimos Contactos<span class="label label-warning" id="spanContactos">0</span></a>
+                            <div class="block-body collapse" id="tablecontacts">
+                                <p><a href="#">More...</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+            </div>
+
+        </div>
                 
 
-            }
+    }
 
 
-        </section>
-    </section>
-}
+</section>
 
 
 
 <script>
+
+    App.initBxSlider1();
     var jsonresult;
     var $j = jQuery.noConflict();
 
@@ -327,72 +400,72 @@
             {
                 type: 'post',
                 url: '@Url.Content("~/News/GetNewToDisplay/")',
-            success: function (data) {
-                var result = JSON.parse(data);
-                var htmlresult = '';
-                var counter = 0;
-                $j('#spannewCounter').html(result.$values.length);
-                $j.each(result.$values, function (val, noti) {
-                    if (counter > 3) {
-                        htmlresult += '<div class="accordion-group noDisplayNew" style="display:none">';
-                    }
-                    else {
-                        htmlresult += '<div class="accordion-group">';
-                    }
-                    htmlresult += '<div class="accordion-heading">';
-                    htmlresult += '<a href="#collapse' + val + '" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">' + noti.NEW_Titulo + ' </a>';
-                    htmlresult += '</div>';
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    var htmlresult = '';
+                    var counter = 0;
+                    $j('#spannewCounter').html(result.$values.length);
+                    $j.each(result.$values, function (val, noti) {
+                        //if (counter > 3) {
+                        //    htmlresult += '<div class="accordion-group noDisplayNew" style="display:none">';
+                        //}
+                        //else {
+                        //    htmlresult += '<div class="accordion-group">';
+                        //}
+                        //htmlresult += '<div class="accordion-heading">';
+                        //htmlresult += '<a href="#collapse' + val + '" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">' + noti.NEW_Titulo + ' </a>';
+                        //htmlresult += '</div>';
 
-                    if (counter == 0) {
-                        htmlresult += '<div class="accordion-body collapse in" id="collapse' + val + '">';
-                    }
-                    else {
-                        htmlresult += '<div class="accordion-body collapse" id="collapse' + val + '">';
-                    }
+                        //if (counter == 0) {
+                        //    htmlresult += '<div class="accordion-body collapse in" id="collapse' + val + '">';
+                        //}
+                        //else {
+                        //    htmlresult += '<div class="accordion-body collapse" id="collapse' + val + '">';
+                        //}
 
-                    var urlHelper = new UrlHelper();
-                    var url = urlHelper.urlImage(noti.NEW_Imagen);
+                        //var urlHelper = new UrlHelper();
+                        //var url = urlHelper.urlImage(noti.NEW_Imagen);
 
-                    htmlresult += '<div class="accordion-inner">';
+                        //htmlresult += '<div class="accordion-inner">';
 
-                    htmlresult += '<div class="span2">';
-                    htmlresult += '<img class="img-rounded" width="150" height="150" src="' + url + '">';
-                    htmlresult += '</div>';
+                        //htmlresult += '<div class="span2">';
+                        //htmlresult += '<img class="img-rounded" width="150" height="150" src="' + url + '">';
+                        //htmlresult += '</div>';
 
-                    htmlresult += '<div class="span10">';
-                    htmlresult += '<p>' + noti.NEW_Descripcion + '</p>';
-                    htmlresult += '<br />';
-                    htmlresult += '<a class="btn btn-mini btn-primary" onclick="VerNewId(' + noti.NEW_Id + ')" >Leer Más...</a>';
-                    htmlresult += '<br />';
-                    htmlresult += '<br />';
-                    htmlresult += '</div>';
+                        //htmlresult += '<div class="span10">';
+                        //htmlresult += '<p>' + noti.NEW_Descripcion + '</p>';
+                        //htmlresult += '<br />';
+                        //htmlresult += '<a class="btn btn-mini btn-primary" onclick="VerNewId(' + noti.NEW_Id + ')" >Leer Más...</a>';
+                        //htmlresult += '<br />';
+                        //htmlresult += '<br />';
+                        //htmlresult += '</div>';
 
-                    htmlresult += '</div>';
-                    htmlresult += '</div>';
+                        //htmlresult += '</div>';
+                        //htmlresult += '</div>';
 
-                    htmlresult += '</div>';
-                    counter += 1;
-                });
-                $j('#accordion2').html(htmlresult);
-            },
-            error: function (a, b, c) {
+                        //htmlresult += '</div>';
+                        //counter += 1;
+                    });
+                    //$j('#accordion2').html(htmlresult);
+                },
+                error: function (a, b, c) {
 
-            }
-        });
-  });
+                }
+            });
+      });
 
-    $j('.activeAllNews').click(function () {
-        $j('div.accordion-group').show();
+        //$j('.activeAllNews').click(function () {
+        //    $j('div.accordion-group').show();
 
-    });
+        //});
 
-    function VerNewId(id) {
-        var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
-      window.location = url;
-  }
+        function VerNewId(id) {
+            var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
+            window.location = url;
+        }
 
 
-  var isAuth = '@Request.IsAuthenticated'
+        var isAuth = '@Request.IsAuthenticated'
 
     $j(function () {
         if (isAuth == 'True') {
@@ -400,120 +473,120 @@
                   {
                       type: 'post',
                       url: '@Url.Action("GetCurrentContacts", "Contact")',
-                  success: function (data) {
-                      var result = JSON.parse(data);
-                      var htmlresult = '';
-                      var counter = 0;
-                      htmlresult += '<table class="table"> <thead> <tr>';
-                      htmlresult += '<th>Nombre</th>';
-                      htmlresult += '<th>Correo</th>';
-                      htmlresult += '<th>Fecha de Contacto</th>';
-                      htmlresult += '</tr></thead><tbody id="contactdiv">';
-                      $j('#spanContactos').html(result.$values.length);
-                      $j.each(result.$values, function (val, cont) {
-                          htmlresult += '<tr>';
-                          htmlresult += '<td>' + cont.CON_Nombre + '</td>';
-                          htmlresult += '<td>' + cont.CON_Email + '</td>';
-                          htmlresult += '<td>' + cont.CON_Fecha + '</td>';
-                          htmlresult += '</tr>';
-                      });
-                      htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
-                      $j('#tablecontacts').html(htmlresult);
-                      AddPager('contactdiv');
-                  },
-                  error: function (a, b, c) {
+                      success: function (data) {
+                          var result = JSON.parse(data);
+                          var htmlresult = '';
+                          var counter = 0;
+                          htmlresult += '<table class="table"> <thead> <tr>';
+                          htmlresult += '<th>Nombre</th>';
+                          htmlresult += '<th>Correo</th>';
+                          htmlresult += '<th>Fecha de Contacto</th>';
+                          htmlresult += '</tr></thead><tbody id="contactdiv">';
+                          $j('#spanContactos').html(result.$values.length);
+                          $j.each(result.$values, function (val, cont) {
+                              htmlresult += '<tr>';
+                              htmlresult += '<td>' + cont.CON_Nombre + '</td>';
+                              htmlresult += '<td>' + cont.CON_Email + '</td>';
+                              htmlresult += '<td>' + cont.CON_Fecha + '</td>';
+                              htmlresult += '</tr>';
+                          });
+                          htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
+                          $j('#tablecontacts').html(htmlresult);
+                          AddPager('contactdiv');
+                      },
+                      error: function (a, b, c) {
 
-                  }
+                      }
                   });
-          }
-});
+              }
+    });
 
-      $j(function () {
-          if (isAuth == 'True') {
-              jQuery.ajax(
-                    {
-                        type: 'post',
-                        url: '@Url.Action("GetCurrentProducts", "Product")',
-                        success: function (data) {
-                            var result = JSON.parse(data);
-                            var htmlresult = '';
-                            var counter = 0;
-                            htmlresult += '<table class="table"> <thead> <tr>';
-                            htmlresult += '<th>Producto</th>';
-                            htmlresult += '<th>Descripción</th>';
-                            htmlresult += '<th>Fecha de Actualización</th>';
-                            htmlresult += '</tr></thead><tbody id="proddiv">';
-                            $j('#spanProductos').html(result.$values.length);
-                            $j.each(result.$values, function (val, pro) {
-                                htmlresult += '<tr>';
-                                htmlresult += '<td>' + pro.PRO_Nombre + '</td>';
-                                htmlresult += '<td>' + pro.PRO_Descripcion + '</td>';
-                                htmlresult += '<td>' + pro.PRO_Date + '</td>';
-                                htmlresult += '</tr>';
-                            });
-                            htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
-                            $j('#tablewidget').html(htmlresult);
-                            AddPager('proddiv');
-                        },
-                        error: function (a, b, c) {
+          $j(function () {
+              if (isAuth == 'True') {
+                  jQuery.ajax(
+                        {
+                            type: 'post',
+                            url: '@Url.Action("GetCurrentProducts", "Product")',
+                            success: function (data) {
+                                var result = JSON.parse(data);
+                                var htmlresult = '';
+                                var counter = 0;
+                                htmlresult += '<table class="table"> <thead> <tr>';
+                                htmlresult += '<th>Producto</th>';
+                                htmlresult += '<th>Descripción</th>';
+                                htmlresult += '<th>Fecha de Actualización</th>';
+                                htmlresult += '</tr></thead><tbody id="proddiv">';
+                                $j('#spanProductos').html(result.$values.length);
+                                $j.each(result.$values, function (val, pro) {
+                                    htmlresult += '<tr>';
+                                    htmlresult += '<td>' + pro.PRO_Nombre + '</td>';
+                                    htmlresult += '<td>' + pro.PRO_Descripcion + '</td>';
+                                    htmlresult += '<td>' + pro.PRO_Date + '</td>';
+                                    htmlresult += '</tr>';
+                                });
+                                htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
+                                $j('#tablewidget').html(htmlresult);
+                                AddPager('proddiv');
+                            },
+                            error: function (a, b, c) {
 
-                        }
-                    });
-                }
-});
+                            }
+                        });
+                    }
+          });
 
-            $j(function () {
-                if (isAuth == 'True') {
-                    jQuery.ajax(
-                     {
-                         type: 'post',
-                         url: '@Url.Action("GetCurrentCotizaciones", "Cotiza")',
-               success: function (data) {
-                   var result = JSON.parse(data);
-                   var htmlresult = '';
-                   var counter = 0;
-                   htmlresult += '<table class="table"> <thead> <tr>';
-                   htmlresult += '<th>Contacto</th>';
-                   htmlresult += '<th>Correo</th>';
-                   htmlresult += '<th>Fecha de Cotización</th>';
-                   htmlresult += '</tr></thead><tbody id="cotizadiv">';
-                   $j('#spanCotiza').html(result.$values.length);
-                   $j.each(result.$values, function (val, cot) {
-                       htmlresult += '<tr>';
-                       htmlresult += '<td>' + cot.COT_Nombre + '</td>';
-                       htmlresult += '<td>' + cot.COT_Email + '</td>';
-                       htmlresult += '<td>' + cot.COT_Fecha + '</td>';
-                       htmlresult += '</tr>';
-                   });
-                   htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
-                   $j('#tablecotiza').html(htmlresult);
-                   AddPager('cotizadiv');
-               },
-               error: function (a, b, c) {
+                $j(function () {
+                    if (isAuth == 'True') {
+                        jQuery.ajax(
+                         {
+                             type: 'post',
+                             url: '@Url.Action("GetCurrentCotizaciones", "Cotiza")',
+                             success: function (data) {
+                                 var result = JSON.parse(data);
+                                 var htmlresult = '';
+                                 var counter = 0;
+                                 htmlresult += '<table class="table"> <thead> <tr>';
+                                 htmlresult += '<th>Contacto</th>';
+                                 htmlresult += '<th>Correo</th>';
+                                 htmlresult += '<th>Fecha de Cotización</th>';
+                                 htmlresult += '</tr></thead><tbody id="cotizadiv">';
+                                 $j('#spanCotiza').html(result.$values.length);
+                                 $j.each(result.$values, function (val, cot) {
+                                     htmlresult += '<tr>';
+                                     htmlresult += '<td>' + cot.COT_Nombre + '</td>';
+                                     htmlresult += '<td>' + cot.COT_Email + '</td>';
+                                     htmlresult += '<td>' + cot.COT_Fecha + '</td>';
+                                     htmlresult += '</tr>';
+                                 });
+                                 htmlresult += '</tbody><tfoot> <tr><td colspan="3"><div class="holder" style="float:left"></div></td></tr></tfoot></table>';
+                                 $j('#tablecotiza').html(htmlresult);
+                                 AddPager('cotizadiv');
+                             },
+                             error: function (a, b, c) {
 
-               }
-               });
-       }
- });
+                             }
+                         });
+                     }
+                });
 
-   $j(function () {
-       if (isAuth == 'True') {
-           jQuery.ajax(
-            {
-                type: 'post',
-                url: '@Url.Action("GetAllStats", "Home")',
-                 success: function (data) {
-                     var result = JSON.parse(data);
-                     var counter = 0;
-                     $j('.cotcounter').html(result.Cotizaciones);
-                     $j('.contcounter').html(result.Contactos);
-                     $j('.prodcounter').html(result.Productos);
-                     $j('.newscounter').html(result.Noticias);
-                 },
-                 error: function (a, b, c) {
+                 $j(function () {
+                     if (isAuth == 'True') {
+                         jQuery.ajax(
+                          {
+                              type: 'post',
+                              url: '@Url.Action("GetAllStats", "Home")',
+                              success: function (data) {
+                                  var result = JSON.parse(data);
+                                  var counter = 0;
+                                  $j('.cotcounter').html(result.Cotizaciones);
+                                  $j('.contcounter').html(result.Contactos);
+                                  $j('.prodcounter').html(result.Productos);
+                                  $j('.newscounter').html(result.Noticias);
+                              },
+                              error: function (a, b, c) {
 
-                 }
-             });
-         }
-});
+                              }
+                          });
+                      }
+                 });
 </script>

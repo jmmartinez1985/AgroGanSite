@@ -25,11 +25,9 @@
         });
     });
 
-    function deletepantallaobjeto(id)
-    {
+    function deletepantallaobjeto(id) {
         jConfirm('Desea esta informacion de la pantalla inicial?', 'Borrar objeto existente', function (confirmed) {
-            if (confirmed)
-            {
+            if (confirmed) {
                 jQuery.ajax(
                {
                    type: 'post',
@@ -43,115 +41,128 @@
                        alert(a);
                    }
                });
-            }
+           }
         });
 
-    }
+   }
   </script>
 
-<h2>Modo Visualización de Catalogos</h2>
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
-        <div class="span3">
 
-           <div>
-                @Html.ActionLink("Volver a Dashboard", "Index","Home")
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Listado de Pantalla de Inicio</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Pantalla Inicio</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="span3">
+             <div class="headline"><h3>Operaciones</h3></div>
+            <div>
+                @Html.ActionLink("Volver a Dashboard", "Index", "Home")
             </div>
+               <br />
+            <div>@Html.ActionLink("Crear Nuevo", "Create")</div>
         </div>
 
         <div class="span9">
-            <h2>Administración de Pantalla Principal</h2>
-            <br />
-            <div class="successmessage">
-            </div>
+
+            <div class="another-page">
+                <h3>Listado</h3>
+                <div class="successmessage">
+                </div>
 
 
 
 
-            <p>
-                @Html.ActionLink("Crear Nuevo", "Create")
-            </p>
+                <div style="overflow: scroll; width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <thead>
 
-            <div style="overflow: scroll; width: 100%">
-                <table class="table table-bordered table-hover">
-                    <thead>
-
-                        <tr>
-                            <th style="text-align: center">Administración</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRC_Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRC_Text)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRC_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRC_Html)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRC_Imagen)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
-                            </th>
-
-                        </tr>
-                    </thead>
-                    <tbody id="productdiv">
-                        @foreach (var item in Model)
-                        {
                             <tr>
-                                <td>
-
-                                    <table>
-                                        <tr>
-                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRC_Id }, new { @class = "btn btn-primary" })</td>
-
-                                            <td>
-                                                <a class="btn btn-danger" onclick="deletepantallaobjeto('@item.PRC_Id')" >Borrar</a>
-
-                                            </td>
-                                        </tr>
-                                    </table>
-
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRC_Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRC_Text)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRC_Descripcion)
-                                </td>
-                                <td>
-                                                 @Html.Label("No Disponible debido a su tamaño en página")
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRC_Imagen)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
-                                </td>
+                                <th style="text-align: center">Administración</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRC_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRC_Text)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRC_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRC_Html)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRC_Imagen)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                                </th>
 
                             </tr>
-                        }
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="8">
-                                <div class="holder" style="float: left">
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+                        </thead>
+                        <tbody id="productdiv">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
 
-                </table>
+                                        <table>
+                                            <tr>
+                                                <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRC_Id }, new { @class = "btn-u" })</td>
+
+                                                <td>
+                                                    <a class="btn btn-danger" onclick="deletepantallaobjeto('@item.PRC_Id')" >Borrar</a>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRC_Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRC_Text)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRC_Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.Label("No Disponible debido a su tamaño en página")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRC_Imagen)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <div class="holder" style="float: left">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+
             </div>
-
+        </div>
         </div>
     </div>
-</div>

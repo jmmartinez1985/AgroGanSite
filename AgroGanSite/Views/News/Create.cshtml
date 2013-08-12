@@ -4,7 +4,7 @@
     ViewBag.Title = "Noticias";
 }
 
-<h2>Modo Creación de Catalogos</h2>
+
 @*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>*@
 <script src="@Url.Content("~/tiny_mce/tiny_mce.js")"></script>
@@ -48,11 +48,22 @@
 
 </script>
 
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Creación de Noticias</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Noticias</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="container">
+    <div class="row-fluid">
         <div class="span3">
-
+             <div class="headline"><h3>Operaciones</h3></div>
             <div>
                 @Html.ActionLink("Volver a Noticias", "Index")
             </div>
@@ -64,57 +75,57 @@
 
 
         <div class="span9">
-            <h2>Creación de Nueva Noticia</h2>
-            <br />
-            <div class="successmessage">
-            </div>
 
-            @using (Ajax.BeginForm("Create", "News", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
-            {
-              
-                
-                @Html.ValidationSummary(true)
-              @Html.AntiForgeryToken()
+            <div class="another-page">
+                <h3>Creación</h3>
+                <div class="successmessage">
+                </div>
+
+                @using (Ajax.BeginForm("Create", "News", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                {
+
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
             
-                <h4>Para la edición por favor llenar todos los campos requeridos</h4>
-                <br />
+                    <h4>Para la edición por favor llenar todos los campos requeridos</h4>
+                    <br />
 
-                <label for='NEW_Titulo'>Titulo*: </label>
-                @Html.TextBoxFor(model => model.NEW_Titulo, new { @placeholder = "Titulo", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.NEW_Titulo)
+                    <label for='NEW_Titulo'>Titulo*: </label>
+                    @Html.TextBoxFor(model => model.NEW_Titulo, new { @placeholder = "Titulo", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NEW_Titulo)
 
 
-                <label for='NEW_Descripcion'>Descripción*:</label>
-                @Html.TextBoxFor(model => model.NEW_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.NEW_Descripcion)
+                    <label for='NEW_Descripcion'>Descripción*:</label>
+                    @Html.TextBoxFor(model => model.NEW_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NEW_Descripcion)
 
               
       
-                <label for='STS_Id'>Estatus*:</label>
-                @Html.DropDownList("STS_Id", String.Empty)
-                <br />
-                @Html.ValidationMessageFor(model => model.STS_Id)
+                    <label for='STS_Id'>Estatus*:</label>
+                    @Html.DropDownList("STS_Id", String.Empty)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.STS_Id)
               
                
-                <label for='NEW_Imagen'>Imagen*:</label>
-                @Html.TextBoxFor(model => model.NEW_Imagen, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
-                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
-                @Html.ValidationMessageFor(model => model.NEW_Imagen)
-                <br />
+                    <label for='NEW_Imagen'>Imagen*:</label>
+                    @Html.TextBoxFor(model => model.NEW_Imagen, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
+                    <a data-toggle="modal" href="#myModal" class="btn-u btn-mini">Search</a>
+                    @Html.ValidationMessageFor(model => model.NEW_Imagen)
+                    <br />
                 
            
               
-                <label for='NEW_HTML'>Contenido*:</label>
-                @Html.EditorFor(model => model.NEW_HTML, new { @placeholder = "Contenido", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.NEW_HTML)
-                <br />
-                <input type="submit" value="Crear" class="btn btn-primary" id="submit-button" />
-                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
-            }
-
+                    <label for='NEW_HTML'>Contenido*:</label>
+                    @Html.EditorFor(model => model.NEW_HTML, new { @placeholder = "Contenido", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NEW_HTML)
+                    <br />
+                    <input type="submit" value="Crear" class="btn-u" id="submit-button" />
+                    <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+                }
+            </div>
         </div>
     </div>
 </div>
@@ -133,14 +144,14 @@
                         
             }
 
-            @Html.Partial("ImagesChooser", images)
+@Html.Partial("ImagesChooser", images)
 
 
-        </p>
+</p>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+        <button class="updateimg btn-u">Actualizar Imagen</button>
     </div>
 </div>
 

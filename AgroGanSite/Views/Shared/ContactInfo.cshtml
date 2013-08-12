@@ -1,0 +1,41 @@
+﻿<div id="personalinfo">
+</div>
+
+
+<script>
+    $(function () {
+
+        jQuery.ajax(
+           {
+               type: 'post',
+               url: '@Url.Content("~/Home/Contact/")',
+
+               success: function (data) {
+                   var result = JSON.parse(data);
+                   var htmlinfocompany = '';
+                   htmlinfocompany += '<address>';
+                   htmlinfocompany += "<strong>" + result.COM_Nombre + "</strong><br>";
+                   htmlinfocompany += "" + result.COM_Direccion + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_Telefono + "";
+                   htmlinfocompany += '</br><strong>Correo Electrónico</strong></br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_Correo + "</a>"
+                   htmlinfocompany += "</address>";
+                   htmlinfocompany += '<address></br>';
+                   htmlinfocompany += "<strong>Informacion de contacto</strong><br>";
+                   htmlinfocompany += "" + result.COM_ContactoNombre + "<br>";
+                   htmlinfocompany += "<abbr title='Phone'>Teléfono:</abbr>";
+                   htmlinfocompany += "" + result.COM_ContactoCelular + "</br>";
+                   htmlinfocompany += '<strong>Correo Electrónico</strong><br>';
+                   htmlinfocompany += "<a href='mailto:#'>" + result.COM_ContactoEmail + "</a>"
+                   htmlinfocompany += "</address>";
+                   $('#personalinfo').append(htmlinfocompany);
+               },
+               error: function (a, b, c) {
+                   alert(a);
+               }
+           });
+    });
+
+
+</script>

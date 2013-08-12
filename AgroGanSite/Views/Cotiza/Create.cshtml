@@ -13,41 +13,53 @@
 <script src="~/Scripts/Bootstrap/bootstrap-alert.js"></script>
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
-        <div class="span3">
-            <h2>Categorias</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>)
-            </div>
-            <h2>Productos</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>)
 
-            </div>
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Cotiza Nuestros productos</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Cotizaciones</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+<div class="container">
+    <div class="row-fluid">
+   
+        <div class="span3">    
+             <div class="headline"><h3>Cátalogo</h3></div>
+            <h4>Categorias</h4>
 
+            @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>,new { @class="span10" })
+
+            <h4>Productos</h4>
+         
+            @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>, new { @class="span10" })
+
+            
+
+  
             <br />
             <div class="cotiza">
             </div>
 
             <br />
-            <br />
-            <div class="span3">
-                <div style="vertical-align: middle; margin-right: 20px">
-                    <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
-                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
-                </div>
-                <div style="vertical-align: bottom">
-                    <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
-                </div>
-            </div>
+
+              <div class="headline"><h3>Nuestra Oferta?</h3></div>
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
+            <ul class="unstyled">
+            	<li><i class="icon-ok color-green"></i> Odio dignissimos ducimus</li>
+            	<li><i class="icon-ok color-green"></i> Blanditiis praesentium volup</li>
+            	<li><i class="icon-ok color-green"></i> Eos et accusamus</li>
+            </ul>
+
         </div>
 
-
-
-
+        
         <div class="span9">
-            <h2>Conoce mas sobre nuestros productos y cotiza ya.</h2>
+            <div class="headline"><h3>Detalle de Cotización</h3></div>
             <br />
             <div class="successmessage">
             </div>
@@ -117,13 +129,10 @@
                 @Html.ValidationMessageFor(model => model.COT_Mensaje)
 
                 <br />
-                <input type="submit" value="Cotizar" onclick="SendCotizaInfo()" class="btn btn-primary" id="submit-button" />
+                <input type="submit" value="Cotizar" onclick="SendCotizaInfo()" class="btn-u" id="submit-button" />
                 <br />
                 <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
 
-
-             
-          
             }
 
         </div>
@@ -202,7 +211,7 @@
                  htmlprodcotiza += '<small>' + text.PRO_Nombre + '</small>';
                  htmlprodcotiza += '<br />';
                  htmlprodcotiza += '<br />';
-                 htmlprodcotiza += '<input type="submit" onclick="AddProductLine()" value="Agregar" class="btn btn-primary" id="submit-button" />';
+                 htmlprodcotiza += '<input type="submit" onclick="AddProductLine()" value="Agregar" class="btn-u" id="submit-button" />';
                  htmlprodcotiza += '<br />';
                  htmlprodcotiza += '<br />';
                  htmlprodcotiza += '<br />';

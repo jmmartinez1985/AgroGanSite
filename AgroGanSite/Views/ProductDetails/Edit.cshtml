@@ -50,14 +50,25 @@
 <h2>Modo Edición</h2>
 
 
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Edición de Detalle de Productos</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Edición</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
 
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="container">
+    <div class="row-fluid">
 
 
         <div class="span3">
-
+             <div class="headline"><h3>Operaciones</h3></div>
             <div>
                 @Html.ActionLink("Regresar", "Index", new { prod = Model.PRO_Id })
             </div>
@@ -69,54 +80,55 @@
         </div>
 
         <div class="span9">
-            <h2>Editar Detalle de Producto Existente</h2>
-            <br />
-            <div class="successmessage">
-            </div>
 
-            @using (Ajax.BeginForm("Edit", "ProductDetails", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
-            {
+            <div class="another-page">
+                <h3>Edición</h3>
+                <div class="successmessage">
+                </div>
+
+                @using (Ajax.BeginForm("Edit", "ProductDetails", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                {
               
                 
-                @Html.ValidationSummary(true)
-                  @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
             
-                <h4>Para la creación por favor llenar todos los campos requeridos</h4>
-                <br />
+                    <h4>Para la creación por favor llenar todos los campos requeridos</h4>
+                    <br />
 
                 
-                @Html.HiddenFor(model => model.PRD_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
-                @Html.ValidationMessageFor(model => model.PRD_Id)
+                    @Html.HiddenFor(model => model.PRD_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
+                    @Html.ValidationMessageFor(model => model.PRD_Id)
 
-                @Html.HiddenFor(model => model.PRO_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
-                @Html.ValidationMessageFor(model => model.PRO_Id)
+                    @Html.HiddenFor(model => model.PRO_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
+                    @Html.ValidationMessageFor(model => model.PRO_Id)
 
 
-                <label for='PRD_Descripcion'>Descripción*:</label>
-                @Html.TextBoxFor(model => model.PRD_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRD_Descripcion)
+                    <label for='PRD_Descripcion'>Descripción*:</label>
+                    @Html.TextBoxFor(model => model.PRD_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRD_Descripcion)
 
                 
-                <label for='PRD_Images'>Imagen*:</label>
-                @Html.TextBoxFor(model => model.PRD_Images, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
-                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
-                @Html.ValidationMessageFor(model => model.PRD_Images)
-                <br />
+                    <label for='PRD_Images'>Imagen*:</label>
+                    @Html.TextBoxFor(model => model.PRD_Images, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
+                    <a data-toggle="modal" href="#myModal" class="btn-u btn-mini">Search</a>
+                    @Html.ValidationMessageFor(model => model.PRD_Images)
+                    <br />
               
               
-                <label for='PRD_Html'>Contenido*:</label>
-                @Html.EditorFor(model => model.PRD_Html, new { @placeholder = "Contenido", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRD_Html)
+                    <label for='PRD_Html'>Contenido*:</label>
+                    @Html.EditorFor(model => model.PRD_Html, new { @placeholder = "Contenido", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRD_Html)
               
-                <br />
-                <input type="submit" value="Actualizar" class="btn btn-primary" id="submit-button" />
-                <br />
-                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+                    <br />
+                    <input type="submit" value="Actualizar" class="btn-u" id="submit-button" />
+                    <br />
+                    <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
 
-            }
-
+                }
+            </div>
         </div>
 
     </div>
@@ -134,14 +146,14 @@
                         
             }
 
-            @Html.Partial("ImagesChooser", images)
+@Html.Partial("ImagesChooser", images)
 
 
-        </p>
+</p>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+        <button class="updateimg btn-u">Actualizar Imagen</button>
     </div>
 </div>
 
@@ -153,26 +165,26 @@
                 window.location = data.redirectToUrl;
             else
                 window.location = '@Url.Action("Index", "Home")'
-            });
-        }
-
-        function failed() {
-            jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
-        }
-
-        var $t = jQuery.noConflict();
-        $t("#ImagesSelect").change(function () {
-            var imageValue = $t(this).val();
-            var urlHelper = new UrlHelper();
-            imageValue = urlHelper.urlImage(imageValue);
-            $t(".img-chooser").attr('src', imageValue);
         });
+    }
 
-        $t(".updateimg").click(function () {
-            var imgvalue = $t("#ImagesSelect").val();
-            $t("#PRD_Images").val(imgvalue);
-            jAlert('La imagen ha sido cambiada satisfactoriamente.');
-        });
+    function failed() {
+        jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
+    }
+
+    var $t = jQuery.noConflict();
+    $t("#ImagesSelect").change(function () {
+        var imageValue = $t(this).val();
+        var urlHelper = new UrlHelper();
+        imageValue = urlHelper.urlImage(imageValue);
+        $t(".img-chooser").attr('src', imageValue);
+    });
+
+    $t(".updateimg").click(function () {
+        var imgvalue = $t("#ImagesSelect").val();
+        $t("#PRD_Images").val(imgvalue);
+        jAlert('La imagen ha sido cambiada satisfactoriamente.');
+    });
 </script>
 
 

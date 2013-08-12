@@ -52,17 +52,24 @@
 
 
 
-<h2>Modo Edición de Catalogos</h2>
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Edición de Cotizaciones</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Cotizaciones</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
-
-
-<div class="container-fluid pageProducts">
-    <div id="freeow-tr" class="freeow freeow-top-right"></div>
-    <div class="row-fluid public-share ">
+<div class="container">
+    <div class="row-fluid">
 
 
         <div class="span3">
-
+            <div class="headline"><h3>Operaciones</h3></div>
             <div>
                 @Html.ActionLink("Regresar a Principal", "Index", "Home", null, null)
             </div>
@@ -74,73 +81,75 @@
         </div>
 
         <div class="span9">
-            <h2>Editar Cotización Existente</h2>
-            <br />
-            <div class="successmessage">
-            </div>
 
-            @using (Ajax.BeginForm("Edit", "Cotiza", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
-            {
+
+            <div class="another-page">
+                <h3>Edición</h3>
+                <div class="successmessage">
+                </div>
+
+                @using (Ajax.BeginForm("Edit", "Cotiza", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                {
               
                 
-                @Html.ValidationSummary(true)
+                    @Html.ValidationSummary(true)
             
-                <h4>Para la edición por favor llenar todos los campos requeridos</h4>
-                <br />
+                    <h4>Para la edición por favor llenar todos los campos requeridos</h4>
+                    <br />
 
-                @Html.HiddenFor(model => model.COT_Id, new { @placeholder = "Id", @class = "input-large" })
+                    @Html.HiddenFor(model => model.COT_Id, new { @placeholder = "Id", @class = "input-large" })
                 
-                <label for='COT_Id'>Nombre*: </label>
-                @Html.TextBoxFor(model => model.COT_Nombre, new { @placeholder = "COT_Nombre", @class = "input-xlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Nombre)
+                    <label for='COT_Id'>Nombre*: </label>
+                    @Html.TextBoxFor(model => model.COT_Nombre, new { @placeholder = "COT_Nombre", @class = "input-xlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Nombre)
 
 
-                <label for='COT_Email'>Correo Electrónico*:</label>
-                @Html.TextBoxFor(model => model.COT_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Email)
-
-                
-                <label for='COT_Telefono'>Telefóno*:</label>
-                @Html.TextBoxFor(model => model.COT_Telefono, new { @placeholder = "Telefono", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Telefono)
-
-                <label for='COT_Celular'>Celular*:</label>
-                @Html.TextBoxFor(model => model.COT_Celular, new { @placeholder = "Celular", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Celular)
+                    <label for='COT_Email'>Correo Electrónico*:</label>
+                    @Html.TextBoxFor(model => model.COT_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Email)
 
                 
-                <label for='COT_Telefono'>Telefóno*:</label>
-                @Html.TextBoxFor(model => model.COT_Telefono, new { @placeholder = "Telefono", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Telefono)
+                    <label for='COT_Telefono'>Telefóno*:</label>
+                    @Html.TextBoxFor(model => model.COT_Telefono, new { @placeholder = "Telefono", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Telefono)
+
+                    <label for='COT_Celular'>Celular*:</label>
+                    @Html.TextBoxFor(model => model.COT_Celular, new { @placeholder = "Celular", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Celular)
+
                 
-                <label for='COT_Descripcion'>Desscripción*:</label>
-                @Html.TextAreaFor(model => model.COT_Descripcion, new { @placeholder = "Descripción", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Descripcion)
+                    <label for='COT_Telefono'>Telefóno*:</label>
+                    @Html.TextBoxFor(model => model.COT_Telefono, new { @placeholder = "Telefono", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Telefono)
+                
+                    <label for='COT_Descripcion'>Desscripción*:</label>
+                    @Html.TextAreaFor(model => model.COT_Descripcion, new { @placeholder = "Descripción", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Descripcion)
               
-                <label for='COT_Mensaje'>Mensaje*:</label>
-                @Html.TextAreaFor(model => model.COT_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.COT_Mensaje)
+                    <label for='COT_Mensaje'>Mensaje*:</label>
+                    @Html.TextAreaFor(model => model.COT_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.COT_Mensaje)
 
-                <label for='STS_Id'>Estatus*:</label>
-                @Html.DropDownList("STS_Id", String.Empty)
-                <br />
-                @Html.ValidationMessageFor(model => model.STS_Id)
+                    <label for='STS_Id'>Estatus*:</label>
+                    @Html.DropDownList("STS_Id", String.Empty)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.STS_Id)
               
-                <br />
-                <input type="submit" value="Actualizar" class="btn btn-primary" id="submit-button" />
-                <br />
-                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+                    <br />
+                    <input type="submit" value="Actualizar" class="btn-u" id="submit-button" />
+                    <br />
+                    <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
 
 
-            }
-
+                }
+            </div>
         </div>
 
     </div>

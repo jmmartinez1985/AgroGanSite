@@ -14,6 +14,10 @@ namespace AgroGanSite.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<webpages_Membership> webpages_Memberships { get; set; }
 
+        public DbSet<NEW_Noticias> NEW_Noticias { get; set; }
+
+        public DbSet<STS_Status> STS_Status { get; set; }
+
     }
 
     public class RegisterExternalLoginModel

@@ -1,0 +1,60 @@
+﻿<!-- Menu -->
+<div class="navbar">
+    <div class="navbar-inner">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <!-- /nav-collapse -->
+        <div class="nav-collapse collapse">
+            <ul class="nav top-2">
+                  <li class="active">
+                    <a href="@Url.Action("Index", "Home")" class="dropdown-toggle" data-toggle="dropdown">Inicio
+                               
+                                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  href="@Url.Action("Index", "Product")">Productos</a></li>
+                        <li><a  href="@Url.Action("Index", "Cotiza")">Cotizaciones</a></li>
+                        <li><a   href="@Url.Action("Index", "News")">Noticias</a></li>
+                        <li><a   href="@Url.Action("Index", "Contact")">Contactos</a></li>
+                        <li><a   href="@Url.Action("Index", "PrincipalInfo")">Pantalla Inicial</a></li>
+                        <li><a  href="@Url.Action("Index", "Sponsor")">Patrocinadores</a></li>
+                    </ul>
+                    <b class="caret-out"></b>
+                </li>
+
+                <li class="">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración de Cuentas
+                               
+                                    <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                                    <li ><a  tabindex="-1" href="@Url.Action("Manage", "Account")">Administrar Cuenta </a></li>
+                                    <li ><a  tabindex="-1" href="@Url.Action("Register", "Account")">Crear Cuentas</a></li>
+                                    <li ><a  tabindex="-1" href="@Url.Action("EditCompanyInfo", "Home")">Editar Compañia </a></li>
+                                </ul>
+                    <b class="caret-out"></b>
+                </li>
+
+                <li ><a href="@Url.Action("ViewUploader", "Home")">Imagenes</a></li>
+
+              
+            
+                <li><a class="search"><i class="search-btn icon-search"></i></a></li>
+            </ul>
+            <div class="search-open" style="display: none;">
+                <div class="input-append">
+                    <form>
+                        <input type="text" class="span3" placeholder="Search">
+                        <button type="submit" class="btn-u">Go</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /nav-collapse -->
+    </div>
+    <!-- /navbar-inner -->
+</div>
+<!-- /navbar -->

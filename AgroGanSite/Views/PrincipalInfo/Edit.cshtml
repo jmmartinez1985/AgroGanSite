@@ -46,17 +46,26 @@
 </script>
 
 
-<h2>Modo Edición</h2>
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Edición de Pantalla de Inicio</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Pantalla Inicio</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
 
 
-
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="container">
+    <div class="row-fluid">
 
 
         <div class="span3">
-
+            <div class="headline"><h3>Operaciones</h3></div>
             <div>
                 @Html.ActionLink("Regresar", "Index")
             </div>
@@ -68,67 +77,67 @@
         </div>
 
         <div class="span9">
-            <h2>Editar Objeto de página principal Existentes</h2>
-            <br />
-            <div class="successmessage">
-            </div>
+            <div class="another-page">
+                <h3>Edición</h3>
+                <div class="successmessage">
+                </div>
 
-            @using (Ajax.BeginForm("Edit", "PrincipalInfo", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
-            {
+                @using (Ajax.BeginForm("Edit", "PrincipalInfo", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                {
               
                 
-                @Html.ValidationSummary(true)
-              @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
                 
-                <h4>Para la creación por favor llenar todos los campos requeridos</h4>
-                <br />
+                    <h4>Para la creación por favor llenar todos los campos requeridos</h4>
+                    <br />
 
                 
-                @Html.HiddenFor(model => model.PRC_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
-                @Html.ValidationMessageFor(model => model.PRC_Id)
+                    @Html.HiddenFor(model => model.PRC_Id, new { @placeholder = "Producto", @class = "input-xxlarge" })
+                    @Html.ValidationMessageFor(model => model.PRC_Id)
 
-                @Html.HiddenFor(model => model.PRC_Id, new { @placeholder = "Objeto Inicio", @class = "input-xxlarge" })
-                @Html.ValidationMessageFor(model => model.PRC_Id)
+                    @Html.HiddenFor(model => model.PRC_Id, new { @placeholder = "Objeto Inicio", @class = "input-xxlarge" })
+                    @Html.ValidationMessageFor(model => model.PRC_Id)
 
 
-                <label for='PRC_Text'>Encabezado*:</label>
-                @Html.TextBoxFor(model => model.PRC_Text, new { @placeholder = "Encabezado", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRC_Text)   
+                    <label for='PRC_Text'>Encabezado*:</label>
+                    @Html.TextBoxFor(model => model.PRC_Text, new { @placeholder = "Encabezado", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRC_Text)   
                     
                     
-                <label for='PRC_Descripcion'>Descripción*:</label>
-                @Html.TextBoxFor(model => model.PRC_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRC_Descripcion)
+                    <label for='PRC_Descripcion'>Descripción*:</label>
+                    @Html.TextBoxFor(model => model.PRC_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRC_Descripcion)
 
               
  
-                <label for='PRC_Imagen'>Imagen*:</label>
-                @Html.TextBoxFor(model => model.PRC_Imagen, new { @placeholder = "Imagen", @class = "input-xxlarge txtNoButton" })
-                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
-                @Html.ValidationMessageFor(model => model.PRC_Imagen)
-                <br />
+                    <label for='PRC_Imagen'>Imagen*:</label>
+                    @Html.TextBoxFor(model => model.PRC_Imagen, new { @placeholder = "Imagen", @class = "input-xxlarge txtNoButton" })
+                    <a data-toggle="modal" href="#myModal" class="btn-u btn-mini">Search</a>
+                    @Html.ValidationMessageFor(model => model.PRC_Imagen)
+                    <br />
 
-                <label for='STS_Id'>Estatus*:</label>
-                @Html.DropDownList("STS_Id", String.Empty)
-                <br />
-                @Html.ValidationMessageFor(model => model.STS_Id)
+                    <label for='STS_Id'>Estatus*:</label>
+                    @Html.DropDownList("STS_Id", String.Empty)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.STS_Id)
               
-                <label for='PRC_Html'>Contenido*:</label>
-                @Html.EditorFor(model => model.PRC_Html, new { @placeholder = "Contenido", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRC_Html)
-                <br />
-                <input type="submit" value="Actualizar" class="btn btn-primary" id="submit-button" />
-                <br />
-                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+                    <label for='PRC_Html'>Contenido*:</label>
+                    @Html.EditorFor(model => model.PRC_Html, new { @placeholder = "Contenido", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRC_Html)
+                    <br />
+                    <input type="submit" value="Actualizar" class="btn-u" id="submit-button" />
+                    <br />
+                    <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
 
 
              
           
-            }
-
+                }
+            </div>
         </div>
 
     </div>
@@ -146,14 +155,14 @@
                         
             }
 
-            @Html.Partial("ImagesChooser", images)
+@Html.Partial("ImagesChooser", images)
 
 
-        </p>
+</p>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+        <button class="updateimg btn-u">Actualizar Imagen</button>
     </div>
 </div>
 

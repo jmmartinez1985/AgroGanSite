@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Servicios";
+}
+
+<link href="~/Content/Unify/jquery.bxslider.css" rel="stylesheet" />
+<link href="~/Content/Unify/flexslider.css" rel="stylesheet" />
+
+
+
+<script src="~/Scripts/CustomScript/jquery.bxslider.js"></script>
+<script src="~/Scripts/CustomScript/app.js"></script>
+
+<div class="breadcrumbs margin-bottom-50">
+    <h3 class="color-blue pull-left">Los servicios que ofrecemos día a día</h3>
+    <div class="container">
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Servicios</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+
+
+<div class="container">
+ 
+      <!-- Boletin del Agro -->
+        <div class="headline">
+            <h3>Servicios Disponibles</h3>
+        </div>
+        <div class="row-fluid margin-bottom-40">
+            <ul id="list" class="bxslider recent-work">
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/2.jpg" alt="" /></em>
+                        <span>
+                            <strong>Happy New Year</strong>
+                            <i>Anim pariatur cliche reprehenderit</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/4.jpg" alt="" /></em>
+                        <span>
+                            <strong>Award Winning Agency</strong>
+                            <i>Responsive Bootstrap Template</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/5.jpg" alt="" /></em>
+                        <span>
+                            <strong>Wolf Moon Officia</strong>
+                            <i>Pariatur prehe cliche reprehrit</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden">
+                            <img src="~/FilesUploaded/6.jpg" alt="" /></em>
+                        <span>
+                            <strong>Food Truck Quinoa Nesciunt</strong>
+                            <i>Craft labore wes anderson cred</i>
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!--/row-->
+        <!-- //End Recent Works -->
+</div>
+<script>
+    App.initBxSlider1();
+</script>

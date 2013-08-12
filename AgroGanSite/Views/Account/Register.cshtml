@@ -4,10 +4,76 @@
 }
 
 <script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
-<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />*@
 
 
-<div class="row-fluid">
+
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Register</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Registration</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+<!--/breadcrumbs-->
+
+<div class="container">
+
+    <div class="row-fluid ">
+        <div class="reg-page">
+
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <h3>Register a new account</h3>
+                <div class="controls">
+
+                    <label>UserName<span class="color-red">*</span></label>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "span12" })
+                </div>
+                <div class="controls">
+
+                    <label>Email Address <span class="color-red">*</span></label>
+                    @Html.TextBoxFor(m => m.EmailId, new { @class = "span12" })
+                </div>
+                <div class="controls">
+
+                    <label>Details <span class="color-red"></span></label>
+                    @Html.TextBoxFor(m => m.Details, new { @class = "span12" })
+                </div>
+                
+                <div class="controls">
+                    <div class="span6">
+                        <label>Password <span class="color-red">*</span></label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "span12" })
+                    </div>
+                    <div class="span6">
+                        <label>Confirm Password <span class="color-red">*</span></label>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "span12" })
+                    </div>
+                </div>
+                <div class="controls form-inline">
+                    <label class="checkbox">
+                        <input type="checkbox" />&nbsp; I read <a href="#">Terms and Conditions</a></label>
+                    <button class="btn-u pull-right" type="submit">Register</button>
+                </div>
+                <hr />
+                <p>Already Signed Up? Click <a href="@Url.Action("Login")" class="color-green">Sign In</a> to login your account.</p>
+            }
+        </div>
+
+
+    </div>
+    <!--/row-fluid-->
+</div>
+<!--/container-->
+
+@*<div class="row-fluid">
     <div class="block span12">
         <a data-toggle="collapse" class="block-heading" href="#tablelogin">Registro de Cuenta.</a>
         <div class="block-body collapse in" id="tablelogin">
@@ -47,7 +113,7 @@
         </div>
     </div>
 
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

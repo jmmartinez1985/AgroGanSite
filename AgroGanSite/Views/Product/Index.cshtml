@@ -11,141 +11,150 @@
 <script src="@Url.Content("~/Scripts/jpage/jPages.min.js")" type="text/javascript"></script>
 
 
-<h2>Modo Visualización de Catalogos</h2>
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Productos Existentes</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Listado de Productos</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+
+<div class="container">
+    <div class="row-fluid">
         <div class="span3">
-            <h2>Categorias</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>)
-            </div>
-            <h2>Productos</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>)
+            <h3>Categorias</h3>
 
-            </div>
+            @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>, new { @class = "span10" })
 
-            <br />
+            <h3>Productos</h3>
+
+            @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>, new { @class = "span10" })
+
+
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
 
             <div>
-                @Html.ActionLink("Volver a Dashboard", "Index","Home")
+                @Html.ActionLink("Volver a Dashboard", "Index", "Home")
             </div>
-
+            <br />
+            <div>@Html.ActionLink("Crear Nuevo", "Create")</div>
         </div>
 
         <div class="span9">
-            <h2>Administración de Productos</h2>
-            <br />
-            <div class="successmessage">
-            </div>
+            <div class="another-page">
+                <h3>Listado</h3>
+                <div class="successmessage">
+                </div>
 
 
+                <div style="overflow: scroll; width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <thead>
 
-
-            <p>
-                @Html.ActionLink("Crear Nuevo", "Create")
-            </p>
-
-            <div style="overflow: scroll; width: 100%">
-                <table class="table table-bordered table-hover">
-                    <thead>
-
-                        <tr>
-                            <th style="text-align:center">Administración</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_Id)
-                            </th> 
-                            
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_Nombre)
-                            </th>
-<th>
-                                @Html.DisplayNameFor(model => model.PRO_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CAT_Categorias.CAT_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_IsBanner)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_HTML)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_Image)
-                            </th>
-                            
-
-                        </tr>
-                    </thead>
-                    <tbody id="productdiv">
-                        @foreach (var item in Model)
-                        {
                             <tr>
-                                <td>
+                                <th style="text-align: center">Administración</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_Id)
+                                </th>
 
-                                    <table>
-                                        <tr>
-                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRO_Id }, new { @class = "btn btn-primary" })</td>
-                                            <td>@Html.ActionLink("Detalle", "Index", "ProductDetails", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>
-                                            <td>
-                                                <a class="btn btn-danger" onclick="deleteprod('@item.PRO_Id')" >Borrar</a>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_Nombre)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CAT_Categorias.CAT_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_IsBanner)
+                                </th>
 
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_HTML)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_Image)
+                                </th>
 
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_Nombre)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_Descripcion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CAT_Categorias.CAT_Descripcion)
-                                </td>
-                                
-                    
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_IsBanner)
-                                </td>
-
-                                 <td>
-                                    @Html.Label("No Disponible debido a su tamaño en página")
-                                </td>
-
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_Image)
-                                </td>
-                                
 
                             </tr>
-                        }
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="8">
-                                <div class="holder" style="float: left">
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+                        </thead>
+                        <tbody id="productdiv">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
 
-                </table>
+                                        <table>
+                                            <tr>
+                                                <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRO_Id }, new { @class = "btn-u" })</td>
+                                                <td>@Html.ActionLink("Detalle", "Index", "ProductDetails", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>
+                                                <td>
+                                                    <a class="btn btn-danger" onclick="deleteprod('@item.PRO_Id')" >Borrar</a>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CAT_Categorias.CAT_Descripcion)
+                                    </td>
+
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_IsBanner)
+                                    </td>
+
+                                    <td>
+                                        @Html.Label("No Disponible debido a su tamaño en página")
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_Image)
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <div class="holder" style="float: left">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+
             </div>
-
         </div>
     </div>
 </div>
@@ -166,8 +175,7 @@
         });
     });
 
-    function deleteprod(id)
-    {
+    function deleteprod(id) {
         jConfirm('Desea borrar este producto?', 'Borrar producto existente', function (confirmed) {
             if (confirmed) {
                 jQuery.ajax(
@@ -184,51 +192,51 @@
                        alert(a);
                    }
                });
-            }
+           }
         });
 
+   }
+
+
+   GetProducts($j("#cbxCategorias").val());
+
+   $j("#cbxCategorias").change(function () {
+       category = $j(this).val();
+       alert(category)
+       GetProducts(category);
+   });
+   function GetProducts(category) {
+       jQuery.ajax(
+        {
+            type: 'post',
+            url: '@Url.Content("~/ProductView/GetProductsByCategory/")',
+            data:
+            {
+                catid: category
+            },
+            success: function (data) {
+                var select = $t('#cbxProductos');
+                if (select.prop) {
+                    var options = select.prop('options');
+                }
+                else {
+                    var options = select.attr('options');
+                }
+                $j('option', select).remove();
+                var result = JSON.parse(data)
+
+                $j.each(result.$values, function (val, text) {
+                    options[options.length] = new Option(text.PRO_Descripcion, text.PRO_Id);
+                });
+
+                var currentproduct = $j("#cbxProductos").val();
+
+
+            },
+            error: function (a, b, c) {
+
+            }
+        });
     }
-
-
-    GetProducts($j("#cbxCategorias").val());
-
-    $j("#cbxCategorias").change(function () {
-        category = $j(this).val();
-        alert(category)
-        GetProducts(category);
-    });
-    function GetProducts(category) {
-        jQuery.ajax(
-         {
-             type: 'post',
-             url: '@Url.Content("~/ProductView/GetProductsByCategory/")',
-             data:
-             {
-                 catid: category
-             },
-             success: function (data) {
-                 var select = $t('#cbxProductos');
-                 if (select.prop) {
-                     var options = select.prop('options');
-                 }
-                 else {
-                     var options = select.attr('options');
-                 }
-                 $j('option', select).remove();
-                 var result = JSON.parse(data)
-
-                 $j.each(result.$values, function (val, text) {
-                     options[options.length] = new Option(text.PRO_Descripcion, text.PRO_Id);
-                 });
-
-                 var currentproduct = $j("#cbxProductos").val();
-
-
-             },
-             error: function (a, b, c) {
-
-             }
-         });
-     }
 
   </script>

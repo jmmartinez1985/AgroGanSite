@@ -26,6 +26,13 @@ namespace AgroGanSite.Controllers
             return View();
         }
 
+        public ActionResult Servicios()
+        {
+            ViewBag.Message = "Your app description page.";
+
+            return View();
+        }
+
         public ActionResult Ubicacion()
         {
             ViewBag.Message = "Your app description page.";

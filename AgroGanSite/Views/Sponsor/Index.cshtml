@@ -4,7 +4,6 @@
     ViewBag.Title = "Patrocinadores";
 }
 
-<h2>Modo Visualización de Catalogos</h2>
 
 <link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
@@ -51,122 +50,130 @@
   </script>
 
 
-
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Listado de Proveedores</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Proveedores</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+<div class="container">
+    <div class="row-fluid">
 
         <div class="span3">
-
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
+            <div>
+                @Html.ActionLink("Volver a Patrocinadores", "Index", "Sponsor")
+            </div>
+            <br />
             <div>
                 @Html.ActionLink("Crear nuevo", "Create", "Sponsor")
             </div>
 
-            <br />
-
-            <div>
-                @Html.ActionLink("Volver a Patrocinadores", "Index", "Sponsor")
-            </div>
-
-
-
-
-
         </div>
 
         <div class="span9">
-            <h2>Administración de Patrocinadores</h2>
-            <br />
-            <div class="successmessage">
-            </div>
+
+            <div class="another-page">
+                <h3>Listado</h3>
+                <div class="successmessage">
+                </div>
 
 
 
-            @*  <p>
+                @*  <p>
                 @Html.ActionLink("Create New", "Create")
             </p>*@
 
-            <div style="overflow: scroll; width: 100%">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">Administración</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PTC_Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PTC_Nombre)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PTC_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PTC_Url)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PTC_Imagen)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
-                            </th>
-                        </tr>
-
-                    </thead>
-                    <tbody id="productdiv">
-
-                        @foreach (var item in Model)
-                        {
+                <div style="overflow: scroll; width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <td>
-
-                                    <table>
-                                        <tr>
-                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PTC_Id }, new { @class = "btn btn-primary" })</td>
-                                            @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
-                                            <td>
-
-                                                <a class="btn btn-danger" onclick="deleteSponsor('@item.PTC_Id')" >Borrar</a>
-
-
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PTC_Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PTC_Nombre)
-                                </td>
-                                <td>
-                                   @Html.DisplayFor(modelItem => item.PTC_Descripcion)
-                                </td>
-                                <td>
-                                     @Html.DisplayFor(modelItem => item.PTC_Url)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PTC_Imagen)
-                                </td>
+                                <th style="text-align: center">Administración</th>
                                 <th>
-                                     @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
+                                    @Html.DisplayNameFor(model => model.PTC_Id)
                                 </th>
-
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PTC_Nombre)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PTC_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PTC_Url)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PTC_Imagen)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                                </th>
                             </tr>
-                        }
 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="8">
-                                <div class="holder" style="float: left">
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+                        </thead>
+                        <tbody id="productdiv">
 
-                </table>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+
+                                        <table>
+                                            <tr>
+                                                <td>@Html.ActionLink("Editar", "Edit", new { id = item.PTC_Id }, new { @class = "btn-u" })</td>
+                                                @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
+                                                <td>
+
+                                                    <a class="btn btn-danger" onclick="deleteSponsor('@item.PTC_Id')" >Borrar</a>
+
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PTC_Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PTC_Nombre)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PTC_Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PTC_Url)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PTC_Imagen)
+                                    </td>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
+                                    </th>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <div class="holder" style="float: left">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+
             </div>
-
         </div>
     </div>
 </div>

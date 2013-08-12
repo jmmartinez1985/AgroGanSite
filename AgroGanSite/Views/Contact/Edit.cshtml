@@ -6,13 +6,24 @@
 
 <h2>Modo Edición</h2>
 
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Edición de Contactos</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Contactos</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="container-fluid">
+    <div class="row-fluid">
 
 
         <div class="span3">
-
+            <div class="headline"><h3>Operaciones</h3></div>
             <div>
                 @Html.ActionLink("Regresar", "Index")
             </div>
@@ -24,34 +35,35 @@
         </div>
 
         <div class="span9">
-            <h2>Visualizacion del contacto</h2>
-            <br />
+
+            <div class="another-page">
+                <h3>Edición</h3>
 
 
-            @Html.HiddenFor(model => model.CON_Id, new { @placeholder = "Id", @class = "input-large" })
+                @Html.HiddenFor(model => model.CON_Id, new { @placeholder = "Id", @class = "input-large" })
 
 
-            <label for='CON_Nombre'>Nombre:</label>
-            @Html.TextBoxFor(model => model.CON_Nombre, new { @placeholder = "Nombre", @class = "input-xlarge", @readonly = "read-only" })
+                <label for='CON_Nombre'>Nombre:</label>
+                @Html.TextBoxFor(model => model.CON_Nombre, new { @placeholder = "Nombre", @class = "input-xlarge", @readonly = "read-only" })
 
-            <label for='CON_Email'>Correo Electrónico:</label>
-            @Html.TextBoxFor(model => model.CON_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge", @readonly = "read-only" })
+                <label for='CON_Email'>Correo Electrónico:</label>
+                @Html.TextBoxFor(model => model.CON_Email, new { @placeholder = "Correo Electrónico", @class = "input-xxlarge", @readonly = "read-only" })
 
-            <label for='CON_Telefono'>Telefóno:</label>,
+                <label for='CON_Telefono'>Telefóno:</label>,
                 @Html.TextBoxFor(model => model.CON_Telefono, new { @placeholder = "Telefóno", @class = "input-large", @readonly = "read-only" })
 
-            <label for='CON_Celular'>Celular:</label>
-            @Html.TextBoxFor(model => model.CON_Celular, new { @placeholder = "Celular", @class = "input-xlarge", @readonly = "read-only" })
+                <label for='CON_Celular'>Celular:</label>
+                @Html.TextBoxFor(model => model.CON_Celular, new { @placeholder = "Celular", @class = "input-xlarge", @readonly = "read-only" })
 
-            <label for='CON_Fecha'>Fecha:</label>
-            @Html.TextBoxFor(model => model.CON_Fecha, new { @placeholder = "Fecha Creación", @class = "input-large", @readonly = "read-only" })
+                <label for='CON_Fecha'>Fecha:</label>
+                @Html.TextBoxFor(model => model.CON_Fecha, new { @placeholder = "Fecha Creación", @class = "input-large", @readonly = "read-only" })
 
-            <label for='CON_Mensaje'>Mensaje:</label>
-            @Html.TextAreaFor(model => model.CON_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge", @readonly = "read-only" })
+                <label for='CON_Mensaje'>Mensaje:</label>
+                @Html.TextAreaFor(model => model.CON_Mensaje, new { @placeholder = "Mensaje", @class = "input-xxlarge", @readonly = "read-only" })
 
 
+            </div>
         </div>
-
     </div>
 </div>
 

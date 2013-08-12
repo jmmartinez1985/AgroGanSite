@@ -6,33 +6,64 @@
 @*<script src="~/Scripts/slides.min.jquery.js"></script>*@
 <script src="~/Scripts/Bootstrap/bootstrap-collapse.js"></script>
 <script src="~/Scripts/Bootstrap/bootstrap-carousel.js"></script>
-<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />
+@*<link href="~/Content/bootstrap-helper.css" rel="stylesheet" />*@
 
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Lo que nuestra empresa te ofrece</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Productos</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+<div class="container">
+    <div class="row-fluid">
         <div class="span3">
-            <h2>Categorias</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>)
+            <div class="headline">
+                <h3>Cátalogo</h3>
             </div>
-            <h2>Productos</h2>
-            <div class="dropDownList">
-                @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>)
+            <h4>Categorias</h4>
 
-            </div>
+            @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>, new { @class = "span10" })
+
+            <h4>Productos</h4>
+
+            @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>, new { @class = "span10" })
+
+
+
             <br />
             <br />
-            <div style="width: 100px">
-                <div style="vertical-align: middle; margin-right: 20px">
-                    <a href="https://twitter.com/agrogan" class="twitter-follow-button" data-show-count="false">Follow @@kippt</a>
-                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+
+            <div class="posts">
+                <div class="headline">
+                    <h3>Productos Recientes</h3>
                 </div>
-                <div style="vertical-align: bottom">
-                    <div class="fb-like" data-href="http://facebook.com/agrogan" data-send="false" data-width="100" data-show-faces="false" data-layout="button_count"></div>
-                </div>
+                <dl class="dl-horizontal">
+                    <dt><a href="#">
+                        <img src="/AgroGanSite/FilesUploaded/6.jpg" alt=""></a></dt>
+                    <dd>
+                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#">
+                        <img src="/AgroGanSite/FilesUploaded/9.jpg" alt=""></a></dt>
+                    <dd>
+                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
+                    </dd>
+                </dl>
+
             </div>
         </div>
         <div class="span9">
+            <div class="headline">
+                <h3>Detalle del Producto</h3>
+            </div>
             <section id="carousel">
                 <div class="bs-docs-example">
 
@@ -47,7 +78,6 @@
                     <a data-toggle="collapse" class="block-heading" href="#tableproducts">Acerca del Producto<span class="label label-warning"></span></a>
                     <div class="block-body collapse in" id="tableproducts">
                         <div id="htmldescription">
-
                         </div>
 
                     </div>
@@ -81,8 +111,7 @@
         GetProductHtml(product);
     });
 
-    function GetProductHtml(prodid)
-    {
+    function GetProductHtml(prodid) {
         $t.each(jsonproducts, function (val, product) {
             var prod = product.PRO_Id;
             if (prod == prodid) {
@@ -111,7 +140,7 @@
                  }
                  $t('option', select).remove();
                  var result = JSON.parse(data);
-                 
+
                  jsonproducts = result.$values;
 
                  $t.each(result.$values, function (val, text) {
@@ -129,7 +158,7 @@
          });
      }
 
-    function GetHtmlDescription(prodid) {
+     function GetHtmlDescription(prodid) {
          $t.each(jsonresult.$values, function (val, product) {
              var prod = product.PRD_Id;
              if (prod == prodid) {

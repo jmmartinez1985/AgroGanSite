@@ -1,5 +1,5 @@
-﻿/*!
- * Bootstrap Responsive v2.3.1
+/*!
+ * Bootstrap Responsive v2.3.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -131,13 +131,13 @@
   .navbar-static-top .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container {
-    width: 960px;
+    width: 1170px;
   }
   .span12 {
-    width: 960px;
+    width: 1170px;
   }
   .span11 {
-    width: 960px;
+    width: 1070px;
   }
   .span10 {
     width: 970px;

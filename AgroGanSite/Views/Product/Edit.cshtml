@@ -55,17 +55,28 @@
 </script>
 
 
-<h2>Modo Edición</h2>
 
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Edición de Productos</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Edición</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
+<div class="container">
 
-<div class="container-fluid pageProducts">
-    <div id="freeow-tr" class="freeow freeow-top-right"></div>
-    <div class="row-fluid public-share ">
+    <div class="row-fluid">
 
 
         <div class="span3">
-
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
             <div>
                 @Html.ActionLink("Agregar Detalle", "Create", "ProductDetails", new { prod = Model.PRO_Id }, null)
             </div>
@@ -79,75 +90,72 @@
         </div>
 
         <div class="span9">
-            <h2>Editar Producto Existente</h2>
-            <br />
-            <div class="successmessage">
+
+            <div class="another-page">
+                <h3>Edición</h3>
+                <div class="successmessage">
+                </div>
+
+                @using (Ajax.BeginForm("Edit", "Product", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                {
+              
+                
+                    @Html.ValidationSummary(true)
+                    @Html.AntiForgeryToken()
+                
+                    <h4>Para la edición por favor llenar todos los campos requeridos</h4>
+                    <br />
+
+                    @Html.HiddenFor(model => model.PRO_Id, new { @placeholder = "Id", @class = "input-xxlarge" })
+                
+                    <label for='PRO_Nombre'>Producto*: </label>
+                    @Html.TextBoxFor(model => model.PRO_Nombre, new { @placeholder = "Producto", @class = "input-xlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRO_Nombre)
+
+
+                    <label for='PRO_Descripcion'>Descripción*:</label>
+                    @Html.TextBoxFor(model => model.PRO_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRO_Descripcion)
+
+              
+                    <label for='CAT_Id'>Categoria*:</label>
+                    @Html.EditorFor(model => model.CAT_Id)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.CAT_Id)
+
+                
+                    <label for='STS_Id'>Estatus*:</label>
+                    @Html.EditorFor(model => model.STS_Id)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.STS_Id)
+              
+                    <label for='PRO_IsBanner'>Es banner*:</label>
+                    @Html.EditorFor(model => model.PRO_IsBanner)
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRO_IsBanner)
+
+                    <label for='PRO_Image'>Imagen*:</label>
+                    @Html.TextBoxFor(model => model.PRO_Image, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
+                    <a data-toggle="modal" href="#myModal" class="btn-u btn-mini">Search</a>
+                    @Html.ValidationMessageFor(model => model.PRO_Image)
+                    <br />
+                
+
+                    <label for='PRO_HTML'>Contenido*:</label>
+                    @Html.EditorFor(model => model.PRO_HTML, new { @placeholder = "Teléfono", @class = "input-large" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.PRO_HTML)
+                    <br />
+                    <input type="submit" value="Actualizar" class="btn-u" id="submit-button" />
+                    <br />
+                    <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
+
+
+                }
             </div>
-
-            @using (Ajax.BeginForm("Edit", "Product", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
-            {
-              
-                
-                @Html.ValidationSummary(true)
-                @Html.AntiForgeryToken()
-                
-                <h4>Para la edición por favor llenar todos los campos requeridos</h4>
-                <br />
-
-                @Html.HiddenFor(model => model.PRO_Id, new { @placeholder = "Id", @class = "input-xxlarge" })
-                
-                <label for='PRO_Nombre'>Producto*: </label>
-                @Html.TextBoxFor(model => model.PRO_Nombre, new { @placeholder = "Producto", @class = "input-xlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRO_Nombre)
-
-
-                <label for='PRO_Descripcion'>Descripción*:</label>
-                @Html.TextBoxFor(model => model.PRO_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRO_Descripcion)
-
-              
-                <label for='CAT_Id'>Categoria*:</label>
-                @Html.EditorFor(model => model.CAT_Id)
-                <br />
-                @Html.ValidationMessageFor(model => model.CAT_Id)
-
-                
-                <label for='STS_Id'>Estatus*:</label>
-                @Html.EditorFor(model => model.STS_Id)
-                <br />
-                @Html.ValidationMessageFor(model => model.STS_Id)
-              
-                <label for='PRO_IsBanner'>Es banner*:</label>
-                @Html.EditorFor(model => model.PRO_IsBanner)
-                <br />
-                @Html.ValidationMessageFor(model => model.PRO_IsBanner)
-
-                <label for='PRO_Image'>Imagen*:</label>
-                @Html.TextBoxFor(model => model.PRO_Image, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
-                <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-mini">Search</a>
-                @Html.ValidationMessageFor(model => model.PRO_Image)
-                <br />
-                
-
-                <label for='PRO_HTML'>Contenido*:</label>
-                @Html.EditorFor(model => model.PRO_HTML, new { @placeholder = "Teléfono", @class = "input-large" })
-                <br />
-                @Html.ValidationMessageFor(model => model.PRO_HTML)
-                <br />
-                <input type="submit" value="Actualizar" class="btn btn-primary" id="submit-button" />
-                <br />
-                <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
-
-
-            }
-
         </div>
-
-
-
-
     </div>
 </div>
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -163,14 +171,14 @@
                         
             }
 
-            @Html.Partial("ImagesChooser", images)
+@Html.Partial("ImagesChooser", images)
 
 
-        </p>
+</p>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-        <button class="updateimg btn btn-primary">Actualizar Imagen</button>
+        <button class="updateimg btn-u">Actualizar Imagen</button>
     </div>
 </div>
 

@@ -4,7 +4,6 @@
     ViewBag.Title = "Producto Detalles";
 }
 
-<h2>Modo Visualización de Catalogos</h2>
 
 <link href="@Url.Content("~/Content/jpages/jPages.css")" rel="stylesheet" type="text/css" />
 <link href="@Url.Content("~/Content/jpages/animate.css")" rel="stylesheet" type="text/css" />
@@ -44,22 +43,32 @@
                        alert(a);
                    }
                });
-            }
+           }
         });
 
-       }
+   }
   </script>
 
 
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Detalle de Productos</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li class="active">Detalle de Producto</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
 
-
-<div class="container-fluid pageProducts">
-    <div class="row-fluid public-share ">
+<div class="container">
+    <div class="row-fluid">
 
         <div class="span3">
-
+             <div class="headline"><h3>Operaciones</h3></div>
             <div>
-                @Html.ActionLink("Crear nuevo", "Create", "ProductDetails", new { prod= ViewBag.ProdId } ,null)
+                @Html.ActionLink("Crear nuevo", "Create", "ProductDetails", new { prod = ViewBag.ProdId }, null)
             </div>
 
             <br />
@@ -75,94 +84,89 @@
         </div>
 
         <div class="span9">
-            <h2>Administración de Productos</h2>
-            <br />
-            <div class="successmessage">
-            </div>
 
+            <div class="another-page">
+                <h3>Listado</h3>
+                <div class="successmessage">
+                </div>
 
-
-          @*  <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>*@
-
-            <div style="overflow: scroll; width: 100%">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">Administración</th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRD_Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRO_Id)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRD_Descripcion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRD_Html)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PRD_Images)
-                            </th>
-
-                        </tr>
-
-                    </thead>
-                    <tbody id="productdiv">
-
-                        @foreach (var item in Model)
-                        {
+                <div style="overflow: scroll; width: 100%">
+                    <table class="table table-bordered table-hover">
+                        <thead>
                             <tr>
-                                <td>
-
-                                    <table>
-                                        <tr>
-                                            <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRD_Id }, new { @class = "btn btn-primary" })</td>
-                                          @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
-                                            <td>
-                                                
-                                               <a class="btn btn-danger" onclick="deleteproddetail('@item.PRD_Id')" >Borrar</a>
-
-
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRD_Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRO_Id)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRD_Descripcion)
-                                </td>
-                                <td>
-                                    @Html.Label("No Disponible debido a su tamaño en página")
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PRD_Images)
-                                </td>
+                                <th style="text-align: center">Administración</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRD_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRO_Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRD_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRD_Html)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PRD_Images)
+                                </th>
 
                             </tr>
-                        }
 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="8">
-                                <div class="holder" style="float: left">
-                                </div>
-                            </td>
-                        </tr>
-                    </tfoot>
+                        </thead>
+                        <tbody id="productdiv">
 
-                </table>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+
+                                        <table>
+                                            <tr>
+                                                <td>@Html.ActionLink("Editar", "Edit", new { id = item.PRD_Id }, new { @class = "btn-u" })</td>
+                                                @*  <td>@Html.ActionLink("Details", "Details", new { prod = item.PRO_Id }, new { @class = "btn btn-warning" }) </td>*@
+                                                <td>
+
+                                                    <a class="btn btn-danger" onclick="deleteproddetail('@item.PRD_Id')" >Borrar</a>
+
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRD_Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRO_Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRD_Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.Label("No Disponible debido a su tamaño en página")
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PRD_Images)
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <div class="holder" style="float: left">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
