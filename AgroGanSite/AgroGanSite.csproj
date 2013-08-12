@@ -276,6 +276,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Content\bootstrap-helper.css" />
     <Content Include="Content\Bootstrap\bootstrap-responsive.css" />
     <Content Include="Content\Bootstrap\bootstrap-responsive.min.css" />
@@ -417,7 +418,7 @@
     <Content Include="Content\Unify\rs-style.css" />
     <Content Include="Content\Unify\style.css" />
     <Content Include="Content\Unify\style_responsive.css" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon.png" />
     <Content Include="FilesUploaded\2.jpg" />
     <Content Include="FilesUploaded\4.jpg" />
     <Content Include="FilesUploaded\5.jpg" />
@@ -443,6 +444,8 @@
     <Content Include="FilesUploaded\pencils.jpg" />
     <Content Include="FilesUploaded\river.jpg" />
     <Content Include="FilesUploaded\train.jpg" />
+    <Content Include="Images\ag_Logo.png" />
+    <Content Include="Images\ag_LogoLetra.png" />
     <Content Include="Images\arrow_left.gif" />
     <Content Include="Images\arrow_left.png" />
     <Content Include="Images\arrow_right.gif" />
@@ -1005,7 +1008,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51752</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
