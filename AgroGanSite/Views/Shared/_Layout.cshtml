@@ -89,7 +89,7 @@
                 else
                 {
                   
-                   @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-btn" })</li>
+@* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-btn" })</li>
                     <li class="devider">&nbsp;</li>*@
                     <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-btn" })</li>
                   
@@ -107,7 +107,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo">
-                <a href="@Url.Action("Index","Home")">
+                <a href="@Url.Action("Index", "Home")">
                     <img id="logo-header" src="@Url.Content("~/Images/ag_LogoLetra.png")" alt="Logo"></a>
             </div>
             <!-- /logo -->
@@ -233,7 +233,7 @@
                     <p>@DateTime.Now.Year © Agroganadera Martínez S.A. Derechos Reservados. <a href="#">Politica de Privacidad</a> | <a href="#">Terminos de Servicios</a></p>
                 </div>
                 <div class="span4">
-                    <a href="#">
+                    <a href="@Url.Action("Index", "Home")">
                         <img id="logo-footer" src="@Url.Content("~/Images/ag_Logo.png")" class="pull-right" alt=""></a>
                 </div>
             </div>
@@ -277,7 +277,7 @@
            });
     });
 
-    var imageUp = '@Url.Content("~/images/up.png")';
+       var imageUp = '@Url.Content("~/images/up.png")';
 
 </script>
 

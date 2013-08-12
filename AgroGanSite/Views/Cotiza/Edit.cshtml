@@ -56,8 +56,8 @@
     <div class="container">
         <h3 class="color-blue pull-left">Edición de Cotizaciones</h3>
         <ul class="pull-right breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li><a href="@Url.Action("Index", "Home")" >Pages</a> <span class="divider">/</span></li>
+            <li><a href="#">Inicio</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
             <li class="active">Cotizaciones</li>
         </ul>
     </div>
@@ -69,7 +69,9 @@
 
 
         <div class="span3">
-            <div class="headline"><h3>Operaciones</h3></div>
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
             <div>
                 @Html.ActionLink("Regresar a Principal", "Index", "Home", null, null)
             </div>

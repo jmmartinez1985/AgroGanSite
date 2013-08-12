@@ -63,7 +63,7 @@ namespace AgroGanSite.Controllers
         //
         // GET: /Account/Register
 
-        [AllowAnonymous]
+              [Authorize]
         public ActionResult Register()
         {
             return View();
@@ -73,7 +73,7 @@ namespace AgroGanSite.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
@@ -271,7 +271,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Account/Manage
-
+              [Authorize]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -288,6 +288,7 @@ namespace AgroGanSite.Controllers
         // POST: /Account/Manage
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model)
         {

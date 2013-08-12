@@ -954,7 +954,6 @@
     <Content Include="Views\Shared\FileUploader.cshtml" />
     <Content Include="Views\Home\ViewUploader.cshtml" />
     <Content Include="Views\ProductView\ProductsDisplay.cshtml" />
-    <Content Include="Views\Shared\Login.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
