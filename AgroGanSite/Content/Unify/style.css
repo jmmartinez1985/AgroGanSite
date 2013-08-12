@@ -383,7 +383,8 @@ blockquote:hover {
 .footer {
 	margin-top:40px;
 	padding:20px 10px;
-	background:#585f69;
+	/*background:#585f69;*/
+    background:#2980b9;
 	color:#dadada;
 } 
 .footer h1, 

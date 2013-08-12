@@ -486,6 +486,7 @@
     <Content Include="Content\img\vssver2.scc" />
     <Content Include="Images\under.jpg" />
     <Content Include="Images\up.png" />
+    <Content Include="Images\_ag_LogoLetra.png" />
     <Content Include="logo_pestaña.png" />
     <EntityDeploy Include="Models\AgroModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
