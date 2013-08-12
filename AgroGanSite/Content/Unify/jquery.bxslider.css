@@ -97,11 +97,11 @@
 
 .bx-wrapper .bx-prev {
 	right: 24px;
-	background: url(../images/controls.png) no-repeat 0 -25px;
+	background: url(images/controls-blue.png) no-repeat 0 -25px;
 }
 .bx-wrapper .bx-next {
 	right: 0;
-	background: url(../images/controls.png) no-repeat -24px -25px;
+	background: url(images/controls-blue.png) no-repeat -24px -25px;
 }
 
 .bx-wrapper .bx-prev:hover {

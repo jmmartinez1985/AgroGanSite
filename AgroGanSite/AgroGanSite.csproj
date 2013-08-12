@@ -409,6 +409,7 @@
     <Content Include="Content\Unify\flexslider.css" />
     <Content Include="Content\Unify\header1-blue.css" />
     <Content Include="Content\Unify\header1.css" />
+    <Content Include="Content\Unify\images\controls-blue.png" />
     <Content Include="Content\Unify\img-hover-effect.css" />
     <Content Include="Content\Unify\jquery.bxslider.css" />
     <Content Include="Content\Unify\jquery.fancybox.css" />
