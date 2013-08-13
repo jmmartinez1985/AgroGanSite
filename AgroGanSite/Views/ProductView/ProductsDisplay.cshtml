@@ -39,25 +39,7 @@
             <br />
             <br />
 
-            <div class="posts">
-                <div class="headline">
-                    <h3>Productos Recientes</h3>
-                </div>
-                <dl class="dl-horizontal">
-                    <dt><a href="#">
-                        <img src="/AgroGanSite/FilesUploaded/6.jpg" alt=""></a></dt>
-                    <dd>
-                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#">
-                        <img src="/AgroGanSite/FilesUploaded/9.jpg" alt=""></a></dt>
-                    <dd>
-                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                    </dd>
-                </dl>
-
+             <div class="posts margin-bottom-20 lastproducts">
             </div>
         </div>
         <div class="span9">
@@ -221,4 +203,33 @@
           });
       }
 
+
+    $t(function () {
+  
+        jQuery.ajax(
+        {
+            type: 'post',
+            url: '@Url.Content("~/ProductView/GetProductsTop/")',
+            data:
+            {
+                counter: 5
+            },
+            success: function (data) {
+                var result = JSON.parse(data);
+                var htmlresult = '';
+                htmlresult += '<div class="headline"><h3>Productos Recientes</h3></div>';
+                $t.each(result.$values, function (val, prod) {
+                    var urlHelper = new UrlHelper();
+                    var url = urlHelper.urlImage(prod.PRO_Image);
+                    htmlresult += '<dl class="dl-horizontal"> <dt><a href="#"><img src="' + url + '" alt=""></a></dt>';
+                    htmlresult += '<dd> <p><a href="#">"' + prod.PRO_Nombre + '"</a></p></dd> </dl>';
+                });
+                $t('.lastproducts').html(htmlresult);
+
+            },
+            error: function (a, b, c) {
+
+            }
+        });
+    });
 	</script>

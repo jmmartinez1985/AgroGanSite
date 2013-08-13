@@ -19,6 +19,7 @@ namespace AgroGanSite.Models
             : base("name=Entities")
         {
             base.Configuration.ProxyCreationEnabled = false;
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,13 +37,14 @@ namespace AgroGanSite.Models
         public DbSet<DOC_Documentos> DOC_Documentos { get; set; }
         public DbSet<IMG_Images> IMG_Images { get; set; }
         public DbSet<Img_Tipos> Img_Tipos { get; set; }
+        public DbSet<NEW_Noticias> NEW_Noticias { get; set; }
         public DbSet<PRC_PantallaInicial> PRC_PantallaInicial { get; set; }
         public DbSet<PRD_ProductosDetalles> PRD_ProductosDetalles { get; set; }
         public DbSet<PRO_Productos> PRO_Productos { get; set; }
         public DbSet<PTC_Patrocinadores> PTC_Patrocinadores { get; set; }
         public DbSet<SER_Servicios> SER_Servicios { get; set; }
+        public DbSet<STS_Status> STS_Status { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public DbSet<TSV_TipoServicio> TSV_TipoServicio { get; set; }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<webpages_Membership> webpages_Membership { get; set; }
         public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }

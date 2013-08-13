@@ -259,9 +259,6 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>AgroModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TSV_TipoServicio.cs">
-      <DependentUpon>AgroModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UserProfile.cs">
       <DependentUpon>AgroModel.tt</DependentUpon>
     </Compile>

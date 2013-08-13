@@ -24,7 +24,6 @@
           <EntitySet Name="SER_Servicios" EntityType="AgroDBModel.Store.SER_Servicios" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="STS_Status" EntityType="AgroDBModel.Store.STS_Status" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="AgroDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TSV_TipoServicio" EntityType="AgroDBModel.Store.TSV_TipoServicio" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserProfile" EntityType="AgroDBModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_Membership" EntityType="AgroDBModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="AgroDBModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
@@ -76,10 +75,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SER_Servicios_STS_Status" Association="AgroDBModel.Store.FK_SER_Servicios_STS_Status">
             <End Role="STS_Status" EntitySet="STS_Status" />
-            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SER_Servicios_TSV_TipoServicio" Association="AgroDBModel.Store.FK_SER_Servicios_TSV_TipoServicio">
-            <End Role="TSV_TipoServicio" EntitySet="TSV_TipoServicio" />
             <End Role="SER_Servicios" EntitySet="SER_Servicios" />
           </AssociationSet>
           <AssociationSet Name="fk_UserId" Association="AgroDBModel.Store.fk_UserId">
@@ -207,6 +202,7 @@
           <Property Name="STS_Id" Type="int" Nullable="false" />
           <Property Name="NEW_Imagen" Type="varchar" MaxLength="250" />
           <Property Name="NEW_Date" Type="datetime" />
+          <Property Name="NEW_CreatedBy" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="PRC_PantallaInicial">
           <Key>
@@ -239,7 +235,7 @@
           <Property Name="STS_Id" Type="int" Nullable="false" />
           <Property Name="CAT_Id" Type="int" Nullable="false" />
           <Property Name="PRO_Nombre" Type="varchar" MaxLength="150" />
-          <Property Name="PRO_Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="PRO_Descripcion" Type="varchar" MaxLength="250" />
           <Property Name="PRO_HTML" Type="text" />
           <Property Name="PRO_IsBanner" Type="bit" />
           <Property Name="PRO_Image" Type="varchar" MaxLength="250" />
@@ -261,8 +257,8 @@
             <PropertyRef Name="SER_Id" />
           </Key>
           <Property Name="SER_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TSV_Id" Type="int" Nullable="false" />
-          <Property Name="SER_Descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="SER_Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="SER_Titulo" Type="varchar" MaxLength="150" />
           <Property Name="SER_HTML" Type="text" />
           <Property Name="SER_Activa" Type="bit" />
           <Property Name="STS_Id" Type="int" Nullable="false" />
@@ -285,13 +281,6 @@
           <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="TSV_TipoServicio">
-          <Key>
-            <PropertyRef Name="TSV_Id" />
-          </Key>
-          <Property Name="TSV_Id" Type="int" Nullable="false" />
-          <Property Name="TSV_Descripcion" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -486,18 +475,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SER_Servicios_TSV_TipoServicio">
-          <End Role="TSV_TipoServicio" Type="AgroDBModel.Store.TSV_TipoServicio" Multiplicity="1" />
-          <End Role="SER_Servicios" Type="AgroDBModel.Store.SER_Servicios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TSV_TipoServicio">
-              <PropertyRef Name="TSV_Id" />
-            </Principal>
-            <Dependent Role="SER_Servicios">
-              <PropertyRef Name="TSV_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_UserId">
           <End Role="UserProfile" Type="AgroDBModel.Store.UserProfile" Multiplicity="1" />
           <End Role="webpages_UsersInRoles" Type="AgroDBModel.Store.webpages_UsersInRoles" Multiplicity="*" />
@@ -534,7 +511,6 @@
           <EntitySet Name="SER_Servicios" EntityType="AgroDBModel.SER_Servicios" />
           <EntitySet Name="STS_Status" EntityType="AgroDBModel.STS_Status" />
           <EntitySet Name="sysdiagrams" EntityType="AgroDBModel.sysdiagrams" />
-          <EntitySet Name="TSV_TipoServicio" EntityType="AgroDBModel.TSV_TipoServicio" />
           <EntitySet Name="UserProfile" EntityType="AgroDBModel.UserProfile" />
           <EntitySet Name="webpages_Membership" EntityType="AgroDBModel.webpages_Membership" />
           <EntitySet Name="webpages_OAuthMembership" EntityType="AgroDBModel.webpages_OAuthMembership" />
@@ -581,10 +557,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SER_Servicios_STS_Status" Association="AgroDBModel.FK_SER_Servicios_STS_Status">
             <End Role="STS_Status" EntitySet="STS_Status" />
-            <End Role="SER_Servicios" EntitySet="SER_Servicios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SER_Servicios_TSV_TipoServicio" Association="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio">
-            <End Role="TSV_TipoServicio" EntitySet="TSV_TipoServicio" />
             <End Role="SER_Servicios" EntitySet="SER_Servicios" />
           </AssociationSet>
           <AssociationSet Name="webpages_UsersInRoles" Association="AgroDBModel.webpages_UsersInRoles">
@@ -720,6 +692,7 @@
           <Property Name="STS_Id" Type="Int32" Nullable="false" />
           <Property Name="NEW_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="NEW_Date" Type="DateTime" Precision="3" />
+          <Property Name="NEW_CreatedBy" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_NEW_Noticias_STS_Status" FromRole="NEW_Noticias" ToRole="STS_Status" />
         </EntityType>
         <EntityType Name="PRC_PantallaInicial">
@@ -754,7 +727,7 @@
           <Property Name="STS_Id" Type="Int32" Nullable="false" />
           <Property Name="CAT_Id" Type="Int32" Nullable="false" />
           <Property Name="PRO_Nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-          <Property Name="PRO_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="PRO_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="PRO_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="PRO_IsBanner" Type="Boolean" />
           <Property Name="PRO_Image" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
@@ -780,15 +753,14 @@
             <PropertyRef Name="SER_Id" />
           </Key>
           <Property Name="SER_Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="TSV_Id" Type="Int32" Nullable="false" />
-          <Property Name="SER_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="SER_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="SER_Titulo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="SER_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="SER_Activa" Type="Boolean" />
           <Property Name="STS_Id" Type="Int32" Nullable="false" />
           <Property Name="SER_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="SER_Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="STS_Status" Relationship="AgroDBModel.FK_SER_Servicios_STS_Status" FromRole="SER_Servicios" ToRole="STS_Status" />
-          <NavigationProperty Name="TSV_TipoServicio" Relationship="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio" FromRole="SER_Servicios" ToRole="TSV_TipoServicio" />
         </EntityType>
         <EntityType Name="STS_Status">
           <Key>
@@ -813,14 +785,6 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="TSV_TipoServicio">
-          <Key>
-            <PropertyRef Name="TSV_Id" />
-          </Key>
-          <Property Name="TSV_Id" Type="Int32" Nullable="false" />
-          <Property Name="TSV_Descripcion" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="SER_Servicios" Relationship="AgroDBModel.FK_SER_Servicios_TSV_TipoServicio" FromRole="TSV_TipoServicio" ToRole="SER_Servicios" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -997,18 +961,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SER_Servicios_TSV_TipoServicio">
-          <End Role="TSV_TipoServicio" Type="AgroDBModel.TSV_TipoServicio" Multiplicity="1" />
-          <End Role="SER_Servicios" Type="AgroDBModel.SER_Servicios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TSV_TipoServicio">
-              <PropertyRef Name="TSV_Id" />
-            </Principal>
-            <Dependent Role="SER_Servicios">
-              <PropertyRef Name="TSV_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="webpages_UsersInRoles">
           <End Role="webpages_Roles" Type="AgroDBModel.webpages_Roles" Multiplicity="*" />
           <End Role="UserProfile" Type="AgroDBModel.UserProfile" Multiplicity="*" />
@@ -1148,6 +1100,7 @@
                 <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
                 <ScalarProperty Name="NEW_Imagen" ColumnName="NEW_Imagen" />
                 <ScalarProperty Name="NEW_Date" ColumnName="NEW_Date" />
+                <ScalarProperty Name="NEW_CreatedBy" ColumnName="NEW_CreatedBy" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1207,8 +1160,8 @@
             <EntityTypeMapping TypeName="AgroDBModel.SER_Servicios">
               <MappingFragment StoreEntitySet="SER_Servicios">
                 <ScalarProperty Name="SER_Id" ColumnName="SER_Id" />
-                <ScalarProperty Name="TSV_Id" ColumnName="TSV_Id" />
                 <ScalarProperty Name="SER_Descripcion" ColumnName="SER_Descripcion" />
+                <ScalarProperty Name="SER_Titulo" ColumnName="SER_Titulo" />
                 <ScalarProperty Name="SER_HTML" ColumnName="SER_HTML" />
                 <ScalarProperty Name="SER_Activa" ColumnName="SER_Activa" />
                 <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
@@ -1233,14 +1186,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TSV_TipoServicio">
-            <EntityTypeMapping TypeName="AgroDBModel.TSV_TipoServicio">
-              <MappingFragment StoreEntitySet="TSV_TipoServicio">
-                <ScalarProperty Name="TSV_Id" ColumnName="TSV_Id" />
-                <ScalarProperty Name="TSV_Descripcion" ColumnName="TSV_Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

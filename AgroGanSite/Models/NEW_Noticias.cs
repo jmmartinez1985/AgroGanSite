@@ -11,33 +11,18 @@ namespace AgroGanSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class NEW_Noticias
     {
-        [Display(Name = "Código")]
         public int NEW_Id { get; set; }
-        [Required]
-        [StringLength(250, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
-        [Display(Name = "Titular")]
         public string NEW_Descripcion { get; set; }
-        [Required]
-        [StringLength(150, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
-        [Display(Name = "Titulo")]
         public string NEW_Titulo { get; set; }
-        [Display(Name = "Contenido de la Noticia")]
         public string NEW_HTML { get; set; }
-        [Required]
-        [Display(Name = "Estatus")]
         public int STS_Id { get; set; }
-
-        [Required]
-        [Display(Name = "Imagen de la Noticia")]
-        [DataType(DataType.ImageUrl)]
         public string NEW_Imagen { get; set; }
-        [Display(Name = "Fecha de Actualización")]
         public Nullable<System.DateTime> NEW_Date { get; set; }
-
+        public string NEW_CreatedBy { get; set; }
+    
         public virtual STS_Status STS_Status { get; set; }
     }
 }

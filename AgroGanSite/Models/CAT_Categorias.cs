@@ -11,19 +11,17 @@ namespace AgroGanSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class CAT_Categorias
     {
         public CAT_Categorias()
         {
             this.PRO_Productos = new HashSet<PRO_Productos>();
         }
-        [Display(Name = "Categoría")]
+    
         public int CAT_Id { get; set; }
-        [Display(Name = "Descripción Categoría")]
         public string CAT_Descripcion { get; set; }
-
+    
         public virtual ICollection<PRO_Productos> PRO_Productos { get; set; }
     }
 }

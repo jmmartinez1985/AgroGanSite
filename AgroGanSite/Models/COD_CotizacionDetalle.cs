@@ -11,23 +11,14 @@ namespace AgroGanSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class COD_CotizacionDetalle
     {
-
-        [Display(Name = "Código")]
         public int CED_Id { get; set; }
-        [Required]
-        [Display(Name = "Cotización")]
         public int COD_Id { get; set; }
-        [Required]
-        [Display(Name = "Código de Producto")]
         public int PRO_Id { get; set; }
-        [Required]
-        [Display(Name = "Cantidad")]
         public int COD_Cantidad { get; set; }
-
+    
         public virtual COT_Cotizaciones COT_Cotizaciones { get; set; }
         public virtual PRO_Productos PRO_Productos { get; set; }
     }

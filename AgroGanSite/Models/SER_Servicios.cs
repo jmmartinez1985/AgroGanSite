@@ -15,8 +15,8 @@ namespace AgroGanSite.Models
     public partial class SER_Servicios
     {
         public int SER_Id { get; set; }
-        public int TSV_Id { get; set; }
         public string SER_Descripcion { get; set; }
+        public string SER_Titulo { get; set; }
         public string SER_HTML { get; set; }
         public Nullable<bool> SER_Activa { get; set; }
         public int STS_Id { get; set; }
@@ -24,6 +24,5 @@ namespace AgroGanSite.Models
         public Nullable<System.DateTime> SER_Date { get; set; }
     
         public virtual STS_Status STS_Status { get; set; }
-        public virtual TSV_TipoServicio TSV_TipoServicio { get; set; }
     }
 }

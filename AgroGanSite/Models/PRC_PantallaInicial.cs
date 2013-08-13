@@ -11,32 +11,17 @@ namespace AgroGanSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PRC_PantallaInicial
     {
-        [Display(Name = "Código")]
         public int PRC_Id { get; set; }
-        [Required]
-        [StringLength(150, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
-        [Display(Name = "Titulo Inicial")]
         public string PRC_Text { get; set; }
-        [Required]
-        [StringLength(250, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 7)]
-        [Display(Name = "Descripción")]
         public string PRC_Descripcion { get; set; }
-        [Display(Name = "Contenido")]
         public string PRC_Html { get; set; }
-        [Required]
-        [Display(Name = "Imagen Inicial")]
-        [DataType(DataType.ImageUrl)]
         public string PRC_Imagen { get; set; }
-        [Required]
-        [Display(Name = "Estatus")]
         public Nullable<int> STS_Id { get; set; }
-        [Display(Name = "Fecha de Actualización")]
         public Nullable<System.DateTime> PRC_Date { get; set; }
-
+    
         public virtual STS_Status STS_Status { get; set; }
     }
 }

@@ -124,10 +124,10 @@ namespace AgroGanSite.Controllers
             return View();
         }
 
-        public ActionResult GetProductsTop15()
+        public ActionResult GetProductsTop(int counter)
         {
             var productos = new List<PRO_Productos>();
-            productos = db.PRO_Productos.Where(c => c.STS_Id == 1).OrderByDescending(d => d.PRO_Date).Take(5).ToList();
+            productos = db.PRO_Productos.Where(c => c.STS_Id == 1).OrderByDescending(d => d.PRO_Date).Take(counter).ToList();
             if (productos == null)
             {
                 return HttpNotFound();

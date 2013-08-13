@@ -312,7 +312,7 @@
 
 <script>
 
-    App.initBxSlider1();
+    //App.initBxSlider1();
     var jsonresult;
     var $j = jQuery.noConflict();
 
@@ -391,7 +391,8 @@
           });
       }
 
-      $j(function () {
+      $k = jQuery.noConflict();
+      $k(function () {
           jQuery.ajax(
             {
                 type: 'post',
@@ -400,7 +401,7 @@
                     var result = JSON.parse(data);
                     var htmlresult = '';
                     htmlresult += '<ul id="list" class="bxslider recent-work">';
-                    $j.each(result.$values, function (val, noti) {
+                    $k.each(result.$values, function (val, noti) {
                         var urlHelper = new UrlHelper();
                         var url = urlHelper.urlImage(noti.NEW_Imagen);
                         htmlresult += '<li><a href="#" onclick="VerNewId(' + noti.NEW_Id + ')"><em class="overflow-hidden">';
@@ -409,8 +410,9 @@
                         htmlresult += '<i>"' + noti.NEW_Descripcion + '"</i></span></a></li>'
                     });
                     htmlresult += '</ul>';
-                    $j('.boletinagro').html(htmlresult);
-                    $j('.bxslider').bxSlider({
+                    debugger;
+                    $k('.boletinagro').html(htmlresult);
+                    $k('.bxslider').bxSlider({
                         minSlides: 3,
                         maxSlides: 3,
                         slideWidth: 360,
@@ -420,15 +422,21 @@
                 error: function (a, b, c) {
 
                 }
-            });
+            });    
 
+      });
+
+      $j(function () {
             jQuery.ajax(
             {
                 type: 'post',
-                url: '@Url.Content("~/ProductView/GetProductsTop15/")',
+                url: '@Url.Content("~/ProductView/GetProductsTop/5")',
+                data:
+                {
+                    counter: 15
+                },
                 success: function (data) {
                     var result = JSON.parse(data);
-                    debugger;
                     var htmlresult = '';
                     $j.each(result.$values, function (val, product) {
                         var urlHelper = new UrlHelper();

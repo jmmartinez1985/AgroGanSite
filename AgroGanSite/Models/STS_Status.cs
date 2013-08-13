@@ -11,8 +11,7 @@ namespace AgroGanSite.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class STS_Status
     {
         public STS_Status()
@@ -22,14 +21,13 @@ namespace AgroGanSite.Models
             this.NEW_Noticias = new HashSet<NEW_Noticias>();
             this.PRC_PantallaInicial = new HashSet<PRC_PantallaInicial>();
             this.PRO_Productos = new HashSet<PRO_Productos>();
+            this.PTC_Patrocinadores = new HashSet<PTC_Patrocinadores>();
             this.SER_Servicios = new HashSet<SER_Servicios>();
         }
-
-        [Display(Name = "Estatus:")]
+    
         public int STS_Id { get; set; }
-        [Display(Name = "Descripción Estatus:")]
         public string STS_Descripcion { get; set; }
-
+    
         public virtual ICollection<BAN_Banner> BAN_Banner { get; set; }
         public virtual ICollection<COT_Cotizaciones> COT_Cotizaciones { get; set; }
         public virtual ICollection<NEW_Noticias> NEW_Noticias { get; set; }

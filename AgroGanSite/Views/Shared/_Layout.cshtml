@@ -250,7 +250,8 @@
 
 
 <script>
-    $(function () {
+    var $j = jQuery.noConflict();
+    $j(function () {
 
         jQuery.ajax(
            {
@@ -269,7 +270,7 @@
                    htmlinfocompany += "<a href='mailto:#'>" + result.COM_Correo + "</a>"
                    htmlinfocompany += "</address>";
 
-                   $('#personalinfofooter').append(htmlinfocompany);
+                   $j('#personalinfofooter').append(htmlinfocompany);
                },
                error: function (a, b, c) {
                    alert(a);

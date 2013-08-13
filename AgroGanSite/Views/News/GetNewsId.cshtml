@@ -64,7 +64,7 @@
                 <h3>@Model.NEW_Titulo</h3>
                 <ul class="unstyled inline blog-info">
                     <li><i class="icon-calendar"></i>@Model.NEW_Date</li>
-                    <li><i class="icon-pencil"></i>Agroganadera Martínez S.A.</li>
+                    <li><i class="icon-pencil"></i>@Model.NEW_CreatedBy</li>
                   @*  <li><i class="icon-comments"></i><a href="#">24 Comments</a></li>*@
                 </ul>
                 <div class="blog-img">
@@ -98,14 +98,15 @@
         {
             type: 'post',
             url: '@Url.Content("~/News/GetNewTop3/")',
-           success: function (data) {
+            success: function (data) {
                var result = JSON.parse(data);
                var htmlresult = '';
                htmlresult += '<div class="headline"><h3>Noticias Recientes</h3></div>';
                $j.each(result.$values, function (val, noti) {
                    var urlHelper = new UrlHelper();
                    var url = urlHelper.urlImage(noti.NEW_Imagen);
-                   htmlresult += '<dl class="dl-horizontal"> <dt><a href="#"><img src="' + url + '" alt=""></a></dt>';
+                   
+                   htmlresult += '<dl class="dl-horizontal"> <dt><a onclick="VerNewInnerId(' + noti.NEW_Id + ')"><img src="' + url + '" alt=""></a></dt>';
                    htmlresult += '<dd> <p><a href="#">"' + noti.NEW_Titulo + '"</a></p></dd> </dl>';
                });
                $j('.lastnews').html(htmlresult);
@@ -116,5 +117,12 @@
            }
        });
     });
+
+    function VerNewInnerId(id) {
+        debugger;
+        var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
+        window.location = url;
+
+     }
 
 </script>

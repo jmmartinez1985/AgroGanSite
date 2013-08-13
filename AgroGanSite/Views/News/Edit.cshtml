@@ -104,7 +104,11 @@
                     <br />
                     @Html.ValidationMessageFor(model => model.NEW_Descripcion)
 
-              
+                    <label for='NEW_CreatedBy'>Creada Por:</label>
+                    @Html.TextBoxFor(model => model.NEW_CreatedBy, new { @placeholder = "Creada por", @class = "input-xxlarge" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NEW_CreatedBy)
+      
       
                     <label for='STS_Id'>Estatus*:</label>
                     @Html.DropDownList("STS_Id", String.Empty)

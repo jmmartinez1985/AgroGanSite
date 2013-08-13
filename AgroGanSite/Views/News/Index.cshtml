@@ -25,11 +25,13 @@
 <div class="container">
     <div class="row-fluid">
         <div class="span3">
-             <div class="headline"><h3>Operaciones</h3></div>
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
             <div>
                 @Html.ActionLink("Volver a Dashboard", "Index", "Home")
             </div>
-               <br />
+            <br />
             <div>@Html.ActionLink("Crear Nuevo", "Create")</div>
 
         </div>
@@ -60,6 +62,9 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NEW_CreatedBy)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.NEW_HTML)
@@ -103,7 +108,9 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.STS_Status.STS_Descripcion)
                                     </td>
-
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NEW_CreatedBy)
+                                    </td>
 
                                     <td>
                                         @Html.Label("No Disponible debido a su tamaño en página")
