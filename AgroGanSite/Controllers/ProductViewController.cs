@@ -28,7 +28,6 @@ namespace AgroGanSite.Controllers
                 return View(categories);
         }
 
-  
         public ActionResult GetProductsByCategory(int catid)
         {
             var productos = new List<PRO_Productos>();
@@ -43,7 +42,6 @@ namespace AgroGanSite.Controllers
                 return Json(productlist);
             }
         }
-
 
         public ActionResult GetProductsBanners()
         {
@@ -93,7 +91,6 @@ namespace AgroGanSite.Controllers
 
         }
 
-
         public ActionResult GetProductsDetails(int prod)
         {
             var productos = new List<PRD_ProductosDetalles>();
@@ -109,8 +106,6 @@ namespace AgroGanSite.Controllers
 
             }
         }
-
-
 
         public ActionResult Index()
         {
@@ -129,6 +124,19 @@ namespace AgroGanSite.Controllers
             return View();
         }
 
-
+        public ActionResult GetProductsTop15()
+        {
+            var productos = new List<PRO_Productos>();
+            productos = db.PRO_Productos.Where(c => c.STS_Id == 1).OrderByDescending(d => d.PRO_Date).Take(5).ToList();
+            if (productos == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                string productlist = productos.SerializeToJson();
+                return Json(productlist);
+            }
+        }
     }
 }

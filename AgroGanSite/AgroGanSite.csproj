@@ -234,6 +234,7 @@
     <Compile Include="Models\Img_Tipos.cs">
       <DependentUpon>AgroModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\NEW_Noticias.cs">
       <DependentUpon>AgroModel.tt</DependentUpon>
     </Compile>

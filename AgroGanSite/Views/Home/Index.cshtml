@@ -66,8 +66,8 @@
         <div class="headline">
             <h3>Boletin del Agro</h3>
         </div>
-        <div class="row-fluid margin-bottom-40">
-            <ul id="list" class="bxslider recent-work">
+        <div class="row-fluid margin-bottom-40 boletinagro">
+            @* <ul id="list" class="bxslider recent-work">
                 <li>
                     <a href="#">
                         <em class="overflow-hidden">
@@ -109,7 +109,7 @@
                     </a>
                 </li>
 
-            </ul>
+            </ul>*@
         </div>
         <!--/row-->
         <!-- //End Recent Works -->
@@ -147,8 +147,8 @@
                     <div class="headline">
                         <h3>Últimos Productos</h3>
                     </div>
-                    <ul class="unstyled blog-ads">
-                        <li><a href="#">
+                    <ul class="unstyled blog-ads last-product">
+               @*         <li><a href="#">
                             <img class="hover-effect" alt="" src="~/FilesUploaded/2.jpg"></a></li>
                         <li><a href="#">
                             <img class="hover-effect" alt="" src="~/FilesUploaded/4.jpg"></a></li>
@@ -163,7 +163,7 @@
                         <li><a href="#">
                             <img class="hover-effect" alt="" src="~/FilesUploaded/6.jpg"></a></li>
                         <li><a href="#">
-                            <img class="hover-effect" alt="" src="~/FilesUploaded/9.jpg"></a></li>
+                            <img class="hover-effect" alt="" src="~/FilesUploaded/9.jpg"></a></li>*@
                     </ul>
                 </div>
             </div>
@@ -374,8 +374,6 @@
                   htmlresult += '<a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>';
                   $j('#myCarousel').html(htmlresult);
 
-
-
               },
               error: function (a, b, c) {
 
@@ -401,61 +399,50 @@
                 success: function (data) {
                     var result = JSON.parse(data);
                     var htmlresult = '';
-                    var counter = 0;
-                    $j('#spannewCounter').html(result.$values.length);
+                    htmlresult += '<ul id="list" class="bxslider recent-work">';
                     $j.each(result.$values, function (val, noti) {
-                        //if (counter > 3) {
-                        //    htmlresult += '<div class="accordion-group noDisplayNew" style="display:none">';
-                        //}
-                        //else {
-                        //    htmlresult += '<div class="accordion-group">';
-                        //}
-                        //htmlresult += '<div class="accordion-heading">';
-                        //htmlresult += '<a href="#collapse' + val + '" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">' + noti.NEW_Titulo + ' </a>';
-                        //htmlresult += '</div>';
-
-                        //if (counter == 0) {
-                        //    htmlresult += '<div class="accordion-body collapse in" id="collapse' + val + '">';
-                        //}
-                        //else {
-                        //    htmlresult += '<div class="accordion-body collapse" id="collapse' + val + '">';
-                        //}
-
-                        //var urlHelper = new UrlHelper();
-                        //var url = urlHelper.urlImage(noti.NEW_Imagen);
-
-                        //htmlresult += '<div class="accordion-inner">';
-
-                        //htmlresult += '<div class="span2">';
-                        //htmlresult += '<img class="img-rounded" width="150" height="150" src="' + url + '">';
-                        //htmlresult += '</div>';
-
-                        //htmlresult += '<div class="span10">';
-                        //htmlresult += '<p>' + noti.NEW_Descripcion + '</p>';
-                        //htmlresult += '<br />';
-                        //htmlresult += '<a class="btn btn-mini btn-primary" onclick="VerNewId(' + noti.NEW_Id + ')" >Leer Más...</a>';
-                        //htmlresult += '<br />';
-                        //htmlresult += '<br />';
-                        //htmlresult += '</div>';
-
-                        //htmlresult += '</div>';
-                        //htmlresult += '</div>';
-
-                        //htmlresult += '</div>';
-                        //counter += 1;
+                        var urlHelper = new UrlHelper();
+                        var url = urlHelper.urlImage(noti.NEW_Imagen);
+                        htmlresult += '<li><a href="#" onclick="VerNewId(' + noti.NEW_Id + ')"><em class="overflow-hidden">';
+                        htmlresult += '<img  src="' + url + '" alt="" /></em>';
+                        htmlresult += ' <span><strong>"' + noti.NEW_Titulo + '"</strong>'
+                        htmlresult += '<i>"' + noti.NEW_Descripcion + '"</i></span></a></li>'
                     });
-                    //$j('#accordion2').html(htmlresult);
+                    htmlresult += '</ul>';
+                    $j('.boletinagro').html(htmlresult);
+                    $j('.bxslider').bxSlider({
+                        minSlides: 3,
+                        maxSlides: 3,
+                        slideWidth: 360,
+                        slideMargin: 10
+                    });
                 },
                 error: function (a, b, c) {
 
                 }
             });
+
+            jQuery.ajax(
+            {
+                type: 'post',
+                url: '@Url.Content("~/ProductView/GetProductsTop15/")',
+                success: function (data) {
+                    var result = JSON.parse(data);
+                    debugger;
+                    var htmlresult = '';
+                    $j.each(result.$values, function (val, product) {
+                        var urlHelper = new UrlHelper();
+                        var url = urlHelper.urlImage(product.PRO_Image);
+                        htmlresult += '<li><a href="#"><img class="hover-effect" alt="' + product.PRO_Nombre + '" src="' + url + '"></a></li>';
+                    });
+                    $j('.last-product').html(htmlresult);
+                },
+                error: function (a, b, c) {
+
+                }
+            });
+
       });
-
-        //$j('.activeAllNews').click(function () {
-        //    $j('div.accordion-group').show();
-
-        //});
 
         function VerNewId(id) {
             var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
@@ -465,7 +452,7 @@
 
         var isAuth = '@Request.IsAuthenticated'
 
-    $j(function () {
+        $j(function () {
         if (isAuth == 'True') {
             jQuery.ajax(
                   {

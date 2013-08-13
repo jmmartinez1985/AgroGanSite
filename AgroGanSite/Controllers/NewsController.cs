@@ -38,6 +38,21 @@ namespace AgroGanSite.Controllers
             }
         }
 
+        public ActionResult GetNewTop3()
+        {
+            var news = new List<NEW_Noticias>();
+            news = db.NEW_Noticias.Where(c => c.STS_Id == 1).OrderByDescending(d => d.NEW_Date).Take(3).ToList();
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                string newslist = news.SerializeToJson();
+                return Json(newslist);
+            }
+        }
+
         public ActionResult GetNewsId(int id)
         {
             int newid = id;
@@ -105,7 +120,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/Edit/5
-         [Authorize]
+        [Authorize]
         public ActionResult Edit(int id = 0)
         {
             NEW_Noticias new_noticias = db.NEW_Noticias.Find(id);
