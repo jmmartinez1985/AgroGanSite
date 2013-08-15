@@ -4,6 +4,8 @@
     ViewBag.Title = "Patrocinadores";
 }
 
+<script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
+
 @*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>*@
 
 
@@ -138,13 +140,11 @@
     }
 
     function failed(e) {
-        debugger;
         jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
     }
 
     var $t = jQuery.noConflict();
     $t("#ImagesSelect").change(function () {
-        debugger;
         var imageValue = $t(this).val();
         var urlHelper = new UrlHelper();
         imageValue = urlHelper.urlImage(imageValue);
@@ -153,7 +153,6 @@
 
     $t(".updateimg").click(function () {
         var imgvalue = $t("#ImagesSelect").val();
-        debugger;
         $t("#PTC_Imagen").val(imgvalue);
         jAlert('La imagen ha sido cambiada satisfactoriamente.');
 

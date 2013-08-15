@@ -1,7 +1,10 @@
 /* Portrait tablet to landscape and desktop */
 @media only screen and (max-width: 880px) {
 	.navbar .nav > li > a {
-		font-size: 14px;
+		font-size: 17px;
+        padding: 9px 10px;
+        font-weight:bolder;
+
 	}
 }
 

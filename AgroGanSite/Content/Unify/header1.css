@@ -218,6 +218,7 @@
 .navbar .nav > li > a:hover {
   	color:#72c02c;
 	border-bottom:solid 2px #72c02c;
+            background-color: #eee;
 }
 
 .navbar .nav > .active > a,
@@ -229,6 +230,7 @@
   	-webkit-box-shadow:none;
        -moz-box-shadow:none;
           	box-shadow:none;
+
 }
 
 .navbar .nav > .active > a:hover {	
@@ -238,6 +240,9 @@
   	-webkit-box-shadow:none;
        -moz-box-shadow:none;
           	box-shadow:none;
+                      
+
+
 }
 
 /*Arrow for menu*/

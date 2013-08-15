@@ -5,6 +5,9 @@
 }
 
 
+<script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
+
+
 <div class="breadcrumbs margin-bottom-50">
     <div class="container">
         <h3 class="color-blue pull-left">Edición de Proveedores</h3>
@@ -138,7 +141,6 @@
 
     var $t = jQuery.noConflict();
     $t("#ImagesSelect").change(function () {
-        debugger;
         var imageValue = $t(this).val();
         var urlHelper = new UrlHelper();
         imageValue = urlHelper.urlImage(imageValue);
@@ -147,7 +149,6 @@
 
     $t(".updateimg").click(function () {
         var imgvalue = $t("#ImagesSelect").val();
-        debugger;
         $t("#PTC_Imagen").val(imgvalue);
         jAlert('La imagen ha sido cambiada satisfactoriamente.');
 

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Cotizaciones";
 }
-<script src="~/Scripts/jquery.blockUI.js"></script>
+@*<script src="~/Scripts/jquery.blockUI.js"></script>*@
 
 <style>
     .cotiza {
@@ -12,7 +12,7 @@
 </style>
 <script src="~/Scripts/Bootstrap/bootstrap-alert.js"></script>
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
-
+<script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 
 <div class="breadcrumbs margin-bottom-50">
     <div class="container">
@@ -336,19 +336,19 @@
      }
 
 
-     function showProgress() {
-         $t.blockUI({
-             message: '<p>We are processing your request.  Please be patient.</p><img src="../Images/loading_dark.gif" /> <br>',
-             css: {
-                 width: '20%',
-                 border: '1px solid #000000',
-                 left: '40%'
-             }
-         });
-     }
+     //function showProgress() {
+     //    $t.blockUI({
+     //        message: '<p>We are processing your request.  Please be patient.</p><img src="../Images/loading_dark.gif" /> <br>',
+     //        css: {
+     //            width: '20%',
+     //            border: '1px solid #000000',
+     //            left: '40%'
+     //        }
+     //    });
+     //}
 
-     function hideProgress() {
-         $t.unblockUI();
-     }
+     //function hideProgress() {
+     //    $t.unblockUI();
+     //}
 
 	</script>

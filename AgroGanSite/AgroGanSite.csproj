@@ -274,6 +274,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\breadcrumbs.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\bootstrap-helper.css" />
     <Content Include="Content\Bootstrap\bootstrap-responsive.css" />
@@ -450,6 +451,7 @@
     <Content Include="Images\arrow_right.png" />
     <Content Include="Images\blue_next.png" />
     <Content Include="Images\blue_previous.png" />
+    <Content Include="Images\breadcrumbs.png" />
     <Content Include="Images\close.png" />
     <Content Include="Images\cursors\cursor_arrow_left.cur" />
     <Content Include="Images\cursors\cursor_arrow_left.gif" />
@@ -961,7 +963,6 @@
     <Content Include="Views\PrincipalInfo\Index.cshtml" />
     <Content Include="Views\PrincipalInfo\Create.cshtml" />
     <Content Include="Views\PrincipalInfo\Edit.cshtml" />
-    <Content Include="Views\Shared\NewsView.cshtml" />
     <Content Include="Views\Shared\ImagesChooser.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
