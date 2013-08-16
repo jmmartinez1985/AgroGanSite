@@ -178,6 +178,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductDetailsController.cs" />
     <Compile Include="Controllers\ProductViewController.cs" />
+    <Compile Include="Controllers\ServiciosController.cs" />
     <Compile Include="Controllers\SponsorController.cs" />
     <Compile Include="Extensions\Extension.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -983,6 +984,9 @@
     <Content Include="Views\Shared\_NotLoggedMenu.cshtml" />
     <Content Include="Views\Shared\ContactInfo.cshtml" />
     <Content Include="Views\Home\Servicios.cshtml" />
+    <Content Include="Views\Servicios\Index.cshtml" />
+    <Content Include="Views\Servicios\Create.cshtml" />
+    <Content Include="Views\Servicios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

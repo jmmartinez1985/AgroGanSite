@@ -1,0 +1,92 @@
+﻿@model AgroGanSite.Models.SER_Servicios
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SER_Servicios</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Id)
+            @Html.ValidationMessageFor(model => model.SER_Id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Descripcion)
+            @Html.ValidationMessageFor(model => model.SER_Descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Titulo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Titulo)
+            @Html.ValidationMessageFor(model => model.SER_Titulo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_HTML)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_HTML)
+            @Html.ValidationMessageFor(model => model.SER_HTML)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Activa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Activa)
+            @Html.ValidationMessageFor(model => model.SER_Activa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.STS_Id, "STS_Status")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("STS_Id", String.Empty)
+            @Html.ValidationMessageFor(model => model.STS_Id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Imagen)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Imagen)
+            @Html.ValidationMessageFor(model => model.SER_Imagen)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SER_Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SER_Date)
+            @Html.ValidationMessageFor(model => model.SER_Date)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

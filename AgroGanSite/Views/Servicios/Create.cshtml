@@ -1,9 +1,8 @@
-﻿@model AgroGanSite.Models.NEW_Noticias
+﻿@model AgroGanSite.Models.SER_Servicios
 
 @{
-    ViewBag.Title = "Noticias";
+    ViewBag.Title = "Create";
 }
-
 <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 @*<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>*@
@@ -41,8 +40,8 @@
 
         height: 400
     });
-    tinyMCE.execCommand('mceAddControl', false, 'NEW_HTML');
-    setTimeout("tinyMCE.activeEditor.setContent(jQuery('NEW_HTML').val());", 2000);
+    tinyMCE.execCommand('mceAddControl', false, 'SER_HTML');
+    setTimeout("tinyMCE.activeEditor.setContent(jQuery('SER_HTML').val());", 2000);
 
 
 
@@ -50,15 +49,16 @@
 
 <div class="breadcrumbs margin-bottom-50">
     <div class="container">
-        <h3 class="color-blue pull-left">Creación de Noticias</h3>
+        <h3 class="color-blue pull-left">Creación de Servicios</h3>
         <ul class="pull-right breadcrumb">
             <li><a href="#">Inicio</a> <span class="divider">/</span></li>
             <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
-            <li class="active">Noticias</li>
+            <li class="active">Servicios</li>
         </ul>
     </div>
     <!--/container-->
 </div>
+
 
 <div class="container">
     <div class="row-fluid">
@@ -67,7 +67,7 @@
                 <h3>Operaciones</h3>
             </div>
             <div>
-                @Html.ActionLink("Volver a Noticias", "Index")
+                @Html.ActionLink("Volver a Servicios", "Index")
             </div>
 
             <br />
@@ -75,16 +75,15 @@
 
         </div>
 
-
         <div class="span9">
 
             <div class="another-page">
                 <h3>Creación</h3>
                 <div class="successmessage">
                 </div>
-
-                @using (Ajax.BeginForm("Create", "News", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
+                @using (Ajax.BeginForm("Create", "Servicios", new AjaxOptions { HttpMethod = "POST", OnSuccess = "onsuccess", OnFailure = "failed" }))
                 {
+   
 
                     @Html.ValidationSummary(true)
                     @Html.AntiForgeryToken()
@@ -92,51 +91,46 @@
                     <h4>Para la edición por favor llenar todos los campos requeridos</h4>
                     <br />
 
-                    <label for='NEW_Titulo'>Titulo*: </label>
-                    @Html.TextBoxFor(model => model.NEW_Titulo, new { @placeholder = "Titulo", @class = "input-xxlarge" })
+                    <label for='SER_Titulo'>Titulo*: </label>
+                    @Html.TextBoxFor(model => model.SER_Titulo, new { @placeholder = "Titulo", @class = "input-xxlarge" })
                     <br />
-                    @Html.ValidationMessageFor(model => model.NEW_Titulo)
+                    @Html.ValidationMessageFor(model => model.SER_Titulo)
 
 
-                    <label for='NEW_Descripcion'>Descripción*:</label>
-                    @Html.TextBoxFor(model => model.NEW_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
+                    <label for='SER_Descripcion'>Descripción*:</label>
+                    @Html.TextBoxFor(model => model.SER_Descripcion, new { @placeholder = "Descripcion", @class = "input-xxlarge" })
                     <br />
-                    @Html.ValidationMessageFor(model => model.NEW_Descripcion)
+                    @Html.ValidationMessageFor(model => model.SER_Descripcion)
 
-              
-                    <label for='NEW_CreatedBy'>Creada Por:</label>
-                    @Html.TextBoxFor(model => model.NEW_CreatedBy, new { @placeholder = "Creada por", @class = "input-xxlarge" })
-                    <br />
-                    @Html.ValidationMessageFor(model => model.NEW_CreatedBy)
-      
+
                     <label for='STS_Id'>Estatus*:</label>
                     @Html.DropDownList("STS_Id", String.Empty)
                     <br />
                     @Html.ValidationMessageFor(model => model.STS_Id)
               
                
-                    <label for='NEW_Imagen'>Imagen*:</label>
-                    @Html.TextBoxFor(model => model.NEW_Imagen, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
+                    <label for='SER_Imagen'>Imagen*:</label>
+                    @Html.TextBoxFor(model => model.SER_Imagen, new { @placeholder = "Imagen", @class = "input-xlarge txtNoButton" })
                     <a data-toggle="modal" href="#myModal" class="btn-u btn-mini">Search</a>
-                    @Html.ValidationMessageFor(model => model.NEW_Imagen)
+                    @Html.ValidationMessageFor(model => model.SER_Imagen)
                     <br />
                 
            
               
-                    <label for='NEW_HTML'>Contenido*:</label>
-                    @Html.EditorFor(model => model.NEW_HTML, new { @placeholder = "Contenido", @class = "input-large" })
+                    <label for='SER_HTML'>Contenido*:</label>
+                    @Html.EditorFor(model => model.SER_HTML, new { @placeholder = "Contenido", @class = "input-large" })
                     <br />
-                    @Html.ValidationMessageFor(model => model.NEW_HTML)
+                    @Html.ValidationMessageFor(model => model.SER_HTML)
                     <br />
                     <input type="submit" value="Crear" class="btn-u" id="submit-button" />
                     <p id="req-field-desc"><span class="required">*</span>Indica que es un campo mandatorio en el formulario</p>
                 }
             </div>
         </div>
+
+
     </div>
 </div>
-
-
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -162,11 +156,24 @@
 </div>
 
 
+
+
+
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
 <script>
     function onsuccess(data) {
         //jAlert('El proceso de actualización ha sido exitoso');
 
-        jConfirm('Noticia creada satisfactoriamente, Desea volver al dashboard?', 'Noticias', function (confirmed) {
+        jConfirm('Servicio creado satisfactoriamente, Desea volver al dashboard?', 'Servicios', function (confirmed) {
             if (!confirmed)
                 window.location = data.redirectToUrl;
             else
@@ -188,15 +195,8 @@
 
     $t(".updateimg").click(function () {
         var imgvalue = $t("#ImagesSelect").val();
-        $t("#NEW_Imagen").val(imgvalue);
+        $t("#SER_Imagen").val(imgvalue);
         jAlert('La imagen ha sido cambiada satisfactoriamente.');
 
     });
 </script>
-
-
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

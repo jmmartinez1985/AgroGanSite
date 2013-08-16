@@ -260,7 +260,6 @@
           <Property Name="SER_Descripcion" Type="varchar" MaxLength="250" />
           <Property Name="SER_Titulo" Type="varchar" MaxLength="150" />
           <Property Name="SER_HTML" Type="text" />
-          <Property Name="SER_Activa" Type="bit" />
           <Property Name="STS_Id" Type="int" Nullable="false" />
           <Property Name="SER_Imagen" Type="varchar" MaxLength="250" />
           <Property Name="SER_Date" Type="datetime" />
@@ -756,7 +755,6 @@
           <Property Name="SER_Descripcion" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="SER_Titulo" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="SER_HTML" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
-          <Property Name="SER_Activa" Type="Boolean" />
           <Property Name="STS_Id" Type="Int32" Nullable="false" />
           <Property Name="SER_Imagen" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="SER_Date" Type="DateTime" Precision="3" />
@@ -1163,7 +1161,6 @@
                 <ScalarProperty Name="SER_Descripcion" ColumnName="SER_Descripcion" />
                 <ScalarProperty Name="SER_Titulo" ColumnName="SER_Titulo" />
                 <ScalarProperty Name="SER_HTML" ColumnName="SER_HTML" />
-                <ScalarProperty Name="SER_Activa" ColumnName="SER_Activa" />
                 <ScalarProperty Name="STS_Id" ColumnName="STS_Id" />
                 <ScalarProperty Name="SER_Imagen" ColumnName="SER_Imagen" />
                 <ScalarProperty Name="SER_Date" ColumnName="SER_Date" />

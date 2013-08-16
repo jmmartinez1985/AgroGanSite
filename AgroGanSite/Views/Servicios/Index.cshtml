@@ -1,0 +1,235 @@
+﻿@model IEnumerable<AgroGanSite.Models.SER_Servicios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+@*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>*@
+<script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
+<script src="@Url.Content("~/tiny_mce/tiny_mce.js")"></script>
+
+<style>
+    .txtNoButton {
+        margin-bottom: 0px !important;
+    }
+</style>
+
+
+<script>
+
+    tinyMCE.init({
+        // General options
+        mode: "none",
+        theme: "advanced",
+        plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+        // Theme options
+        theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+        theme_advanced_buttons4: "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing: true,
+
+        // Skin options
+        skin: "o2k7",
+        skin_variant: "silver",
+
+        // Example content CSS (should be your site CSS)
+        content_css: "css/example.css",
+
+        // Drop lists for link/image/media/template dialogs
+        template_external_list_url: "js/template_list.js",
+        external_link_list_url: "js/link_list.js",
+        external_image_list_url: "js/image_list.js",
+        media_external_list_url: "js/media_list.js",
+
+        height: 400
+    });
+    tinyMCE.execCommand('mceAddControl', false, 'SER_HTML');
+    setTimeout("tinyMCE.activeEditor.setContent(jQuery('SER_HTML').val());", 2000);
+
+
+
+</script>
+
+
+
+<div class="breadcrumbs margin-bottom-50">
+    <div class="container">
+        <h3 class="color-blue pull-left">Listado de Servicios</h3>
+        <ul class="pull-right breadcrumb">
+            <li><a href="#">Inicio</a> <span class="divider">/</span></li>
+            <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
+            <li class="active">Servicios</li>
+        </ul>
+    </div>
+    <!--/container-->
+</div>
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="span3">
+
+            <div class="headline">
+                <h3>Operaciones</h3>
+            </div>
+
+            <div>
+                @Html.ActionLink("Volver a Dashboard", "Index", "Home")
+            </div>
+            <br />
+            <div>@Html.ActionLink("Crear Nuevo", "Create")</div>
+        </div>
+
+        <div class="span9">
+            <div class="another-page">
+                <h3>Listado</h3>
+                <div class="successmessage">
+                </div>
+
+
+                <div style="overflow: scroll; width: 100%">
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+
+                            <tr>
+                                <th style="text-align: center">Administración</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_Id)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_Titulo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_Descripcion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.STS_Status.STS_Descripcion)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_Date)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_HTML)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SER_Imagen)
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productdiv">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+
+                                        <table>
+                                            <tr>
+                                                <td>@Html.ActionLink("Editar", "Edit", new { id = item.SER_Id }, new { @class = "btn-u" })</td>
+
+                                                <td>
+                                                    <a class="btn btn-danger" onclick="deleteservicio('@item.SER_Id')" >Borrar</a>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+
+
+                                    </td>
+                                    <th>
+                                        @Html.DisplayFor(model => item.SER_Id)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayFor(model => item.SER_Titulo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(model => item.SER_Descripcion)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayFor(model => item.STS_Status.STS_Descripcion)
+                                    </th>
+
+                                    <th>
+                                        @Html.DisplayFor(model => item.SER_Date)
+                                    </th>
+                                    <td>
+                                        @Html.Label("No Disponible debido a su tamaño en página")
+                                    </td>
+                                    <th>
+                                        @Html.DisplayFor(model => item.SER_Imagen)
+                                    </th>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8">
+                                    <div class="holder" style="float: left">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        var $j = jQuery.noConflict();
+        $j(function () {
+            $j("div.holder").jPages({
+                containerID: "productdiv",
+                //              previous: "←",
+                //              next: "→",
+                first: "first",
+                previous: "previous",
+                next: "next",
+                last: "last",
+                perPage: 5,
+                delay: 20
+            });
+        });
+
+        function deleteservicio(id) {
+            jConfirm('Desea borrar este servicio?', 'Borrar servicio existente', function (confirmed) {
+                if (confirmed) {
+                    jQuery.ajax(
+                   {
+                       type: 'post',
+                       url: '@Url.Content("~/Servicios/Delete/")',
+                   data: { id: id },
+                   success: function (data) {
+                       jAlert('Registro borrado satistafactoriamente.');
+                       window.location = data.redirectToUrl;
+
+                   },
+                   error: function (a, b, c) {
+                       alert(a);
+                   }
+               });
+           }
+        });
+
+   }
+
+
+  </script>

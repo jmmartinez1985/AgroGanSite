@@ -18,7 +18,6 @@ namespace AgroGanSite.Models
         public string SER_Descripcion { get; set; }
         public string SER_Titulo { get; set; }
         public string SER_HTML { get; set; }
-        public Nullable<bool> SER_Activa { get; set; }
         public int STS_Id { get; set; }
         public string SER_Imagen { get; set; }
         public Nullable<System.DateTime> SER_Date { get; set; }

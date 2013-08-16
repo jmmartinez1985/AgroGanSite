@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b354071e4d98423290aa0fb127b313a8" Name="Diagram1">
+      <Diagram DiagramId="d627a7e170ae4c8a97dba60b28ce1613" Name="Diagram1">
         <EntityTypeShape EntityType="AgroDBModel.BAN_Banner" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgroDBModel.CAT_Categorias" Width="1.5" PointX="3.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.CAT_Categorias" Width="1.5" PointX="3.75" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.CLI_Clientes" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.COD_CotizacionDetalle" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.COM_Compañia" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
@@ -18,10 +18,10 @@
         <EntityTypeShape EntityType="AgroDBModel.NEW_Noticias" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.PRC_PantallaInicial" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.PRD_ProductosDetalles" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgroDBModel.PRO_Productos" Width="1.5" PointX="6" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.PRO_Productos" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.PTC_Patrocinadores" Width="1.5" PointX="3" PointY="22.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.SER_Servicios" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AgroDBModel.STS_Status" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgroDBModel.STS_Status" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.UserProfile" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AgroDBModel.webpages_Membership" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
