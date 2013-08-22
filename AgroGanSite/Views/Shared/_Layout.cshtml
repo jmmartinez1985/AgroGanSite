@@ -11,20 +11,15 @@
     <title>@ViewBag.Title - AgroGanadera Martínez S.A.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="~/favicon.png">
-    <link href="@Url.Content("~/Content/Bootstrap/bootstrap.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Bootstrap/bootstrap-responsive.css")" rel="stylesheet" />
 
+    <link href="@Url.Content("~/Content/Bootstrap/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Unify/style.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Unify/header1.css")" rel="stylesheet" />
-
-    @*   <link href="@Url.Content("~/Content/Bootstrap/docs.css")" rel="stylesheet" />*@
-    <link href="@Url.Content("~/Content/jquery.alerts.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Bootstrap/bootstrap-responsive.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Unify/style_responsive.css")" rel="stylesheet" />
 
-
-    <link href="@Url.Content("~/Content/Unify/blue.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Unify/header1-blue.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Unify/blue.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Unify/parallax-slider.css")" rel="stylesheet" />
 
 
@@ -136,10 +131,9 @@
 
     <!--=== Body ===-->
     <div class="container">
-
-        @*  <div class="row">*@
-        @RenderBody()
-        @* </div>*@
+        <div class="row">
+            @RenderBody()
+        </div>
     </div>
     <!--/body -->
     <!--=== End Body ===-->
@@ -171,7 +165,7 @@
 
                 <div class="span4">
                     <div class="posts lastnews">
-                      @*  <div class="headline">
+                        @*  <div class="headline">
                             <h3>Noticias Recientes</h3>
                         </div>
                         <dl class="dl-horizontal">

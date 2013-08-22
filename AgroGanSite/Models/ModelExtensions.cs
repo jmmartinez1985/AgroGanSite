@@ -64,6 +64,10 @@ namespace AgroGanSite.Models
     public partial class STS_Status
     {
     }
+    [MetadataType(typeof(SER_ServiciosMetaData))]
+    public partial class SER_Servicios
+    {
+    }
 
     public partial class NEW_NoticiasMetaData
     {
@@ -90,7 +94,7 @@ namespace AgroGanSite.Models
         [Display(Name = "Fecha Noticia")]
         public Nullable<System.DateTime> NEW_Date { get; set; }
 
-         [Display(Name = "Creada por")]
+        [Display(Name = "Creada por")]
         public string NEW_CreatedBy { get; set; }
 
     }
@@ -341,5 +345,33 @@ namespace AgroGanSite.Models
         [Display(Name = "Descripción Estatus")]
         public string STS_Descripcion { get; set; }
 
+    }
+
+    public partial class SER_ServiciosMetaData
+    {
+
+        [Display(Name = "Servicio Id")]
+        public int SER_Id { get; set; }
+
+        [Required]
+        [Display(Name = "Descripción")]
+        public string SER_Descripcion { get; set; }
+
+        [Required]
+        [Display(Name = "Título")]
+        public string SER_Titulo { get; set; }
+
+        [Display(Name = "Contenido")]
+        public string SER_HTML { get; set; }
+
+
+        public int STS_Id { get; set; }
+
+        [Required]
+        [Display(Name = "Imagen del Servicio")]
+        public string SER_Imagen { get; set; }
+
+        [Display(Name = "Fecha de Creación")]
+        public Nullable<System.DateTime> SER_Date { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace AgroGanSite.Models
         public Entities()
             : base("name=Entities")
         {
+            base.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
