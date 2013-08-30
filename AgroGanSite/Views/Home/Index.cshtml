@@ -406,8 +406,8 @@
                         var url = urlHelper.urlImage(noti.NEW_Imagen);
                         htmlresult += '<li><a href="#" onclick="VerNewId(' + noti.NEW_Id + ')"><em class="overflow-hidden">';
                         htmlresult += '<img  src="' + url + '" alt="" /></em>';
-                        htmlresult += ' <span><strong>"' + noti.NEW_Titulo + '"</strong>'
-                        htmlresult += '<i>"' + noti.NEW_Descripcion + '"</i></span></a></li>'
+                        htmlresult += ' <span><strong>' + noti.NEW_Titulo + '</strong>'
+                        htmlresult += '<i>' + noti.NEW_Descripcion + '</i></span></a></li>'
                     });
                     htmlresult += '</ul>';
                     debugger;
@@ -441,7 +441,7 @@
                     $j.each(result.$values, function (val, product) {
                         var urlHelper = new UrlHelper();
                         var url = urlHelper.urlImage(product.PRO_Image);
-                        htmlresult += '<li><a href="#"><img class="hover-effect" alt="' + product.PRO_Nombre + '" src="' + url + '"></a></li>';
+                        htmlresult += '<li><a href="#"><img class="hover-effect" alt=' + product.PRO_Nombre + ' src="' + url + '"></a></li>';
                     });
                     $j('.last-product').html(htmlresult);
                 },

@@ -187,8 +187,8 @@
                       var url = urlHelper.urlImage(product.PRD_Images);
                       htmlresult += '<img src="' + url + '" alt="" onclick="GetHtmlDescription(' + product.PRD_Id + ')">';
                       htmlresult += '<div class="carousel-caption">';
-                      htmlresult += '<h4>"' + $t("#cbxProductos").text() + '"</h4>';
-                      htmlresult += ' <p>"' + product.PRD_Descripcion + '"</p>';
+                      htmlresult += '<h4>' + $t("#cbxProductos").text() + '</h4>';
+                      htmlresult += ' <p>' + product.PRD_Descripcion + '</p>';
                       htmlresult += '</div>';
                       htmlresult += '</div>';
                   });
@@ -222,7 +222,7 @@
                     var urlHelper = new UrlHelper();
                     var url = urlHelper.urlImage(prod.PRO_Image);
                     htmlresult += '<dl class="dl-horizontal"> <dt><a href="#"><img src="' + url + '" alt=""></a></dt>';
-                    htmlresult += '<dd> <p><a href="#">"' + prod.PRO_Nombre + '"</a></p></dd> </dl>';
+                    htmlresult += '<dd> <p><a href="#">' + prod.PRO_Nombre + '</a></p></dd> </dl>';
                 });
                 $t('.lastproducts').html(htmlresult);
 
