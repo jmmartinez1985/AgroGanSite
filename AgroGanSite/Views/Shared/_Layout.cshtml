@@ -61,8 +61,14 @@
                     </ul>
                 </li>*@
                 @*             <li class="devider">&nbsp;</li>*@
-                <li><a href="mailto:stn_rules@hotmail.com" class="login-btn">Help</a></li>
+
+                <li><a href="mailto:stn_rules@hotmail.com" class="login-btn">Ayuda</a></li>
                 <li class="devider">&nbsp;</li>
+                  @if (!Request.IsAuthenticated)
+                 {
+                    <li><a href="@Url.Action("Register", "Account")" class="login-btn">Registrarse</a></li>
+                    <li class="devider">&nbsp;</li>
+                  }
 
 
                 @if (Request.IsAuthenticated)
@@ -75,7 +81,7 @@
                         {
                             @Html.AntiForgeryToken()
                    
-                            <a class="login-btn" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            <a class="login-btn" href="javascript:document.getElementById('logoutForm').submit()">Salir</a>
                         }
 
                     </li>
@@ -86,7 +92,7 @@
                   
 @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-btn" })</li>
                     <li class="devider">&nbsp;</li>*@
-                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-btn" })</li>
+                    <li>@Html.ActionLink("Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-btn" })</li>
                   
                 }
 
@@ -109,10 +115,20 @@
 
 
             @if (Request.IsAuthenticated)
-            { 
+            {
+                if (Roles.IsUserInRole("Admin"))
+                {
+             
                 <text>
                 @Html.Partial("_LoggedMenu")
                 </text>
+         
+                }
+                else
+                {
+                <text>
+                @Html.Partial("_UserLoggedMenu")
+                </text>}
             }
             else
             {

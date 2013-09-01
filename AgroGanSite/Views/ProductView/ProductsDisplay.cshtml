@@ -22,7 +22,7 @@
 </div>
 <div class="container">
     <div class="row-fluid">
-        <div class="span3">
+        <div class="span4">
             <div class="headline">
                 <h3>Cátalogo</h3>
             </div>
@@ -39,12 +39,12 @@
             <br />
             <br />
 
-             <div class="posts margin-bottom-20 lastproducts">
+            <div class="posts margin-bottom-20 lastproducts">
             </div>
         </div>
-        <div class="span9">
+        <div class="span8">
             <div class="headline">
-                <h3>Detalle del Producto</h3>
+                <h3>Presentaciones y Aplicaciones del Producto</h3>
             </div>
             <section id="carousel">
                 <div class="bs-docs-example">
@@ -57,7 +57,12 @@
 
             <div class="row-fluid">
                 <div class="block span12">
-                    <a data-toggle="collapse" class="block-heading" href="#tableproducts">Acerca del Producto<span class="label label-warning"></span></a>
+               @*     <a data-toggle="collapse" class="block-heading" href="#tableproducts">Acerca del Producto<span class="label label-warning"></span></a>*@
+
+                    <div class="headline">
+                        <h3>Detalles del Producto</h3>
+                    </div>
+
                     <div class="block-body collapse in" id="tableproducts">
                         <div id="htmldescription">
                         </div>
@@ -204,12 +209,12 @@
       }
 
 
-    $t(function () {
-  
-        jQuery.ajax(
-        {
-            type: 'post',
-            url: '@Url.Content("~/ProductView/GetProductsTop/")',
+      $t(function () {
+
+          jQuery.ajax(
+          {
+              type: 'post',
+              url: '@Url.Content("~/ProductView/GetProductsTop/")',
             data:
             {
                 counter: 5
@@ -232,4 +237,4 @@
             }
         });
     });
-	</script>
+</script>

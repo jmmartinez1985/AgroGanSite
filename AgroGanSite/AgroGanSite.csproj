@@ -987,6 +987,7 @@
     <Content Include="Views\Servicios\Index.cshtml" />
     <Content Include="Views\Servicios\Create.cshtml" />
     <Content Include="Views\Servicios\Edit.cshtml" />
+    <Content Include="Views\Shared\_UserLoggedMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,7 +16,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Product/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var pro_productos = db.PRO_Productos.Include(p => p.CAT_Categorias).Include(p => p.STS_Status);
@@ -33,7 +33,7 @@ namespace AgroGanSite.Controllers
             return View(pro_productos.ToList());
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCurrentProducts()
         {
             var prodfiltered = db.PRO_Productos.Where(c => c.STS_Id == 1)
@@ -51,7 +51,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Product/Details/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             PRO_Productos pro_productos = db.PRO_Productos.Find(id);
@@ -64,7 +64,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Product/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.CAT_Id = new SelectList(db.CAT_Categorias, "CAT_Id", "CAT_Descripcion");
@@ -74,7 +74,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Product/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -103,7 +103,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Product/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             PRO_Productos pro_productos = db.PRO_Productos.Find(id);
@@ -118,7 +118,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Product/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -130,9 +130,9 @@ namespace AgroGanSite.Controllers
                 db.SaveChanges();
                 if (Request.IsAjaxRequest())
                 {
-                    return Json(new { redirectToUrl = Url.Action("Index","Product") });
+                    return Json(new { redirectToUrl = Url.Action("Index", "Product") });
                 }
-                return RedirectToAction("Index","Product");
+                return RedirectToAction("Index", "Product");
             }
             else
             {
@@ -141,13 +141,13 @@ namespace AgroGanSite.Controllers
 
             ViewBag.CAT_Id = new SelectList(db.CAT_Categorias, "CAT_Id", "CAT_Descripcion", pro_productos.CAT_Id);
             ViewBag.STS_Id = new SelectList(db.STS_Status, "STS_Id", "STS_Descripcion", pro_productos.STS_Id);
-          
+
             return View(pro_productos);
         }
 
         //
         // GET: /Product/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             PRO_Productos pro_productos = db.PRO_Productos.Find(id);
@@ -160,7 +160,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Product/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

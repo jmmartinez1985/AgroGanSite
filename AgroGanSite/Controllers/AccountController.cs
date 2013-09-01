@@ -63,7 +63,7 @@ namespace AgroGanSite.Controllers
         //
         // GET: /Account/Register
 
-              [Authorize]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -73,7 +73,7 @@ namespace AgroGanSite.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
@@ -84,6 +84,8 @@ namespace AgroGanSite.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new { EmailId = model.EmailId, Details = model.Details });
                     WebSecurity.Login(model.UserName, model.Password);
+                    if (!Roles.IsUserInRole("Users"))
+                        Roles.AddUsersToRole(new string[] { model.UserName }, "Users");
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -239,7 +241,7 @@ namespace AgroGanSite.Controllers
 
             client.Send(msg);
         }
-        
+
         //
         // POST: /Account/Disassociate
 
@@ -271,7 +273,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Account/Manage
-              [Authorize]
+        [Authorize]
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =

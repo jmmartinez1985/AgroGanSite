@@ -16,14 +16,14 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Contact/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.CON_Contactenos.ToList());
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCurrentContacts()
         {
             var contfiltered = db.CON_Contactenos.
@@ -41,7 +41,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Contact/Details/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             CON_Contactenos con_contactenos = db.CON_Contactenos.Find(id);
@@ -79,7 +79,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Contact/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             CON_Contactenos con_contactenos = db.CON_Contactenos.Find(id);
@@ -92,7 +92,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Contact/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(CON_Contactenos con_contactenos)
         {
@@ -107,7 +107,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Contact/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             CON_Contactenos con_contactenos = db.CON_Contactenos.Find(id);
@@ -120,7 +120,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Contact/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

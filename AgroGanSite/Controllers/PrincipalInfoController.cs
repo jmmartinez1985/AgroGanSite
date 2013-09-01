@@ -15,7 +15,7 @@ namespace AgroGanSite.Controllers
 
         //66303711  
         // GET: /PrincipalInfo/
-          [Authorize]
+          [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var prc_pantallainicial = db.PRC_PantallaInicial.Include(p => p.STS_Status);
@@ -24,7 +24,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /PrincipalInfo/Details/5
-          [Authorize]
+          [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             PRC_PantallaInicial prc_pantallainicial = db.PRC_PantallaInicial.Find(id);
@@ -37,7 +37,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /PrincipalInfo/Create
-          [Authorize]
+          [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.STS_Id = new SelectList(db.STS_Status, "STS_Id", "STS_Descripcion");
@@ -46,7 +46,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /PrincipalInfo/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -74,7 +74,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /PrincipalInfo/Edit/5
-          [Authorize]
+          [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             PRC_PantallaInicial prc_pantallainicial = db.PRC_PantallaInicial.Find(id);
@@ -88,7 +88,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /PrincipalInfo/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -114,7 +114,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /PrincipalInfo/Delete/5
-          [Authorize]
+          [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             PRC_PantallaInicial prc_pantallainicial = db.PRC_PantallaInicial.Find(id);
@@ -127,7 +127,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /PrincipalInfo/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

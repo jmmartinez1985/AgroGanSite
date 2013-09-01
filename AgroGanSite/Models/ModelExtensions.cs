@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -97,6 +98,9 @@ namespace AgroGanSite.Models
         [Display(Name = "Creada por")]
         public string NEW_CreatedBy { get; set; }
 
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
+
     }
 
     public partial class CAT_CategoriasMetaData
@@ -106,6 +110,8 @@ namespace AgroGanSite.Models
         public int CAT_Id { get; set; }
         [Display(Name = "Descripción Categoría")]
         public string CAT_Descripcion { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<PRO_Productos> PRO_Productos { get; set; }
 
     }
 
@@ -123,6 +129,10 @@ namespace AgroGanSite.Models
         [Required]
         [Display(Name = "Cantidad")]
         public int COD_Cantidad { get; set; }
+        [JsonIgnore]
+        public virtual COT_Cotizaciones COT_Cotizaciones { get; set; }
+           [JsonIgnore]
+        public virtual PRO_Productos PRO_Productos { get; set; }
 
     }
 
@@ -222,6 +232,10 @@ namespace AgroGanSite.Models
         [Required]
         [Display(Name = "Estatus")]
         public int STS_Id { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<COD_CotizacionDetalle> COD_CotizacionDetalle { get; set; }
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
 
     }
 
@@ -248,6 +262,8 @@ namespace AgroGanSite.Models
         public Nullable<int> STS_Id { get; set; }
         [Display(Name = "Fecha Creación")]
         public Nullable<System.DateTime> PRC_Date { get; set; }
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
 
     }
 
@@ -309,6 +325,12 @@ namespace AgroGanSite.Models
 
         [Display(Name = "Fecha de Actualización")]
         public Nullable<System.DateTime> PRO_Date { get; set; }
+        [JsonIgnore]
+        public virtual CAT_Categorias CAT_Categorias { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<COD_CotizacionDetalle> COD_CotizacionDetalle { get; set; }
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
 
     }
 
@@ -334,6 +356,8 @@ namespace AgroGanSite.Models
         [Required]
         [Display(Name = "Estatus")]
         public int STS_Id { get; set; }
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
 
     }
 
@@ -344,6 +368,20 @@ namespace AgroGanSite.Models
         public int STS_Id { get; set; }
         [Display(Name = "Descripción Estatus")]
         public string STS_Descripcion { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<BAN_Banner> BAN_Banner { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<COT_Cotizaciones> COT_Cotizaciones { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<NEW_Noticias> NEW_Noticias { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<PRC_PantallaInicial> PRC_PantallaInicial { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<PRO_Productos> PRO_Productos { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<PTC_Patrocinadores> PTC_Patrocinadores { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<SER_Servicios> SER_Servicios { get; set; }
 
     }
 
@@ -373,5 +411,8 @@ namespace AgroGanSite.Models
 
         [Display(Name = "Fecha de Creación")]
         public Nullable<System.DateTime> SER_Date { get; set; }
+
+        [JsonIgnore]
+        public virtual STS_Status STS_Status { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace AgroGanSite.Controllers
         // POST: /Servicios/Create
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(SER_Servicios ser_servicios)
         {

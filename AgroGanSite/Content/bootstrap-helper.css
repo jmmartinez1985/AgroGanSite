@@ -246,6 +246,7 @@ a.block-heading:hover, .block-heading a:hover {
     background: none repeat scroll 0 0 #F6F6F6;
     border: 0 none;
     margin: 0;
+    padding-left: 10px;
 }
 .sidebar-nav .nav-list > li > a:hover {
     background: none repeat scroll 0 0 #E0E0E8;

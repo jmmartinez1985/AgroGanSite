@@ -16,7 +16,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Sponsor/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var ptc_patrocinadores = db.PTC_Patrocinadores.Include(p => p.STS_Status);
@@ -40,7 +40,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Sponsor/Details/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             PTC_Patrocinadores ptc_patrocinadores = db.PTC_Patrocinadores.Find(id);
@@ -53,7 +53,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Sponsor/Create
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.STS_Id = new SelectList(db.STS_Status, "STS_Id", "STS_Descripcion");
@@ -62,7 +62,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Sponsor/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PTC_Patrocinadores ptc_patrocinadores)
@@ -88,7 +88,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Sponsor/Edit/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             PTC_Patrocinadores ptc_patrocinadores = db.PTC_Patrocinadores.Find(id);
@@ -102,7 +102,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Sponsor/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PTC_Patrocinadores ptc_patrocinadores)
@@ -127,7 +127,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Sponsor/Delete/5
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             PTC_Patrocinadores ptc_patrocinadores = db.PTC_Patrocinadores.Find(id);
@@ -140,7 +140,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Sponsor/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

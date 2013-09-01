@@ -16,7 +16,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var new_noticias = db.NEW_Noticias.Include(n => n.STS_Status);
@@ -69,7 +69,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/Details/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             NEW_Noticias new_noticias = db.NEW_Noticias.Find(id);
@@ -82,7 +82,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.STS_Id = new SelectList(db.STS_Status, "STS_Id", "STS_Descripcion");
@@ -91,7 +91,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /News/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -120,7 +120,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             NEW_Noticias new_noticias = db.NEW_Noticias.Find(id);
@@ -134,7 +134,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /News/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -163,7 +163,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /News/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             NEW_Noticias new_noticias = db.NEW_Noticias.Find(id);
@@ -176,7 +176,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /News/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

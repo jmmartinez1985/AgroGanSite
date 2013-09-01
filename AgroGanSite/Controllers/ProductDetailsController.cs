@@ -15,7 +15,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /ProductDetails/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index(int prod)
         {
             ViewBag.ProdId = prod;
@@ -24,7 +24,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /ProductDetails/Details/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             PRD_ProductosDetalles prd_productosdetalles = db.PRD_ProductosDetalles.Find(id);
@@ -37,7 +37,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /ProductDetails/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(int prod)
         {
             ViewBag.ProdId = prod;
@@ -46,7 +46,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /ProductDetails/Create
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -76,7 +76,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /ProductDetails/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id = 0)
         {
             PRD_ProductosDetalles prd_productosdetalles = db.PRD_ProductosDetalles.Find(id);
@@ -89,7 +89,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /ProductDetails/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -115,7 +115,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /ProductDetails/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             PRD_ProductosDetalles prd_productosdetalles = db.PRD_ProductosDetalles.Find(id);
@@ -128,7 +128,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /ProductDetails/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

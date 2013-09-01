@@ -52,7 +52,7 @@ namespace AgroGanSite.Controllers
             return PartialView("NewsView");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult ImagesChooser()
         {
             Entities db = new Entities();
@@ -73,13 +73,13 @@ namespace AgroGanSite.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult ViewUploader()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public JsonResult GetAllStats()
         {
             var c_cont = db.CON_Contactenos.Count();
@@ -95,7 +95,7 @@ namespace AgroGanSite.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult EditCompanyInfo()
         {
             COM_Compañia company = db.COM_Compañia.FirstOrDefault();
@@ -108,7 +108,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /News/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ValidateInput(false)]
         [HttpPost]
         public ActionResult EditCompanyInfo(COM_Compañia company)

@@ -20,7 +20,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Cotiza/
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var firtscategory = db.CAT_Categorias.First();
@@ -33,7 +33,7 @@ namespace AgroGanSite.Controllers
             return View(db.COT_Cotizaciones.ToList());
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetCurrentCotizaciones()
         {
             var cotfiltered = db.COT_Cotizaciones.Where(c => c.STS_Id == 1)
@@ -51,7 +51,7 @@ namespace AgroGanSite.Controllers
 
         //
         // GET: /Cotiza/Details/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id = 0)
         {
             COT_Cotizaciones cot_cotizaciones = db.COT_Cotizaciones.Find(id);
@@ -222,7 +222,7 @@ namespace AgroGanSite.Controllers
 
         //
         // POST: /Cotiza/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Edit(COT_Cotizaciones cot_cotizaciones)
         {
@@ -241,7 +241,7 @@ namespace AgroGanSite.Controllers
         }
 
         // GET: /Cotiza/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id = 0)
         {
             COT_Cotizaciones cot_cotizaciones = db.COT_Cotizaciones.Find(id);
