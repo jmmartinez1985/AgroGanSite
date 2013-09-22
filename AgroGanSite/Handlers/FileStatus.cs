@@ -9,7 +9,7 @@ namespace AgroGanSite.Handlers
 
     public class FilesStatus
     {
-        public const string HandlerPath = "/Upload/";
+        public const string HandlerPath = "/Handlers/";
 
         public string group { get; set; }
         public string name { get; set; }

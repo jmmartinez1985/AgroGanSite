@@ -162,8 +162,10 @@
 
 <script>
     var $j = jQuery.noConflict();
-    $j(function () {
-        $j("div.holder").jPages({
+
+    var $jpage = jQuery.noConflict();
+    $jpage(function () {
+        $jpage("div.holder").jPages({
             containerID: "productdiv",
             //              previous: "←",
             //              next: "→",
@@ -216,7 +218,7 @@
                 catid: category
             },
             success: function (data) {
-                var select = $t('#cbxProductos');
+                var select = $j('#cbxProductos');
                 if (select.prop) {
                     var options = select.prop('options');
                 }

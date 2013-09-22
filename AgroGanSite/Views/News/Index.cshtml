@@ -141,10 +141,11 @@
         </div>
     </div>
 </div>
+
 <script>
-    var $j = jQuery.noConflict();
-    $j(function () {
-        $j("div.holder").jPages({
+
+    jQuery(document).ready(function () {
+        jQuery("div.holder").jPages({
             containerID: "productdiv",
             //              previous: "←",
             //              next: "→",

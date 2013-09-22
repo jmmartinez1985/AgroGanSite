@@ -12,15 +12,15 @@
 /*jslint nomen: true, unparam: true, regexp: true */
 /*global $, window, document */
 
-var $j = jQuery.noConflict();
+var $ji = jQuery.noConflict();
 
-$j(function () {
+$ji(function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
-    $j('#fileupload').fileupload();
+    $ji('#fileupload').fileupload();
 
-    $j('#fileupload').fileupload('option', {
+    $ji('#fileupload').fileupload('option', {
             maxFileSize: 500000000,
             resizeMaxWidth: 1920,
             resizeMaxHeight: 1200
