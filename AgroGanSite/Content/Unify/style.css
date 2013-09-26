@@ -1866,3 +1866,49 @@ i.style-switcher-btn-option:hover {
 	padding: 7px;
 	text-shadow: none !important;
 }
+
+
+/*Validation*/
+/* styles for validation helpers */
+.field-validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #e80c4d;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #e80c4d;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#logoimg {
+    padding: 10px 10px 10px 10px;
+}
+
+.txtNoButton {
+    margin-bottom: 0px !important;
+}
+
+.DisplayNew {
+    display: block;
+}
+
+.NoDisplayNew {
+    display: none;
+}
