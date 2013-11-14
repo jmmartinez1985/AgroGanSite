@@ -11,26 +11,28 @@
 <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 
 <div class="breadcrumbs margin-bottom-10">
-    <div class="row-fluid">
-        <h3 class="color-blue pull-left">Listado de Contactos</h3>
-        <ul class="pull-right breadcrumb">
-            <li><a href="#">Inicio</a> <span class="divider">/</span></li>
-            <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
-            <li class="active">Contactos</li>
-        </ul>
+    <div class="container">
+        <div class="row-fluid">
+            <h3 class="color-blue pull-left">Listado de Contactos</h3>
+            <ul class="pull-right breadcrumb">
+                <li><a href="#">Inicio</a> <span class="divider">/</span></li>
+                <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
+                <li class="active">Contactos</li>
+            </ul>
+        </div>
     </div>
     <!--/container-->
 </div>
 
 
-@*<div class="container">*@
+<div class="container">
     <div class="row-fluid">
         <div class="span3">
             <div class="headline">
                 <h3>Operaciones</h3>
             </div>
             <div>
-                  @Html.ActionLink("Volver a Dashboard", "Index", "Home", new { @class="btn-u" })
+                @Html.ActionLink("Volver a Dashboard", "Index", "Home", new { @class = "btn-u" })
             </div>
 
         </div>
@@ -134,7 +136,7 @@
             </div>
         </div>
     </div>
-@*</div>*@
+</div>
 <script>
     var $j = jQuery.noConflict();
     $j(function () {

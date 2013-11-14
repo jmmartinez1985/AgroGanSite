@@ -15,51 +15,63 @@
 <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 
 <div class="breadcrumbs margin-bottom-10">
-    <div class="row-fluid">
-        <h3 class="color-blue pull-left">Cotiza Nuestros productos</h3>
-        <ul class="pull-right breadcrumb">
-            <li><a href="#">Inicio</a> <span class="divider">/</span></li>
-            <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
-            <li class="active">Cotizaciones</li>
-        </ul>
+    <div class="container">
+        <div class="row-fluid">
+            <h3 class="color-blue pull-left">Cotiza Nuestros productos</h3>
+            <ul class="pull-right breadcrumb">
+                <li><a href="#">Inicio</a> <span class="divider">/</span></li>
+                <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
+                <li class="active">Cotizaciones</li>
+            </ul>
+        </div>
     </div>
     <!--/container-->
 </div>
-@*<div class="container">*@
+<div class="container">
     <div class="row-fluid">
-   
-        <div class="span3">    
-             <div class="headline"><h3>Cátalogo</h3></div>
+
+        <div class="span3">
+            <div class="headline">
+                <h3>Cátalogo</h3>
+            </div>
             <h4>Categorias</h4>
 
-            @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>,new { @class="span10" })
+            @Html.DropDownList("cbxCategorias", ViewBag.Categories as IEnumerable<SelectListItem>, new { @class = "span10" })
 
             <h4>Productos</h4>
-         
-            @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>, new { @class="span10" })
 
-            
+            @Html.DropDownList("cbxProductos", ViewBag.Products as IEnumerable<SelectListItem>, new { @class = "span10" })
 
-  
+
+
+
             <br />
             <div class="cotiza">
             </div>
+            <div class="extradiv" style="display: none">
+            </div>
+
+
 
             <br />
 
-              <div class="headline"><h3>Nuestra Oferta?</h3></div>
+            <div class="headline">
+                <h3>Nuestra Oferta?</h3>
+            </div>
             <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
             <ul class="unstyled">
-            	<li><i class="icon-ok color-green"></i> Odio dignissimos ducimus</li>
-            	<li><i class="icon-ok color-green"></i> Blanditiis praesentium volup</li>
-            	<li><i class="icon-ok color-green"></i> Eos et accusamus</li>
+                <li><i class="icon-ok color-green"></i>Odio dignissimos ducimus</li>
+                <li><i class="icon-ok color-green"></i>Blanditiis praesentium volup</li>
+                <li><i class="icon-ok color-green"></i>Eos et accusamus</li>
             </ul>
 
         </div>
 
-        
+
         <div class="span9">
-            <div class="headline"><h3>Detalle de Cotización</h3></div>
+            <div class="headline">
+                <h3>Detalle de Cotización</h3>
+            </div>
             <br />
             <div class="successmessage">
             </div>
@@ -137,7 +149,12 @@
 
         </div>
     </div>
-@*</div>*@
+</div>
+
+<div class="alert alert-warning fade in">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <h2 style="font-style: italic; font-family: Century">Sin productores no hay comida...</h2>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -157,11 +174,13 @@
     $t("#cbxCategorias").change(function () {
         category = $t(this).val();
         GetProducts(category);
+        $('.extradiv').hide();
     });
 
     $t("#cbxProductos").change(function () {
         product = $t(this).val();
         ProductInfo(product)
+        $('.extradiv').hide();
     });
 
 
@@ -207,15 +226,20 @@
                  var htmlprodcotiza = '';
                  var urlHelper = new UrlHelper();
                  var url = urlHelper.urlImage(text.PRO_Image);
-                 htmlprodcotiza += '<img src="' + url + '" class="img-circle" width="120" height="95"><br />';
-                 htmlprodcotiza += '<small>' + text.PRO_Nombre + '</small>';
+                 //htmlprodcotiza += '<img src="' + url + '" class="img-circle" width="120" height="95"><br />';
+                 //htmlprodcotiza += '<small>' + text.PRO_Nombre + '</small>';
+                 //htmlprodcotiza += '<br />';
+                 //htmlprodcotiza += '<br />';
+                 htmlprodcotiza += '<input type="submit" onclick="AddProductLine()" value="Agregar" class="btn-u" id="submit-button" /> <input type="button"  value="Ver" class="btn-u previewBtn" onclick="ShowPreview()" id="Preview-button" />';
                  htmlprodcotiza += '<br />';
                  htmlprodcotiza += '<br />';
-                 htmlprodcotiza += '<input type="submit" onclick="AddProductLine()" value="Agregar" class="btn-u" id="submit-button" />';
-                 htmlprodcotiza += '<br />';
-                 htmlprodcotiza += '<br />';
-                 htmlprodcotiza += '<br />';
+
+
+                 //htmlprodcotiza += '<br />';
                  jQuery('.cotiza').html(htmlprodcotiza);
+
+                 var innerProd = '<ul class="thumbnails"> <li class="span10"><div class="thumbnail-style thumbnail-kenburn"><div class="thumbnail-img"><div class="overflow-hidden"><img src="' + url + '" alt="" /></div><a class="btn-more hover-effect" onclick="AddProductLine()" href="#">Agregar</a></div> </div> </li> </ul>';
+                 jQuery('.extradiv').html(innerProd);
                  objectproduct = text;
                  return false;
              }
@@ -225,6 +249,12 @@
      var rowIndex = 0;
 
 
+    
+     function ShowPreview() {
+         $('.extradiv').show();
+     }
+     
+   
 
      function AddProductLine() {
          var success = true;
@@ -336,19 +366,4 @@
      }
 
 
-     //function showProgress() {
-     //    $t.blockUI({
-     //        message: '<p>We are processing your request.  Please be patient.</p><img src="../Images/loading_dark.gif" /> <br>',
-     //        css: {
-     //            width: '20%',
-     //            border: '1px solid #000000',
-     //            left: '40%'
-     //        }
-     //    });
-     //}
-
-     //function hideProgress() {
-     //    $t.unblockUI();
-     //}
-
-	</script>
+</script>

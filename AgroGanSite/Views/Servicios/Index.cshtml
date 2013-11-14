@@ -61,18 +61,20 @@
 
 
 <div class="breadcrumbs margin-bottom-10">
-    <div class="row-fluid">
-        <h3 class="color-blue pull-left">Listado de Servicios</h3>
-        <ul class="pull-right breadcrumb">
-            <li><a href="#">Inicio</a> <span class="divider">/</span></li>
-            <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
-            <li class="active">Servicios</li>
-        </ul>
+    <div class="container">
+        <div class="row-fluid">
+            <h3 class="color-blue pull-left">Listado de Servicios</h3>
+            <ul class="pull-right breadcrumb">
+                <li><a href="#">Inicio</a> <span class="divider">/</span></li>
+                <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
+                <li class="active">Servicios</li>
+            </ul>
+        </div>
     </div>
     <!--/container-->
 </div>
 
-@*<div class="container">*@
+<div class="container">
     <div class="row-fluid">
         <div class="span3">
 
@@ -81,10 +83,10 @@
             </div>
 
             <div>
-                  @Html.ActionLink("Volver a Dashboard", "Index", "Home", new { @class="btn-u" })
+                @Html.ActionLink("Volver a Dashboard", "Index", "Home", new { @class = "btn-u" })
             </div>
             <br />
-            <div>@Html.ActionLink("Crear Nuevo", "Create",null ,new { @class="btn-u" })</div>
+            <div>@Html.ActionLink("Crear Nuevo", "Create", null, new { @class = "btn-u" })</div>
         </div>
 
         <div class="span9">
@@ -191,45 +193,45 @@
         </div>
 
     </div>
+</div>
 
+<script>
+    var $j = jQuery.noConflict();
+    $j(function () {
+        $j("div.holder").jPages({
+            containerID: "productdiv",
+            //              previous: "←",
+            //              next: "→",
+            first: "first",
+            previous: "previous",
+            next: "next",
+            last: "last",
+            perPage: 5,
+            delay: 20
+        });
+    });
 
-    <script>
-        var $j = jQuery.noConflict();
-        $j(function () {
-            $j("div.holder").jPages({
-                containerID: "productdiv",
-                //              previous: "←",
-                //              next: "→",
-                first: "first",
-                previous: "previous",
-                next: "next",
-                last: "last",
-                perPage: 5,
-                delay: 20
+    function deleteservicio(id) {
+        jConfirm('Desea borrar este servicio?', 'Borrar servicio existente', function (confirmed) {
+            if (confirmed) {
+                jQuery.ajax(
+               {
+                   type: 'post',
+                   url: '@Url.Content("~/Servicios/Delete/")',
+                       data: { id: id },
+                       success: function (data) {
+                           jAlert('Registro borrado satistafactoriamente.');
+                           window.location = data.redirectToUrl;
+
+                       },
+                       error: function (a, b, c) {
+                           alert(a);
+                       }
+                   });
+               }
             });
-        });
 
-        function deleteservicio(id) {
-            jConfirm('Desea borrar este servicio?', 'Borrar servicio existente', function (confirmed) {
-                if (confirmed) {
-                    jQuery.ajax(
-                   {
-                       type: 'post',
-                       url: '@Url.Content("~/Servicios/Delete/")',
-                   data: { id: id },
-                   success: function (data) {
-                       jAlert('Registro borrado satistafactoriamente.');
-                       window.location = data.redirectToUrl;
-
-                   },
-                   error: function (a, b, c) {
-                       alert(a);
-                   }
-               });
-           }
-        });
-
-   }
+       }
 
 
-  </script>
+</script>

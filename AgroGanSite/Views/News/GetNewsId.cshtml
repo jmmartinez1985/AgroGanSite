@@ -6,35 +6,9 @@
 
 <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 
-@*<div class="container">
-    <div class="row-fluid">
-
-        <div class="rowfluid">
-            <div class="span12">
-                <h4>@Model.NEW_Titulo</h4>
-            </div>
-        </div>
-
-
-        <div class="rowfluid">
-            <div class="span4">
-                <img class="img-rounded imgNew" width="300" height="400"  style="height:500px" src='@Url.Content(Model.NEW_Imagen)'>
-            </div>
-
-            <div class="span8">'
-
-               @{
-                   var value = new HtmlString(Model.NEW_HTML);
-                   <p>@value</p>
-                   }
-            </div>
-
-        </div>
-    </div>
-</div>*@
-
 
 <div class="breadcrumbs margin-bottom-10">
+    <div class="container">
     <div class="row-fluid">
         <h3 class="color-blue pull-left">Noticias</h3>
         <ul class="pull-right breadcrumb">
@@ -42,11 +16,11 @@
             <li><a href="@Url.Action("Index", "Home")" >Página</a> <span class="divider">/</span></li>
             <li class="active">Noticias</li>
         </ul>
-    </div>
+    </div></div>
     <!--/container-->
 </div>
 <!--=== Content Part ===-->
-@*<div class="container">*@
+<div class="container">
     <div class="row-fluid blog-page">
         <!-- Right Sidebar -->
         <div class="span3">
@@ -81,7 +55,7 @@
         <!--/span9-->
     </div>
     <!--/row-fluid-->
-@*</div>*@
+</div>
 <!--/container-->
 <!--=== End Content Part ===-->
 
