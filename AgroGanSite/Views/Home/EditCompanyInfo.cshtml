@@ -6,8 +6,8 @@
 
 <script src="@Url.Content("~/Scripts/Bootstrap/bootstrap-collapse.js")"></script>
 
-<div class="breadcrumbs margin-bottom-50">
-    <div class="container">
+<div class="breadcrumbs margin-bottom-10">
+    <div class="row-fluid">
         <h3 class="color-blue pull-left">Edición de Compañia</h3>
         <ul class="pull-right breadcrumb">
             <li><a href="#">Inicio</a> <span class="divider">/</span></li>
@@ -18,7 +18,7 @@
     <!--/container-->
 </div>
 
-<div class="container">
+@*<div class="container">*@
 
     <div class="row-fluid">
 
@@ -29,7 +29,7 @@
                 <h3>Operaciones</h3>
             </div>
             <div>
-                @Html.ActionLink("Regresar a Principal", "Index", "Home", null, null)
+                @Html.ActionLink("Regresar a Principal", "Index", "Home", null, new { @class="btn-u" })
             </div>
 
             <br />
@@ -112,7 +112,7 @@
         </div>
 
     </div>
-</div>
+@*</div>*@
 
 
 <script>
@@ -128,11 +128,11 @@
 
 
 
-        }
+    }
 
-        function failed() {
-            jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
-        }
+    function failed() {
+        jAlert('El proceso de actualización ha fallado, intente de nuevo o contacte al administrador.');
+    }
 </script>
 
 

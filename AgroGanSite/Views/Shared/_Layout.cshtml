@@ -79,7 +79,7 @@
                     <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "login-btn", title = "Manage" })!</li>
                     <li>
 
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "LoginFormAuth" }))
                         {
                             @Html.AntiForgeryToken()
                    
@@ -94,7 +94,7 @@
                   
 @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "login-btn" })</li>
                     <li class="devider">&nbsp;</li>*@
-                    <li>@Html.ActionLink("Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-btn" })</li>
+                    <li>@Html.ActionLink("Iniciar Sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "login-btn" })</li>
                   
                 }
 
@@ -183,23 +183,7 @@
 
                 <div class="span4">
                     <div class="posts lastnews">
-                        @*  <div class="headline">
-                            <h3>Noticias Recientes</h3>
-                        </div>
-                        <dl class="dl-horizontal">
-                            <dt><a href="#">
-                                <img src="@Url.Content("~/FilesUploaded/6.jpg")" alt=""></a></dt>
-                            <dd>
-                                <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <dt><a href="#">
-                                <img src="@Url.Content("~/FilesUploaded/9.jpg")"alt=""></a></dt>
-                            <dd>
-                                <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                            </dd>
-                        </dl>*@
+              
 
                     </div>
                 </div>
