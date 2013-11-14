@@ -506,6 +506,7 @@
       <DependentUpon>AgroModel.edmx</DependentUpon>
       <LastGenOutput>AgroModel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\ftpSmartAspNet.pubxml" />
     <None Include="Properties\PublishProfiles\Jmmartinez.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="obj\jquery.blockUI.js" />
