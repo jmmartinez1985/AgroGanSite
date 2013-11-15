@@ -37,27 +37,34 @@
     <script type="text/javascript">
         $(function () {
             InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
-
-            if ($(window).width() < 768) {
-                $('#logo-header').attr('src', '@Url.Content("~/Images/OM_logo.png")');
-            }
-            else if ($(window).width() > 768 && $(window).width() <= 992) {
-                $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
-            }
-            else if ($(window).width() > 992 && $(window).width() <= 1200) {
-                $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
-               }
-               else {
-                   $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
-               }
+            ResizeScreen();
         });
-   function UrlHelper() {
-       this.urlImage = function (img) {
-           var ROOT = '@Url.Content("~/")';
-        return ROOT + img;
-    }
-    }
+        function UrlHelper() {
+            this.urlImage = function (img) {
+                var ROOT = '@Url.Content("~/")';
+                return ROOT + img;
+            }
+            }
 
+
+            $(window).resize(function () {
+                ResizeScreen();
+
+            });
+            function ResizeScreen() {
+                if ($(window).width() < 768) {
+                    $('#logo-header').attr('src', '@Url.Content("~/Images/OM_logo.png")');
+                }
+                else if ($(window).width() > 768 && $(window).width() <= 992) {
+                    $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+                }
+                else if ($(window).width() > 992 && $(window).width() <= 1200) {
+                    $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+            }
+            else {
+                $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+            }
+}
     </script>
 
 
@@ -312,10 +319,10 @@
 
        function VerNewInnerId(id) {
            var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
-        window.location = url;
+           window.location = url;
 
-    }
-    var imageUp = '@Url.Content("~/images/up.png")';
+       }
+       var imageUp = '@Url.Content("~/images/up.png")';
 
 </script>
 
