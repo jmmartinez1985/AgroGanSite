@@ -37,13 +37,27 @@
     <script type="text/javascript">
         $(function () {
             InitialiseFacebook(@System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"]);
+
+            if ($(window).width() < 768) {
+                $('#logo-header').attr('src', '@Url.Content("~/Images/OM_logo.png")');
+            }
+            else if ($(window).width() > 768 && $(window).width() <= 992) {
+                $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+            }
+            else if ($(window).width() > 992 && $(window).width() <= 1200) {
+                $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+               }
+               else {
+                   $('#logo-header').attr('src', '@Url.Content("~/Images/OM.png")');
+               }
         });
-        function UrlHelper() {
-            this.urlImage = function (img) {
-                var ROOT = '@Url.Content("~/")';
-                return ROOT + img;
-            }
-            }
+   function UrlHelper() {
+       this.urlImage = function (img) {
+           var ROOT = '@Url.Content("~/")';
+        return ROOT + img;
+    }
+    }
+
     </script>
 
 
@@ -66,11 +80,11 @@
 
                 <li><a href="mailto:stn_rules@hotmail.com" class="login-btn">Ayuda</a></li>
                 <li class="devider">&nbsp;</li>
-                  @if (!Request.IsAuthenticated)
-                 {
+                @if (!Request.IsAuthenticated)
+                {
                     <li><a href="@Url.Action("Register", "Account")" class="login-btn">Registrarse</a></li>
                     <li class="devider">&nbsp;</li>
-                  }
+                }
 
 
                 @if (Request.IsAuthenticated)
@@ -111,7 +125,7 @@
             <!-- Logo -->
             <div class="logo">
                 <a href="@Url.Action("Index", "Home")">
-                    <img id="logo-header" src="@Url.Content("~/Images/ag_LogoLetra.png")" alt="Logo"></a>
+                    <img id="logo-header" src="@Url.Content("~/Images/ag_LogoLetra.png")" style="margin-top: -20px;" alt="Logo"></a>
             </div>
             <!-- /logo -->
 
@@ -150,8 +164,8 @@
     <!--=== Body ===-->
     @*<div class="container">
         <div class="row">*@
-            @RenderBody()
-   @*     </div>
+    @RenderBody()
+    @*     </div>
     </div>*@
     <!--/body -->
     <!--=== End Body ===-->
@@ -183,8 +197,6 @@
 
                 <div class="span4">
                     <div class="posts lastnews">
-              
-
                     </div>
                 </div>
                 <!--/span4-->
@@ -284,8 +296,8 @@
                    $j.each(result.$values, function (val, noti) {
                        var urlHelper = new UrlHelper();
                        var url = urlHelper.urlImage(noti.NEW_Imagen);
-                       htmlresult += '<dl class="dl-horizontal"> <dt><a href="#"><img src="' + url + '" alt=""></a></dt>';
-                       htmlresult += '<dd> <p><a href="#">' + noti.NEW_Titulo + '</a></p></dd> </dl>';
+                       htmlresult += '<dl class="dl-horizontal"> <dt><a href="#" onclick="VerNewInnerId(' + noti.NEW_Id + ')"><img src="' + url + '" alt=""></a></dt>';
+                       htmlresult += '<dd> <p><a href="#" onclick="VerNewInnerId(' + noti.NEW_Id + ')">' + noti.NEW_Titulo + '</a></p></dd> </dl>';
                    });
                    $j('.lastnews').html(htmlresult);
 
@@ -297,7 +309,13 @@
 
     });
 
-       var imageUp = '@Url.Content("~/images/up.png")';
+
+       function VerNewInnerId(id) {
+           var url = '@Url.Action("GetNewsId", "News")' + '/' + id;
+        window.location = url;
+
+    }
+    var imageUp = '@Url.Content("~/images/up.png")';
 
 </script>
 

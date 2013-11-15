@@ -467,6 +467,8 @@
     <Content Include="Images\logo1-blue.png" />
     <Content Include="Images\logo2-blue.png" />
     <Content Include="Images\notice.png" />
+    <Content Include="Images\OM.png" />
+    <Content Include="Images\OM_logo.png" />
     <Content Include="Images\pushpin.png" />
     <Content Include="FilesUploaded\REGENT TINGO 1.jpg" />
     <Content Include="FilesUploaded\REGENT TINGO 2.jpg" />

@@ -98,7 +98,6 @@ var App = function () {
 
 
         initSliders: function () {
-            debugger;
            jQuery('#clients-flexslider').flexslider({
                 animation: "slide",
                 easing: "swing",
