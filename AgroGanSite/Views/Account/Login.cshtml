@@ -32,13 +32,13 @@
                     <h3>Inicie a su cuenta</h3>
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-user"></i></span>
-                        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Email", @class = "span12" })
+                        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Usuario", @class = "span12" })
                         <br />
                         @Html.ValidationMessageFor(m => m.UserName)
                     </div>
                     <div class="input-prepend">
                         <span class="add-on"><i class="icon-lock"></i></span>
-                        @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "span12" })
+                        @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña", @class = "span12" })
                         <br />
                         @Html.ValidationMessageFor(m => m.Password)
                     </div>
